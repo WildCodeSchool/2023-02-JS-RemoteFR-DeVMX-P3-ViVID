@@ -29,9 +29,9 @@ pool.getConnection().catch(() => {
 
 const models = {};
 
-const usersManager = require("./usersManager");
+const UsersManager = require("./usersManager");
 
-models.user = new usersManager();
+models.user = new UsersManager();
 models.user.setDatabase(pool);
 
 // bonus: use a proxy to personalize error message,
