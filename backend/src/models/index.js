@@ -31,8 +31,8 @@ const models = {};
 
 const VideosManager = require("./VideosManager");
 
-models.videos = new VideosManager();
-models.videos.setDatabase(pool);
+models.video = new VideosManager();
+models.video.setDatabase(pool);
 
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model

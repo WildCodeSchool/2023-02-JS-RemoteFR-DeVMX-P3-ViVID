@@ -1,7 +1,7 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.videos
+  models.video
     .findAll()
     .then(([rows]) => {
       res.send(rows);
@@ -13,7 +13,7 @@ const browse = (req, res) => {
 };
 
 const read = (req, res) => {
-  models.videos
+  models.video
     .find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
@@ -29,14 +29,14 @@ const read = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const videos = req.body;
+  const video = req.body;
 
   // TODO validations (length, format...)
 
-  videos.id = parseInt(req.params.id, 10);
+  video.id = parseInt(req.params.id, 10);
 
-  models.videos
-    .update(videos)
+  models.video
+    .update(video)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -51,12 +51,12 @@ const edit = (req, res) => {
 };
 
 const add = (req, res) => {
-  const videos = req.body;
+  const video = req.body;
 
   // TODO validations (length, format...)
 
-  models.videos
-    .insert(videos)
+  models.video
+    .insert(video)
     .then(([result]) => {
       res.location(`/videos/${result.insertId}`).sendStatus(201);
     })
@@ -67,7 +67,7 @@ const add = (req, res) => {
 };
 
 const destroy = (req, res) => {
-  models.videos
+  models.video
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
