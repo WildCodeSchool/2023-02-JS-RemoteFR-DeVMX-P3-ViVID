@@ -23,6 +23,8 @@ app.use(
 
 // import and mount the API routes
 
+
+const router = require("./videosRouters");
 const router = require("./routers/usersRouters");
 
 app.use(router);
