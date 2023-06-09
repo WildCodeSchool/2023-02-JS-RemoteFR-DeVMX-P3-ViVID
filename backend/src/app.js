@@ -8,7 +8,6 @@ const path = require("node:path");
 const express = require("express");
 
 const app = express();
-
 // use some application-level middlewares
 
 app.use(express.json());
