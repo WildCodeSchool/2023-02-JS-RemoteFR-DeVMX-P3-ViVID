@@ -59,9 +59,31 @@ CREATE TABLE users (
   -- favorite_id int(11) FOREIGN KEY NOT NULL REFERENCES
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 INSERT INTO users (firstname, lastname, email, password, role, inscription_date) 
-VALUES ('Vivid', 'videos', 'vivid@mail.com', '**********', 'admin', '2023-06-07'),
-('John', 'Doe', 'john.doe@mail.com', '*********', 'user', '2023-06-08'), 
-('Jane', 'Doe', 'jane.doe@mail.com', '********', 'user', '2023-06-08');
+VALUES 
+  (
+    'Vivid',
+    'videos',
+    'vivid@mail.com',
+    '**********',
+    'admin',
+    '2023-06-07'
+  ),
+  (
+    'John',
+    'Doe',
+    'john.doe@mail.com',
+    '*********',
+    'user',
+    '2023-06-08'
+  ), 
+  (
+    'Jane',
+    'Doe',
+    'jane.doe@mail.com',
+    '********',
+    'user',
+    '2023-06-08'
+  );
 
 -- CREATE TABLE CATEGORIES -- START
 DROP TABLE IF EXISTS categories;
@@ -73,9 +95,9 @@ CREATE TABLE categories (
 
 INSERT INTO categories (name)
 VALUES 
-('Ciel & Nuage'),
-('Montagne'),
-('Forêts'),
-('Mer & Océans'),
-('Urbain'),
-('Champ');
+  ('Ciel & Nuage'),
+  ('Montagne'),
+  ('Forêts'),
+  ('Mer & Océans'),
+  ('Urbain'),
+  ('Champ');
