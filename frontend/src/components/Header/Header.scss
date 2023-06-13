@@ -1,13 +1,13 @@
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10px;
-    background: var(--greenColor);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  background: var(--greenColor);
 
-    img {
-        width: clamp(100px, 15%, 200px);
-        height: auto;
-        margin: 10px;
-    }
+  img {
+    width: clamp(100px, 15%, 200px);
+    height: auto;
+    margin: 10px;
+  }
 }
