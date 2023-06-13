@@ -1,19 +1,18 @@
 .btnSuscribe {
-    display: none;
+  display: none;
 }
 
 @media screen and (min-width: 768px) {
-    .btnSuscribe {
-        display: initial;
-        width: 120px;
-        height: 40px;
-        background: transparent;
-        border: none;
+  .btnSuscribe {
+    display: initial;
+    width: 120px;
+    height: 40px;
+    background: transparent;
+    border: none;
 
-        i {
-            color: white;
-            font-weight: 700;
-        }
+    i {
+      color: white;
+      font-weight: 700;
     }
-
+  }
 }
