@@ -13,11 +13,15 @@ VALUES ('Vivid', 'videos', 'vivid@mail.com', '**********', 'admin', '2023-06-07'
 ('John', 'Doe', 'john.doe@mail.com', '*********', 'user', '2023-06-08'), 
 ('Jane', 'Doe', 'jane.doe@mail.com', '********', 'user', '2023-06-08');
 
+DROP TABLE favorites;
+
 CREATE TABLE favorites (
   id int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
   user_id int(11) UNSIGNED FOREIGN KEY NOT NULL REFERENCES users(id),
   video_id int(11) UNSIGNED FOREIGN KEY NOT NULL REFERENCES videos(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+DROP TABLE video_category;
 
 CREATE TABLE video_category (
   id int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
