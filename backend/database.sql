@@ -1,3 +1,5 @@
+-- CREATE TABLE VIDEOS -- START
+
 DROP TABLE IF EXISTS videos;
 CREATE TABLE videos (
   id int primary key NOT NULL AUTO_INCREMENT,
@@ -47,6 +49,7 @@ VALUES
     '2023-06-08'
   );
 
+-- CREATE TABLE USERS -- START
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
   id int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -55,8 +58,8 @@ CREATE TABLE users (
   email varchar(255) NOT NULL,
   password varchar(255) NOT NULL,
   role varchar(255) NOT NULL,
-  inscription_date date NOT NULL
-  -- favorite_id int(11) FOREIGN KEY NOT NULL REFERENCES
+  inscription_date date NOT NULL 
+
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 INSERT INTO users (firstname, lastname, email, password, role, inscription_date) 
 VALUES 
@@ -85,6 +88,15 @@ VALUES
     '2023-06-08'
   );
 
+-- CREATE TABLE FAVORITES -- START
+DROP TABLE IF EXISTS favorites;
+
+CREATE TABLE favorites (
+  id int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  user_id int(11) UNSIGNED FOREIGN KEY NOT NULL REFERENCES users(id),
+  video_id int(11) UNSIGNED FOREIGN KEY NOT NULL REFERENCES videos(id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 -- CREATE TABLE CATEGORIES -- START
 DROP TABLE IF EXISTS categories;
 
@@ -101,3 +113,12 @@ VALUES
   ('Mer & Océans'),
   ('Urbain'),
   ('Champ');
+  
+  -- CREATE TABLE VIDEO_CATEGORY -- START
+DROP TABLE IF EXISTS video_category;
+
+CREATE TABLE video_category (
+  id int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  video_id int(11) UNSIGNED FOREIGN KEY NOT NULL REFERENCES videos(id)
+  category_id int(11) UNSIGNED FOREIGN KEY NOT NULL REFERENCES categories(id),
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
