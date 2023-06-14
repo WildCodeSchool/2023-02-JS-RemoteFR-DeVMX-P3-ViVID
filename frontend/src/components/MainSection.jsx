@@ -7,7 +7,6 @@ export default function MainSection() {
     <section className="body">
       <BasicSlider />
       <Caroussel />
-      
     </section>
   );
 }
