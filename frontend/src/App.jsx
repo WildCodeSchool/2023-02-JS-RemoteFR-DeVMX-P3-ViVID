@@ -5,8 +5,8 @@ import "./App.scss";
 function App() {
   return (
     <div className="App">
+      {/* <p>coucou</p> */}
       <Home />
-      <p>coucou</p>
     </div>
   );
 }
