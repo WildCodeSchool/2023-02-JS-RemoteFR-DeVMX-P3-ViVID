@@ -1,12 +1,12 @@
 .body {
   width: 100vw;
-  height: 100vh;
-  background-color: black;
+  height: 100%;
+  background-color: var(--secondDarkColor);
 }
 
 @media screen and (min-width: 756px) {
   .body {
-    padding-top: clamp(80px, 5vw, 120px);
+    padding-top: var(--headerHight);
     padding-left: 70px;
   }
 }
