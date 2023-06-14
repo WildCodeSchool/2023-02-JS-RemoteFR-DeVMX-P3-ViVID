@@ -3,6 +3,8 @@ import vid2 from "../../assets/videos/mountain.jpg";
 import vid3 from "../../assets/videos/snow-road.jpg";
 import vid4 from "../../assets/videos/street.jpg";
 import vid5 from "../../assets/videos/urbain.jpg";
+import vid6 from "../../assets/videos/forest-beach2.jpg";
+
 import rightArrow from "../../assets/videos/right-arrow.png";
 import leftArrow from "../../assets/videos/left-arrow.png";
 import "./caroussel.scss";
@@ -34,6 +36,11 @@ export default function Caroussel() {
         <button type="button" className="cell">
           <img src={vid5} alt="urbain" />
         </button>
+
+        <button type="button" className="cell">
+          <img src={vid6} alt="urbain" />
+        </button>
+
       </div>
 
       <i className="rigth">

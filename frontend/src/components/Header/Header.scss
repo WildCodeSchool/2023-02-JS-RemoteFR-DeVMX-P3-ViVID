@@ -5,8 +5,9 @@ header {
   padding: 0 10px;
   background: var(--greenColor);
   position: fixed;
-  z-index: 2;
+  z-index: 3;
   width: 100vw;
+  height: var(--headerHight);
 
   .burgerMenu {
     width: 50px;
