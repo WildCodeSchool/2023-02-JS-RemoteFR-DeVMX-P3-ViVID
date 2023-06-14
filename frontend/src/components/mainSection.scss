@@ -1,0 +1,12 @@
+.body {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+}
+
+@media screen and (min-width: 756px) {
+  .body {
+    padding-top: clamp(80px, 5vw, 120px);
+    padding-left: 70px;
+  }
+}

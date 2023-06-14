@@ -9,7 +9,7 @@ import sea from "../../assets/navBar/sea.png";
 import urbain from "../../assets/navBar/street.png";
 import field from "../../assets/navBar/fields.png";
 
-export default function leftNavBar() {
+export default function LeftNavBar() {
   return (
     <nav>
       <div className="categories">
