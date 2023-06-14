@@ -1,12 +1,26 @@
-footer {
+.footer {
   display: flex;
   justify-content: space-between;
+  color: white;
   align-items: center;
   padding: 0 10px;
   background: var(--greenColor);
+  // position: relative;
+  // bottom: 0;
+  width: calc(100vw - 70px);
+  margin-left: 70px;
+  padding-left: 80px;
+  //   padding: 20px;
+  height: calc(30vh - 30px);
   img {
     width: clamp(100px, 7%, 200px);
     height: auto;
     margin: 10px;
+  }
+  .unstyled {
+    list-style: none;
+  }
+  .p.copyright {
+    justify-items: left;
   }
 }
