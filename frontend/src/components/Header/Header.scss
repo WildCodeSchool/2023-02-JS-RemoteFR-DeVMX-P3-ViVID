@@ -28,8 +28,9 @@ header {
       border-radius: 3px;
     }
   }
+
   img {
-    width: clamp(100px, 7%, 200px);
+    width: clamp(60px, 8%, 200px);
     height: auto;
     margin: 10px;
   }
