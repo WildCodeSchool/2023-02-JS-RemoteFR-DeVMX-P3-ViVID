@@ -40,7 +40,6 @@ export default function Caroussel() {
         <button type="button" className="cell">
           <img src={vid6} alt="urbain" />
         </button>
-
       </div>
 
       <i className="rigth">
