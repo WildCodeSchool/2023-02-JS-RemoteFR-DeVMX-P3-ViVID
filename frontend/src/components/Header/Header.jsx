@@ -13,13 +13,14 @@ export default function Header() {
         <i className="bar middleBar" />
         <i className="bar lastBar" />
       </button>
-      <img src={logo} alt="vivid_logo" />
 
-      <SearchBar />
-
-      <div className="signInContainer">
-        <BtnSuscribe />
-        <BtnConnection />
+      <div className="flexContainer">
+        <img src={logo} alt="vivid_logo" />
+        <SearchBar />
+        <div className="signInContainer">
+          <BtnSuscribe />
+          <BtnConnection />
+        </div>
       </div>
     </header>
   );
