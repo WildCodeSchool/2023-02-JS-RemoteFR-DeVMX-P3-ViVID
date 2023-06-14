@@ -4,6 +4,10 @@ header {
   align-items: center;
   padding: 0 10px;
   background: var(--greenColor);
+  position: fixed;
+  z-index: 2;
+  width: 100vw;
+
   .burgerMenu {
     width: 50px;
     height: 40px;
