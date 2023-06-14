@@ -1,12 +1,12 @@
 .wrapper {
-  max-width: clamp(90vw, 80vw, 2000px);
+  max-width: clamp(85vw, 80vw, 2000px);
   margin: 20px auto;
   position: relative;
 
   i {
     cursor: pointer;
     position: absolute;
-    top: calc(340px / 2 - 23px);
+    top: calc(var(--imgHeight) / 2 - 23px);
     img {
       width: 46px;
     }
@@ -15,13 +15,13 @@
     left: -23px;
   }
   i:last-child {
-    left: 23px;
+    left: calc(100% - 23px);
   }
   .caroussel {
     white-space: nowrap;
     overflow: hidden;
     font-size: 0;
-    width: 80vw;
+    width: 100%;
 
     .cell {
       border: none;
@@ -31,7 +31,7 @@
       font-size: 0;
 
       img {
-        height: 340px;
+        height: var(--imgHeight);
         object-fit: cover;
         width: 100%;
       }
