@@ -1,5 +1,4 @@
 import Caroussel from "./videosDisplay/Caroussel";
-import BasicSlider from "./HeroSlider";
 import "./mainSection.scss";
 import BasicSlider from "./videosDisplay/HeroSlider";
 
