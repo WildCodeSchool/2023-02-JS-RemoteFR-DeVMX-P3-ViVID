@@ -1,11 +1,23 @@
+import { useState } from "react";
 import SearchBar from "./SearchBar";
 import BtnSuscribe from "./BtnSuscribe";
 import BtnConnection from "./BtnConnection";
+import ModalConnection from "../ModalConnection";
 
 import "./Header.scss";
 import logo from "../../assets/vivid_logo.png";
 
 export default function Header() {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   return (
     <header>
       <div className="flexContainer">
