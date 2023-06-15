@@ -2,25 +2,58 @@
   display: flex;
   justify-content: space-between;
   color: white;
+  font-size: small;
   align-items: center;
   padding: 0 10px;
   background: var(--greenColor);
-  // position: relative;
-  // bottom: 0;
-  width: calc(100vw - 70px);
-  margin-left: 70px;
-  padding-left: 80px;
-  //   padding: 20px;
+  position: relative;
+  bottom: 0;
+  //   width: calc(100vw - 70px);
+  // margin-left: 20px;
+  // padding-left: 20px;
+  padding: 15px;
   height: calc(30vh - 30px);
   img {
     width: clamp(100px, 7%, 200px);
     height: auto;
     margin: 10px;
   }
+  .btnConnection {
+    margin-top: 10px;
+  }
+  .cadena img {
+    width: 25px;
+    height: 25px;
+  }
   .unstyled {
     list-style: none;
+    margin: 0;
   }
-  .p.copyright {
-    justify-items: left;
+ .social-container {
+    padding: 25px 50px;
+    margin: -30px;
+  }
+  .description {
+    display: none;
+  }
+  .col {
+    flex-basis: 30%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
+    font-size: medium;
+  }
+
+  .btnConnection {
+    width: 120px;
+    height: 40px;
+    margin-top: 5px;
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
   }
 }
