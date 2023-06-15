@@ -33,7 +33,8 @@ export default function Header() {
       <SearchBar />
       <div className="signInContainer">
         <BtnSuscribe />
-        <BtnConnection />
+        <BtnConnection onOpenModal={openModal} />
+        <ModalConnection isOpen={modalOpen} onCloseModal={closeModal} />
       </div>
     </header>
   );
