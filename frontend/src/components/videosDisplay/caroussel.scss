@@ -24,16 +24,15 @@
     width: 100%;
 
     .cell {
-      border: none;
       cursor: pointer;
-      margin-left: 14px;
-      width: 200px;
-      font-size: 0;
 
       img {
+        border: none;
+        font-size: 0;
+        margin-left: 14px;
+        width: 200px;
         height: var(--imgHeight);
         object-fit: cover;
-        width: 100%;
       }
     }
     .cell:first-child {

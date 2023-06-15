@@ -7,11 +7,8 @@ export default function Footer() {
       <div className="col-logo">
         <img src={logo} alt="vivid_logo" />
         <p>
-          ViVID est une plateforme unique{" "}
-          <p>
-            en son genre de vidéo à la demande{" "}
-            <p>sur le thème de vidéo aériennes</p>
-          </p>
+          ViVID est une plateforme unique en son genre de vidéo à la demande sur
+          le thème de vidéo aériennes
         </p>
       </div>
       <div className="col-contact">
