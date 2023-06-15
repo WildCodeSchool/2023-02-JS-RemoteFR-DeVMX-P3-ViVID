@@ -1,37 +1,47 @@
 header {
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10px;
+  padding: 0 15px;
   background: var(--greenColor);
   position: fixed;
   z-index: 3;
   width: 100vw;
   height: var(--headerHight);
 
-  .burgerMenu {
-    width: 50px;
-    height: 40px;
-    background-color: var(--darkColor);
+  .flexContainer {
     display: flex;
-    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    justify-content: space-around;
-    border: none;
-    padding: 5px 0;
-    border-radius: 5px;
+    // padding-left: 30px;
 
-    .bar {
-      width: 35px;
-      height: 5px;
-      background-color: white;
-      border-radius: 3px;
+    .burgerMenu {
+      width: fit-content;
+      height: clamp(35px, 2vw, 40px);
+      background-color: var(--darkColor);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      border: none;
+      padding: 5px 8px;
+      border-radius: 5px;
+      cursor: pointer;
+
+      .bar {
+        width: 25px;
+        height: clamp(2.8px, 2vw, 3.5px);
+        background-color: white;
+        border-radius: 3px;
+      }
     }
-  }
 
-  img {
-    width: clamp(60px, 8%, 200px);
-    height: auto;
-    margin: 10px;
+    .logo {
+      width: clamp(65px, 5vw, 120px);
+      height: auto;
+      margin: 10px;
+      margin-left: clamp(15px, 3vw, 30px);
+    }
   }
 }

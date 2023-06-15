@@ -4,7 +4,7 @@ nav {
   height: 100vh;
   display: flex;
   align-items: center;
-  padding-top: 58px;
+  padding-top: var(--headerHight);
 
   .categories {
     display: flex;
@@ -42,18 +42,19 @@ nav {
       p {
         display: none;
       }
+
       img {
         display: block;
-        width: clamp(40px, 2.5vw, 50px);
+        width: clamp(30px, 2.5vw, 40px);
       }
 
-      img:first-child {
+      .profile {
         width: 50px;
         border-radius: 50%;
       }
 
       .small {
-        width: clamp(30px, 2.2vw, 40px);
+        width: clamp(20px, 2.2vw, 30px);
       }
     }
   }

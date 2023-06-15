@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import vid1 from "../../assets/videos/forest-beach.jpg";
 import vid2 from "../../assets/videos/mountain.jpg";
 import vid3 from "../../assets/videos/snow-road.jpg";
@@ -17,29 +18,29 @@ export default function Caroussel() {
       </i>
 
       <div className="caroussel">
-        <button type="button" className="cell">
+        <Link className="cell" to="/Videos">
           <img src={vid1} alt="forest-beach" />
-        </button>
+        </Link>
 
-        <button type="button" className="cell">
+        <Link className="cell" to="/Videos">
           <img src={vid2} alt="mountain" />
-        </button>
+        </Link>
 
-        <button type="button" className="cell">
+        <Link className="cell" to="/Videos">
           <img src={vid3} alt="snow-road" />
-        </button>
+        </Link>
 
-        <button type="button" className="cell">
+        <Link className="cell" to="/Videos">
           <img src={vid4} alt="street" />
-        </button>
+        </Link>
 
-        <button type="button" className="cell">
+        <Link className="cell" to="/Videos">
           <img src={vid5} alt="urbain" />
-        </button>
+        </Link>
 
-        <button type="button" className="cell">
+        <Link className="cell" to="/Videos">
           <img src={vid6} alt="urbain" />
-        </button>
+        </Link>
       </div>
 
       <i className="rigth">

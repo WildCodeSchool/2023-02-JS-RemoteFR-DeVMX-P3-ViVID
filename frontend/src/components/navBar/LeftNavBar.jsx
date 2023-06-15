@@ -1,4 +1,5 @@
 import "./leftNavBar.scss";
+import { Link } from "react-router-dom";
 import profil from "../../assets/image-profile.jpg";
 import home from "../../assets/navBar/home1.png";
 import fav from "../../assets/navBar/heart1.png";
@@ -13,30 +14,49 @@ export default function LeftNavBar() {
   return (
     <nav>
       <div className="categories">
-        <img src={profil} alt="profile" />
-        <img src={home} className="small" alt="Home" />
-        <p>Accueil</p>
+        <Link to="/profile">
+          <img src={profil} alt="profile" className="profile" />
+        </Link>
 
-        <img src={fav} className="small" alt="Favorites" />
-        <p>Favoris</p>
+        <Link to="/">
+          <img src={home} className="small" alt="Home" />
+          <p>Accueil</p>
+        </Link>
 
-        <img src={ciel} alt="Ciel et nuages" />
-        <p>Ciel et nuages</p>
+        <Link to="/Favorites">
+          <img src={fav} className="small" alt="Favorites" />
+          <p>Favoris</p>
+        </Link>
 
-        <img src={mountain} alt="Montagnes" />
-        <p>Montagnes</p>
+        <Link to="/Sky">
+          <img src={ciel} alt="Ciel et nuages" />
+          <p>Ciel et nuages</p>
+        </Link>
 
-        <img src={forest} alt="Fôrets" />
-        <p>Fôrets</p>
+        <Link to="/Mountain">
+          <img src={mountain} alt="Montagnes" />
+          <p>Montagnes</p>
+        </Link>
 
-        <img src={sea} alt="Mer et oceans" />
-        <p>Mer et oceans</p>
+        <Link to="/Forest">
+          <img src={forest} alt="Fôrets" />
+          <p>Fôrets</p>
+        </Link>
 
-        <img src={urbain} alt="Urbain" />
-        <p>Urbain</p>
+        <Link to="/Sea">
+          <img src={sea} alt="Mer et oceans" />
+          <p>Mer et oceans</p>
+        </Link>
 
-        <img src={field} alt="Champ" />
-        <p>Champ</p>
+        <Link to="/Urban">
+          <img src={urbain} alt="Urbain" />
+          <p>Urbain</p>
+        </Link>
+
+        <Link to="/Field">
+          <img src={field} alt="Champ" />
+          <p>Champ</p>
+        </Link>
       </div>
     </nav>
   );
