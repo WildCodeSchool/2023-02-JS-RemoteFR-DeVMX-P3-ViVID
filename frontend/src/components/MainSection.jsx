@@ -1,7 +1,9 @@
-import Caroussel from "./videosDisplay/Caroussel";
-import "./mainSection.scss";
 import BasicSlider from "./videosDisplay/HeroSlider";
+import Caroussel from "./videosDisplay/Caroussel";
 import Grid from "./videosDisplay/Grid";
+import ModalConnection from "./ModalConnection";
+
+import "./mainSection.scss";
 
 export default function MainSection() {
   return (
@@ -9,6 +11,7 @@ export default function MainSection() {
       <BasicSlider />
       <Caroussel />
       <Grid />
+      <ModalConnection />
     </section>
   );
 }
