@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom";
 import "./BtnSuscribe.scss";
 
 export default function BtnSuscribe() {
   return (
-    <button className="btnSuscribe" type="button">
-      <i>inscription</i>
-    </button>
+    <Link to="../registrationform">
+      <button className="btnSuscribe" type="button">
+        <i>inscription</i>
+      </button>
+    </Link>
   );
 }
