@@ -3,7 +3,7 @@ import "./BtnSuscribe.scss";
 
 export default function BtnSuscribe() {
   return (
-    <Link to="../registrationform">
+    <Link to="/inscription">
       <button className="btnSuscribe" type="button">
         <i>inscription</i>
       </button>
