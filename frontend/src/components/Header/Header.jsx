@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import BtnSuscribe from "./BtnSuscribe";
 import BtnConnection from "./BtnConnection";
@@ -27,7 +28,9 @@ export default function Header() {
           <i className="bar lastBar" />
         </button>
 
-        <img src={logo} className="logo" alt="vivid_logo" />
+        <Link to="/">
+          <img src={logo} className="logo" alt="vivid_logo" />
+        </Link>
       </div>
 
       <SearchBar />
