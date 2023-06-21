@@ -1,64 +1,115 @@
-import HeroSlider, { Slide, MenuNav } from "hero-slider";
+import { useState, useEffect } from "react";
 
-const bogliasco = "https://i.imgur.com/Gu5Cznz.jpg";
-const countyClare = "https://i.imgur.com/idjXzVQ.jpg";
-const craterRock = "https://i.imgur.com/8DYumaY.jpg";
-const giauPass = "https://i.imgur.com/8IuucQZ.jpg";
+import previousImg from "../../assets/previous.png";
+import nextImg from "../../assets/next.png";
+import playVideo from "../../assets/play_logo_white.png";
 
-export default function BasicSlider() {
+import "./heroslider.scss";
+
+export default function HeroSlider() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [showButton, setShowButton] = useState(false);
+
+  const images = [
+    "https://i.imgur.com/Gu5Cznz.jpg",
+    "https://i.imgur.com/idjXzVQ.jpg",
+    "https://i.imgur.com/8DYumaY.jpg",
+    "https://i.imgur.com/8IuucQZ.jpg",
+    "https://i.imgur.com/P9IVqkS.jpg",
+  ];
+
+  const goToPreviousImage = () => {
+    const newIndex =
+      currentImageIndex === 0 ? images.length - 1 : currentImageIndex - 1;
+    setCurrentImageIndex(newIndex);
+    setSelectedImageIndex(newIndex);
+  };
+
+  const goToNextImage = () => {
+    const newIndex =
+      currentImageIndex === images.length - 1 ? 0 : currentImageIndex + 1;
+    setCurrentImageIndex(newIndex);
+    setSelectedImageIndex(newIndex);
+  };
+
+  const handleButtonClick = () => {
+    window.location.href = "lien_de_la_video";
+  };
+
+  const handleThumbnailClick = (index) => {
+    setCurrentImageIndex(index);
+    setSelectedImageIndex(index);
+  };
+
+  useEffect(() => {
+    const buttonTimeout = setTimeout(() => {
+      setShowButton(true);
+    }, 3000);
+
+    return () => {
+      clearTimeout(buttonTimeout);
+    };
+  }, []);
+
+  useEffect(() => {
+    const imageInterval = setInterval(goToNextImage, 8000);
+
+    return () => {
+      clearInterval(imageInterval);
+    };
+  }, []);
+
   return (
-    <HeroSlider
-      height="40vh"
-      autoplay
-      controller={{
-        initialSlide: 1,
-        slidingDuration: 500,
-        slidingDelay: 100,
-        onSliding: (nextSlide) =>
-          console.warn("onSliding(nextSlide): ", nextSlide),
-        onBeforeSliding: (previousSlide, nextSlide) =>
-          console.warn(
-            "onBeforeSliding(previousSlide, nextSlide): ",
-            previousSlide,
-            nextSlide
-          ),
-        onAfterSliding: (nextSlide) =>
-          console.warn("onAfterSliding(nextSlide): ", nextSlide),
-      }}
-    >
-      <Slide
-        shouldRenderMask
-        label="Giau Pass - Italy"
-        background={{
-          backgroundImageSrc: giauPass,
-        }}
-      />
+    <div className="hero-slider-container">
+      <div className="sliderAndBtnPlay">
+        <img
+          className="imgSlider"
+          src={images[currentImageIndex]}
+          alt="HeroSlider"
+        />
+        {showButton && (
+          <button
+            className="video-btn"
+            onClick={handleButtonClick}
+            type="button"
+          >
+            <img className="playImgBtn" src={playVideo} alt="play" />
+          </button>
+        )}
+      </div>
 
-      <Slide
-        shouldRenderMask
-        label="Bogliasco - Italy"
-        background={{
-          backgroundImageSrc: bogliasco,
-        }}
-      />
+      <div className="thumbnail-bar">
+        {images.map((image, index) => (
+          <button
+            key={image}
+            type="button"
+            className={
+              selectedImageIndex === index ? "thumbnail active" : "thumbnail"
+            }
+            onClick={() => handleThumbnailClick(index)}
+          >
+            <img src={image} alt={`Thumbnail ${index}`} />
+          </button>
+        ))}
+      </div>
 
-      <Slide
-        shouldRenderMask
-        label="County Clare - Ireland"
-        background={{
-          backgroundImageSrc: countyClare,
-        }}
-      />
-
-      <Slide
-        shouldRenderMask
-        label="Crater Rock, OR - United States"
-        background={{
-          backgroundImageSrc: craterRock,
-        }}
-      />
-
-      <MenuNav />
-    </HeroSlider>
+      <div className="btn-prev-next-container">
+        <div className="btnPreviousContainer">
+          <button
+            className="btn-previous"
+            onClick={goToPreviousImage}
+            type="button"
+          >
+            <img className="imgPrevNext" src={previousImg} alt="previous" />
+          </button>
+        </div>
+        <div className="btnNextContainer">
+          <button className="btn-next" onClick={goToNextImage} type="button">
+            <img className="imgPrevNext" src={nextImg} alt="next" />
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }

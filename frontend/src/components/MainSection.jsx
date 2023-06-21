@@ -1,14 +1,14 @@
-import BasicSlider from "./videosDisplay/HeroSlider";
 import Caroussel from "./videosDisplay/Caroussel";
 import Grid from "./videosDisplay/Grid";
 import ModalConnection from "./ModalConnection";
+import HeroSlider from "./videosDisplay/HeroSlider";
 
 import "./mainSection.scss";
 
 export default function MainSection() {
   return (
     <section className="body">
-      <BasicSlider />
+      <HeroSlider />
       <Caroussel />
       <Grid />
       <ModalConnection />
