@@ -61,8 +61,23 @@ export default function HeroSlider() {
   }, []);
 
   return (
-    <div className="hero-slider">
-      <img src={images[currentImageIndex]} alt="HeroSlider" />
+    <div className="hero-slider-container">
+      <div className="sliderAndBtnPlay">
+        <img
+          className="imgSlider"
+          src={images[currentImageIndex]}
+          alt="HeroSlider"
+        />
+        {showButton && (
+          <button
+            className="video-btn"
+            onClick={handleButtonClick}
+            type="button"
+          >
+            <img className="playImgBtn" src={playVideo} alt="play" />
+          </button>
+        )}
+      </div>
 
       <div className="thumbnail-bar">
         {images.map((image, index) => (
@@ -79,22 +94,21 @@ export default function HeroSlider() {
         ))}
       </div>
 
-      {showButton && (
-        <button className="video-btn" onClick={handleButtonClick} type="button">
-          <img className="playImgBtn" src={playVideo} alt="play" />
-        </button>
-      )}
       <div className="btn-prev-next-container">
-        <button
-          className="btn-previous"
-          onClick={goToPreviousImage}
-          type="button"
-        >
-          <img src={previousImg} alt="previous" />
-        </button>
-        <button className="btn-next" onClick={goToNextImage} type="button">
-          <img src={nextImg} alt="next" />
-        </button>
+        <div className="btnPreviousContainer">
+          <button
+            className="btn-previous"
+            onClick={goToPreviousImage}
+            type="button"
+          >
+            <img className="imgPrevNext" src={previousImg} alt="previous" />
+          </button>
+        </div>
+        <div className="btnNextContainer">
+          <button className="btn-next" onClick={goToNextImage} type="button">
+            <img className="imgPrevNext" src={nextImg} alt="next" />
+          </button>
+        </div>
       </div>
     </div>
   );
