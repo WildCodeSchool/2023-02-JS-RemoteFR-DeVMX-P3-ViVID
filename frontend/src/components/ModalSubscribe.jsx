@@ -200,11 +200,6 @@ export default function ModalSubscribe({ isOpen, onCloseModal }) {
         </section>
         <section>
           <footer className="modal-footer">
-            <div className="cancel-button">
-              <button onClick={onCloseModal} type="button" className="cl-btn">
-                Annuler
-              </button>
-            </div>
             <div className="register-button">
               <button
                 onClick={() => handleSubmit()}
@@ -212,6 +207,11 @@ export default function ModalSubscribe({ isOpen, onCloseModal }) {
                 className="btn"
               >
                 S'inscrire
+              </button>
+            </div>
+            <div className="cancel-button">
+              <button onClick={onCloseModal} type="button" className="cl-btn">
+                Annuler
               </button>
             </div>
           </footer>

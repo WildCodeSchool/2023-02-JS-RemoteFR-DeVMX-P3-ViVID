@@ -28,7 +28,7 @@
     background: var(--greenColor);
     color: white;
     border-radius: 16px;
-    max-height: 90vh;
+    max-height: 70vh;
 	  max-width: 700px;
     overflow: hidden;
 	  display: flex;
@@ -38,7 +38,8 @@
   }
   .modal-header{
     padding: 16px 32px;
-    border-bottom: 3px solid var(--goldColor);
+    border: 3px solid var(--goldColor);
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -132,13 +133,12 @@
     }
   }
   .cl-btn {
-    display: flex;
     justify-content: center;
     align-items: center;
     width: 100px;
     height: 35px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     background-color: var(--darkColor);
     border-radius: 22px;
     font-size: 1.2rem;
@@ -148,13 +148,12 @@
       rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   }
   .btn {
-    display: flex;
     justify-content: center;
     align-items: center;
     width: 100px;
     height: 35px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     background-color: var(--goldColor);
     border-radius: 22px;
     font-size: 1.2rem;
