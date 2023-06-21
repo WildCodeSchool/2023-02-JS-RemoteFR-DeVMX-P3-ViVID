@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
-import BtnSuscribe from "./BtnSuscribe";
+import BtnSubscribe from "./BtnSubscribe";
 import BtnConnection from "./BtnConnection";
 import ModalConnection from "../ModalConnection";
+import ModalSubscribe from "../ModalSubscribe";
 
 import "./Header.scss";
 import logo from "../../assets/vivid_logo.png";
@@ -18,6 +20,16 @@ export default function Header() {
     setModalOpen(false);
   };
 
+  const [subModalOpen, setSubModalOpen] = useState(false);
+
+  const openSubModal = () => {
+    setSubModalOpen(true);
+  };
+
+  const subCloseModal = () => {
+    setSubModalOpen(false);
+  };
+
   return (
     <header>
       <div className="flexContainer">
@@ -27,14 +39,17 @@ export default function Header() {
           <i className="bar lastBar" />
         </button>
 
-        <img src={logo} className="logo" alt="vivid_logo" />
+        <Link to="/">
+          <img src={logo} className="logo" alt="vivid_logo" />
+        </Link>
       </div>
 
       <SearchBar />
       <div className="signInContainer">
-        <BtnSuscribe />
+        <BtnSubscribe onOpenModal={openSubModal} />
         <BtnConnection onOpenModal={openModal} />
         <ModalConnection isOpen={modalOpen} onCloseModal={closeModal} />
+        <ModalSubscribe isOpen={subModalOpen} onCloseModal={subCloseModal} />
       </div>
     </header>
   );

@@ -39,8 +39,8 @@ export default function LeftNavBar() {
         </Link>
 
         <Link to="/Forest">
-          <img src={forest} alt="Fôrets" />
-          <p>Fôrets</p>
+          <img src={forest} alt="Forêts" />
+          <p>Forêts</p>
         </Link>
 
         <Link to="/Sea">

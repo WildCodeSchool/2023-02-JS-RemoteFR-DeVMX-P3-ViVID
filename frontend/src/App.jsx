@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import LeftNavBar from "./components/navBar/LeftNavBar";
 import Home from "./pages/Home";
-import SignUp from "./pages/SignUp";
 import Video from "./pages/Video";
 import Footer from "./components/Footer/Footer";
 import "./App.scss";
@@ -14,7 +13,6 @@ function App() {
       <LeftNavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/inscription" element={<SignUp />} />
         {/*
         <Route path="/connexion" element={<SignIn />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
