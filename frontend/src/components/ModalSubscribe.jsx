@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import "./ModalSubscribe.scss";
 
 export default function ModalSubscribe({ isOpen, onCloseModal }) {
+  const [firstname, setFirstname] = useState(null);
+  const [lastname, setLastname] = useState(null);
   const [email, setEmail] = useState(null);
   const [userName, setUserName] = useState(null);
   const [password, setPassword] = useState(null);
@@ -11,6 +13,12 @@ export default function ModalSubscribe({ isOpen, onCloseModal }) {
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
+    if (id === "firstname") {
+      setFirstname(value);
+    }
+    if (id === "lastname") {
+      setLastname(value);
+    }
     if (id === "email") {
       setEmail(value);
     }
@@ -37,7 +45,14 @@ export default function ModalSubscribe({ isOpen, onCloseModal }) {
     // updates[`/${newPostKey}`] = obj;
     // return updates(ref(database), updates);
     // eslint-disable-next-line no-restricted-syntax
-    console.log(email, userName, password, verificationPassword);
+    console.log(
+      firstname,
+      lastname,
+      email,
+      userName,
+      password,
+      verificationPassword
+    );
   };
 
   const [checkedOne, setCheckedOne] = React.useState(false);
@@ -73,6 +88,30 @@ export default function ModalSubscribe({ isOpen, onCloseModal }) {
         </header>
         <section className="submodal-container-body">
           <div className="form-body">
+            <div className="firstname">
+              <label className="form_label" htmlFor="firstname">
+                Prénom :
+              </label>
+              <input
+                className="form_input"
+                type="text"
+                id="firstname"
+                onChange={(e) => handleInputChange(e)}
+                placeholder="exemple"
+              />
+            </div>
+            <div className="lastname">
+              <label className="form_label" htmlFor="lastname">
+                Nom :
+              </label>
+              <input
+                className="form_input"
+                type="text"
+                id="lastname"
+                onChange={(e) => handleInputChange(e)}
+                placeholder="exemple"
+              />
+            </div>
             <div className="email">
               <label className="form_label" htmlFor="email">
                 Identifiant :
@@ -82,7 +121,7 @@ export default function ModalSubscribe({ isOpen, onCloseModal }) {
                 type="email"
                 id="email"
                 onChange={(e) => handleInputChange(e)}
-                placeholder="email@example.com"
+                placeholder="email@exemple.com"
               />
             </div>
             <div className="username">
@@ -94,7 +133,7 @@ export default function ModalSubscribe({ isOpen, onCloseModal }) {
                 type="text"
                 id="userName"
                 onChange={(e) => handleInputChange(e)}
-                placeholder="example"
+                placeholder="exemple"
               />
             </div>
             <div className="password">
@@ -199,7 +238,7 @@ export default function ModalSubscribe({ isOpen, onCloseModal }) {
           </div>
         </section>
         <section>
-          <footer className="modal-footer">
+          <footer className="modal-container-footer">
             <div className="register-button">
               <button
                 onClick={() => handleSubmit()}

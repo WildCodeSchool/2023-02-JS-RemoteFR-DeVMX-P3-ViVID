@@ -15,9 +15,9 @@
   height: calc(30vh - 30px);
   img {
     width: clamp(65px, 5vw, 120px);
-      height: auto;
-      margin: 10px;
-      margin-left: clamp(15px, 3vw, 30px);
+    height: auto;
+    margin: 10px;
+    margin-left: clamp(15px, 3vw, 30px);
   }
   .btnConnection {
     margin-top: 10px;
@@ -48,11 +48,11 @@
 }
 
 @media screen and (min-width: 768px) {
-.footer {
-  display: flex;
-  justify-content: space-evenly;
-  img {
-    width: clamp(65px, 5vw, 120px);
+  .footer {
+    display: flex;
+    justify-content: space-evenly;
+    img {
+      width: clamp(65px, 5vw, 120px);
       height: auto;
       margin: 10px;
       margin-left: clamp(15px, 3vw, 30px);
@@ -61,21 +61,21 @@
       padding-left: 40%;
     }
 
-  .btnConnection {
-    width: 120px;
-    height: 40px;
-    margin-top: 5px;
-  }
+    .btnConnection {
+      width: 120px;
+      height: 40px;
+      margin-top: 5px;
+    }
 
-  .description {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.75rem;
-    padding-left: 5%;
+    .description {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.75rem;
+      padding-left: 5%;
+    }
+    .social-container {
+      padding-left: 5%;
+      padding-right: 60%;
+    }
   }
-  .social-container {
-    padding-left: 5%;
-    padding-right: 60%;
-}
-}
 }
