@@ -31,8 +31,6 @@
     "husky": "^8.0.3"
   },
   "dependencies": {
-    "hero-slider": "^3.1.0",
-    "prop-types": "^15.8.1",
-    "sass": "^1.63.3"
+    "prop-types": "^15.8.1"
   }
 }
