@@ -33,14 +33,14 @@ const UsersManager = require("./usersManager");
 const VideosManager = require("./VideosManager");
 const CategoriesManager = require("./categoriesManager");
 
-models.video = new VideosManager();
-models.video.setDatabase(pool);
+models.videos = new VideosManager();
+models.videos.setDatabase(pool);
 
-models.category = new CategoriesManager();
-models.category.setDatabase(pool);
+models.categories = new CategoriesManager();
+models.categories.setDatabase(pool);
 
-models.user = new UsersManager();
-models.user.setDatabase(pool);
+models.users = new UsersManager();
+models.users.setDatabase(pool);
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
 const handler = {

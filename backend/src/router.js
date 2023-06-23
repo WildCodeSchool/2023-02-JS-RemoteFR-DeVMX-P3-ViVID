@@ -14,6 +14,7 @@ router.delete("/users/:id", usersControllers.destroy);
 
 router.get("/videos", videosControllers.browse);
 router.get("/videos/:id", videosControllers.read);
+router.post("/videos/loadVideos", videosControllers.getByIds);
 router.put("/videos/:id", videosControllers.edit);
 router.post("/videos", videosControllers.add);
 router.delete("/videos/:id", videosControllers.destroy);
