@@ -219,7 +219,10 @@ export default function ModalSubscribe({ isOpen, onCloseModal }) {
             </p>
             <br />
             <p>
-              • Sur le site : via la rubrique <Link to="/">nous contacter</Link>
+              • Sur le site : via la rubrique{" "}
+              <Link to="/" onClick={onCloseModal}>
+                nous contacter
+              </Link>
               ;
             </p>
             <br />
@@ -233,7 +236,10 @@ export default function ModalSubscribe({ isOpen, onCloseModal }) {
             <br />
             <p>
               Pour plus d'informations, veuillez consulter notre avis en matière
-              de <Link to="/">protection de la vie privée</Link>
+              de{" "}
+              <Link to="/" onClick={onCloseModal}>
+                protection de la vie privée
+              </Link>
             </p>
           </div>
         </section>
