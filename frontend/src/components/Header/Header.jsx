@@ -2,7 +2,7 @@ import { useState } from "react";
 import SearchBar from "./SearchBar";
 import BtnSuscribe from "./BtnSuscribe";
 import BtnConnection from "./BtnConnection";
-import ModalConnection from "../ModalConnection";
+import ModalConnection from "../modalConnection/ModalConnection";
 
 import "./Header.scss";
 import logo from "../../assets/vivid_logo.png";

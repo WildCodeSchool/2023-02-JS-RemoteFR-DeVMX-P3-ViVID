@@ -1,16 +1,29 @@
 import { Link } from "react-router-dom";
-import vid1 from "../../assets/videos/forest-beach.jpg";
-import vid2 from "../../assets/videos/mountain.jpg";
-import vid3 from "../../assets/videos/snow-road.jpg";
-import vid4 from "../../assets/videos/street.jpg";
-import vid5 from "../../assets/videos/urbain.jpg";
-import vid6 from "../../assets/videos/forest-beach2.jpg";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 import rightArrow from "../../assets/videos/right-arrow.png";
 import leftArrow from "../../assets/videos/left-arrow.png";
 import "./caroussel.scss";
 
 export default function Caroussel() {
+  const videoIds = {
+    video1: 4,
+    video2: 7,
+    video3: 9,
+    video4: 10,
+    video5: 11,
+    video6: 5,
+    video7: 8,
+  };
+  const [carousselVid, setCarousselVid] = useState([]);
+  useEffect(() => {
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/videos/loadVideos`, videoIds)
+      .then((res) => setCarousselVid(res.data))
+      .catch((err) => console.error(err));
+  }, []);
+
   return (
     <div className="wrapper">
       <i className="left">
@@ -18,29 +31,15 @@ export default function Caroussel() {
       </i>
 
       <div className="caroussel">
-        <Link className="cell" to="/Videos">
-          <img src={vid1} alt="forest-beach" />
-        </Link>
-
-        <Link className="cell" to="/Videos">
-          <img src={vid2} alt="mountain" />
-        </Link>
-
-        <Link className="cell" to="/Videos">
-          <img src={vid3} alt="snow-road" />
-        </Link>
-
-        <Link className="cell" to="/Videos">
-          <img src={vid4} alt="street" />
-        </Link>
-
-        <Link className="cell" to="/Videos">
-          <img src={vid5} alt="urbain" />
-        </Link>
-
-        <Link className="cell" to="/Videos">
-          <img src={vid6} alt="urbain" />
-        </Link>
+        {carousselVid &&
+          carousselVid.map((obj) => (
+            <Link className="cell" to={`/Videos/:${obj.id}`} key={obj.id}>
+              <img
+                src={`${import.meta.env.VITE_BACKEND_URL}${obj.cover_img}`}
+                alt={obj.title}
+              />
+            </Link>
+          ))}
       </div>
 
       <i className="rigth">

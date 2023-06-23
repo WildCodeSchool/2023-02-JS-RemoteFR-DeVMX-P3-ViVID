@@ -1,7 +1,7 @@
-import BasicSlider from "./videosDisplay/HeroSlider";
-import Caroussel from "./videosDisplay/Caroussel";
-import Grid from "./videosDisplay/Grid";
-import ModalConnection from "./ModalConnection";
+import BasicSlider from "../videosDisplay/HeroSlider";
+import Caroussel from "../videosDisplay/Caroussel";
+import Grid from "../videosDisplay/Grid";
+import ModalConnection from "../modalConnection/ModalConnection";
 
 import "./mainSection.scss";
 
