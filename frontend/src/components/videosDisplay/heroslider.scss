@@ -17,30 +17,22 @@
 }
 
 .thumbnail-bar {
-    z-index: 3;
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    width: 100%;
-    bottom: 10%;
-    padding: 0 0 10px 0;
-    
-    >button {
-        width: 30px;
-        height: 2px;
-        box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5);
-        transition: transform 0.3s;
-        border: none;
-        margin: 3px;
+  z-index: 3;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  bottom: 10%;
+  padding: 0 0 10px 0;
 
-        >img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: none;
-        }
-    }
+  > button {
+    width: 30px;
+    height: 2px;
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s;
+    border: none;
+    margin: 3px;
 
     > img {
       width: 100%;
@@ -49,6 +41,13 @@
       display: none;
     }
 
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+  }
+
   .active {
     width: 40px;
     height: 5px;
@@ -56,14 +55,14 @@
   }
 }
 
-.btn-prev-next-container{
-    z-index: 2;
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
-    bottom: 109%;
+.btn-prev-next-container {
+  z-index: 2;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  bottom: 109%;
 }
 
 .btnPreviousContainer,
@@ -119,46 +118,34 @@
 }
 
 @media screen and (min-width: 768px) {
-  
-    .hero-slider-container {
-        position: initial;
+  .hero-slider-container {
+    position: initial;
+  }
+
+  .thumbnail-bar {
+    justify-content: flex-end;
+    padding: 0 50px 20px 0;
+    bottom: 35%;
+
+    > button {
+      width: 100px;
+      height: 50px;
+      border: 1px solid white;
+      margin: 0;
+
+      > img {
+        display: block;
+      }
     }
 
-    .thumbnail-bar {
-        justify-content: flex-end;
-        padding: 0 50px 20px 0;
-        bottom: 35%;
-        
-        >button {
-            width: 100px;
-            height: 50px;
-            border: 1px solid white;
-            margin: 0;
-    
-            >img {
-                display: block;
-            }
-        }
+    .active {
+      width: 110px;
+      height: 65px;
+    }
+  }
 
-        .active{
-            width: 110px;
-            height: 65px;
-        }
-    }
-
-    .btn-prev-next-container{
-        bottom: 130%;
-    }
-    
-    .btnPreviousContainer, .btnNextContainer {
-        width: 30px;
-    }
-    
-    .video-btn {
-        bottom: 100%;
-        left: 10%;
-        width: 30%;
-    }
+  .btn-prev-next-container {
+    bottom: 130%;
   }
 
 @keyframes fadeInRight {
