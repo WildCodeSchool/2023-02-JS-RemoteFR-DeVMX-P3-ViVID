@@ -21,8 +21,12 @@ nav {
       height: 600px;
 
       img {
+        transition: all .2s ease;
         display: block;
         width: 30px;
+      }
+      img:hover{
+        padding: 3px;
       }
 
       .profile {

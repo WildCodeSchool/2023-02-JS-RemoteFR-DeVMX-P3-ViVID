@@ -30,7 +30,12 @@ export default function ModalConnection({ isOpen, onCloseModal }) {
             <input type="email" id="email" placeholder="email@exemple.com" />
 
             <label htmlFor="password">Mot de passe</label>
-            <input type="password" id="password" placeholder="Mot*de*passe" />
+            <input
+              type="password"
+              id="password"
+              placeholder="******"
+              className="password"
+            />
 
             {/* <a href="#">Mot de passe oublié ?</a> */}
 
