@@ -48,7 +48,6 @@
       object-fit: cover;
       display: none;
     }
-  }
 
   .active {
     width: 40px;
@@ -161,18 +160,6 @@
         width: 30%;
     }
   }
-
-  .btnPreviousContainer,
-  .btnNextContainer {
-    width: 30px;
-  }
-
-  .video-btn {
-    bottom: 100%;
-    left: 10%;
-    width: 30%;
-  }
-}
 
 @keyframes fadeInRight {
   from {
