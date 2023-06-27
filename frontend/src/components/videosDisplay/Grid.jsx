@@ -1,6 +1,7 @@
 import "./grid.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Grid() {
   const videoIds = { video: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] };
@@ -19,13 +20,13 @@ export default function Grid() {
     <div className="grid">
       {gridVideos &&
         gridVideos.map((vid) => (
-          <button type="button" key={vid.id}>
+          <Link className="card" key={vid.id} to={`/videos/${vid.id}`}>
             <img
               src={`${import.meta.env.VITE_BACKEND_URL}${vid.cover_img}`}
               alt={vid.title}
             />
             <h2>{vid.title}</h2>
-          </button>
+          </Link>
         ))}
     </div>
   );
