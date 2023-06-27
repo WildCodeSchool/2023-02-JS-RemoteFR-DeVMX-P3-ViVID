@@ -5,6 +5,17 @@ class VideosManager extends AbstractManager {
     super({ table: "videos" });
   }
 
+  getMultipleVideos(ids) {
+    let sqlRequest = `select * from ${this.table} where id in ( ?`;
+    const [idsValues] = Object.values(ids);
+
+    for (let i = 0; i <= idsValues.length - 2; i += 1) {
+      sqlRequest += `, ?`;
+    }
+    sqlRequest += ")";
+    return this.database.query(sqlRequest, idsValues);
+  }
+
   insert(video) {
     return this.database.query(
       `insert into ${this.table} (title, duration, views_count, upload_date) values (?, ?, ?, ?)`,

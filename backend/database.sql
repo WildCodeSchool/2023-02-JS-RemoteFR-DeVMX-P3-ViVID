@@ -6,47 +6,101 @@ CREATE TABLE videos (
   title varchar(255) NOT NULL,
   duration int NOT NULL,
   views_count int NOT NULL,
-  upload_date DATE NOT NULL
+  upload_date DATE NOT NULL,
+  cover_img varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO
-  videos (title, duration, views_count, upload_date)
-VALUES
-  (
+INSERT INTO videos(title, duration, views_count, upload_date, cover_img) 
+VALUES(
     'Nature sauvage',
     120,
     23,
-    '2023-06-08'
+    '2023-06-08',
+    '/assets/images/blue-forest.jpg'
   ),
   (
     'Plaine sauvages',
     20,
     123,
-    '2023-06-08'
+    '2023-06-08',
+    '/assets/images/cloud-city.jpg'
   ),
   (
     'Paris Urbains',
     250,
     2350,
-    '2023-06-08'
+    '2023-06-08',
+    '/assets/images/cloud-mountain.jpg'
   ),
   (
     'plan des forets',
     120,
     23,
-    '2023-06-08'
+    '2023-06-08',
+    '/assets/images/forest-beach.jpg'
   ),
   (
     'Amazonie',
     180,
     283,
-    '2023-06-08'
+    '2023-06-08',
+    '/assets/images/forest-beach2.jpg'
   ),
   (
-    'Nature sauvage',
+    'red mountain',
     120,
     23,
-    '2023-06-08'
+    '2023-06-08',
+    '/assets/images/red-mountain.jpg'
+  ),
+  (
+    'red mountain',
+    120,
+    23,
+    '2023-06-08',
+    '/assets/images/mountain.jpg'
+  ),
+  (
+    'red mountain',
+    120,
+    23,
+    '2023-06-08',
+    '/assets/images/sea.jpg'
+  ),
+  (
+    'red mountain',
+    120,
+    23,
+    '2023-06-08',
+    '/assets/images/snow-road.jpg'
+  ),
+  (
+    'red mountain',
+    120,
+    23,
+    '2023-06-08',
+    '/assets/images/street.jpg'
+  ),
+  (
+    'red mountain',
+    120,
+    23,
+    '2023-06-08',
+    '/assets/images/urbain.jpg'
+  ),
+  (
+    'red mountain',
+    120,
+    23,
+    '2023-06-08',
+    '/assets/images/verdure.jpg'
+  ),
+  (
+    'red mountain',
+    120,
+    23,
+    '2023-06-08',
+    '/assets/images/white-city.jpg'
   );
 
 -- CREATE TABLE USERS -- START
@@ -103,7 +157,7 @@ CREATE TABLE favorites (
 DROP TABLE IF EXISTS categories;
 
 CREATE TABLE categories (
-  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
