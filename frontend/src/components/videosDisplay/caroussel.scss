@@ -1,0 +1,42 @@
+.wrapper {
+  max-width: clamp(85vw, 80vw, 2000px);
+  margin: 85px auto 30px;
+  position: relative;
+
+  i {
+    cursor: pointer;
+    position: absolute;
+    top: calc(var(--imgHeight) / 2 - 23px);
+    img {
+      width: 46px;
+    }
+  }
+  i:first-child {
+    left: -23px;
+  }
+  i:last-child {
+    left: calc(100% - 23px);
+  }
+  .caroussel {
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 0;
+    width: 100%;
+
+    .cell {
+      cursor: pointer;
+
+      img {
+        border: none;
+        font-size: 0;
+        margin-left: 14px;
+        width: 200px;
+        height: var(--imgHeight);
+        object-fit: cover;
+      }
+    }
+    .cell:first-child {
+      margin-left: 0;
+    }
+  }
+}

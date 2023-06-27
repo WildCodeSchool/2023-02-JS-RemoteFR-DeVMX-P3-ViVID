@@ -1,0 +1,42 @@
+nav {
+  display: none;
+}
+
+@media screen and (min-width: 765px) {
+  nav {
+    display: block;
+    background-color: var(--greenColor);
+    width: 70px;
+    height: 100vh;
+    position: fixed;
+    margin-top: 60px;
+    z-index: 55;
+
+    .categories {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      height: 600px;
+
+      img {
+        transition: all 0.2s ease;
+        display: block;
+        width: 30px;
+      }
+      img:hover {
+        padding: 3px;
+      }
+
+      .profile {
+        width: 50px;
+        border-radius: 50%;
+      }
+
+      .small {
+        width: 20px;
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+.btnSubscribe {
+  display: none;
+}
+
+.btnSubscribe:after {
+  backface-visibility: hidden;
+  border: 1px solid rgba(#fff, 0);
+  content: " ";
+  display: block;
+  margin: 2px auto;
+  position: relative;
+  transition: all 280ms ease-in-out;
+  width: 0;
+}
+
+.btnSubscribe:hover:after {
+  backface-visibility: hidden;
+  border-color: var(--goldColor);
+  transition: width 350ms ease-in-out;
+  width: 70%;
+}
+
+@media screen and (min-width: 768px) {
+  .btnSubscribe {
+    display: initial;
+    width: 120px;
+    height: 40px;
+    background: transparent;
+    border: none;
+
+    i {
+      color: white;
+      font-weight: 700;
+    }
+  }
+}

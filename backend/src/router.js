@@ -2,12 +2,27 @@ const express = require("express");
 
 const router = express.Router();
 
-const itemControllers = require("./controllers/itemControllers");
+const usersControllers = require("./controllers/usersControllers");
+const videosControllers = require("./controllers/videosControllers");
+const categoriesControllers = require("./controllers/categoriesControllers");
 
-router.get("/items", itemControllers.browse);
-router.get("/items/:id", itemControllers.read);
-router.put("/items/:id", itemControllers.edit);
-router.post("/items", itemControllers.add);
-router.delete("/items/:id", itemControllers.destroy);
+router.get("/users", usersControllers.browse);
+router.get("/users/:id", usersControllers.read);
+router.put("/users/:id", usersControllers.edit);
+router.post("/users", usersControllers.add);
+router.delete("/users/:id", usersControllers.destroy);
+
+router.get("/videos", videosControllers.browse);
+router.get("/videos/:id", videosControllers.read);
+router.post("/videos/loadVideos", videosControllers.getByIds);
+router.put("/videos/:id", videosControllers.edit);
+router.post("/videos", videosControllers.add);
+router.delete("/videos/:id", videosControllers.destroy);
+
+router.get("/categories", categoriesControllers.browse);
+router.get("/categories/:id", categoriesControllers.read);
+router.put("/categories/:id", categoriesControllers.edit);
+router.post("/categories", categoriesControllers.add);
+router.delete("/categories/:id", categoriesControllers.destroy);
 
 module.exports = router;

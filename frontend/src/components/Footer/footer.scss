@@ -1,0 +1,81 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-size: medium;
+  align-items: center;
+  padding: 0 10px;
+  background: var(--greenColor);
+  position: relative;
+  bottom: 0;
+  //   width: calc(100vw - 70px);
+  // margin-left: 20px;
+  // padding-left: 20px;
+  padding: 15px;
+  height: calc(30vh - 30px);
+  img {
+    width: clamp(65px, 5vw, 120px);
+    height: auto;
+    margin: 10px;
+    margin-left: clamp(15px, 3vw, 30px);
+  }
+  .btnConnection {
+    margin-top: 10px;
+  }
+  .cadena img {
+    width: 25px;
+    height: 25px;
+    margin: 10px;
+  }
+  .unstyled {
+    list-style: none;
+    margin: 0;
+    line-height: 1.75rem;
+  }
+  .social-container {
+    display: flex;
+    padding: auto;
+    margin: auto;
+    justify-content: space-between;
+    justify-items: start;
+  }
+  .description {
+    display: none;
+  }
+  .col {
+    flex-basis: 30%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
+    display: flex;
+    justify-content: space-evenly;
+    img {
+      width: clamp(65px, 5vw, 120px);
+      height: auto;
+      margin: 10px;
+      margin-left: clamp(15px, 3vw, 30px);
+    }
+    .unstyled {
+      padding-left: 40%;
+    }
+
+    .btnConnection {
+      width: 120px;
+      height: 40px;
+      margin-top: 5px;
+    }
+
+    .description {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.75rem;
+      padding-left: 5%;
+    }
+    .social-container {
+      padding-left: 5%;
+      padding-right: 60%;
+    }
+  }
+}
