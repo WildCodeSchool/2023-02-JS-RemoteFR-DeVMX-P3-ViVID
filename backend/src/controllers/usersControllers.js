@@ -1,7 +1,7 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.user
+  models.users
     .findAll()
     .then(([rows]) => {
       res.send(rows);
@@ -12,8 +12,24 @@ const browse = (req, res) => {
     });
 };
 
+const login = (req, res) => {
+  models.users
+    .findUser(req.body)
+    .then(([rows]) => {
+      if (rows === null) {
+        res.sendStatus(404);
+      } else {
+        res.send(rows[0]);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const read = (req, res) => {
-  models.user
+  models.users
     .find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
@@ -35,7 +51,7 @@ const edit = (req, res) => {
 
   user.id = parseInt(req.params.id, 10);
 
-  models.user
+  models.users
     .update(user)
     .then(([result]) => {
       if (result.affectedRows === 0) {
@@ -55,7 +71,7 @@ const add = (req, res) => {
 
   // TODO validations (length, format...)
 
-  models.user
+  models.users
     .insert(user)
     .then(([result]) => {
       res.location(`/users/${result.insertId}`).sendStatus(201);
@@ -67,7 +83,7 @@ const add = (req, res) => {
 };
 
 const destroy = (req, res) => {
-  models.user
+  models.users
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
@@ -88,4 +104,5 @@ module.exports = {
   edit,
   add,
   destroy,
+  login,
 };

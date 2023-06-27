@@ -2,7 +2,7 @@
 
 DROP TABLE IF EXISTS videos;
 CREATE TABLE videos (
-  id int primary key NOT NULL AUTO_INCREMENT,
+  id int(11) UNSIGNED primary key NOT NULL AUTO_INCREMENT,
   title varchar(255) NOT NULL,
   duration int NOT NULL,
   views_count int NOT NULL,
@@ -67,7 +67,7 @@ VALUES
     'Vivid',
     'videos',
     'vivid@mail.com',
-    '**********',
+    'wildcode',
     'admin',
     '2023-06-07'
   ),
@@ -93,8 +93,10 @@ DROP TABLE IF EXISTS favorites;
 
 CREATE TABLE favorites (
   id int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  user_id int(11) UNSIGNED FOREIGN KEY NOT NULL REFERENCES users(id),
-  video_id int(11) UNSIGNED FOREIGN KEY NOT NULL REFERENCES videos(id)
+  user_id int(11) UNSIGNED NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  video_id int(11) UNSIGNED NOT NULL,
+  FOREIGN KEY (video_id) REFERENCES videos(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- CREATE TABLE CATEGORIES -- START
@@ -119,6 +121,8 @@ DROP TABLE IF EXISTS video_category;
 
 CREATE TABLE video_category (
   id int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  video_id int(11) UNSIGNED FOREIGN KEY NOT NULL REFERENCES videos(id)
-  category_id int(11) UNSIGNED FOREIGN KEY NOT NULL REFERENCES categories(id),
+  video_id int(11) UNSIGNED NOT NULL,
+  FOREIGN KEY (video_id) REFERENCES videos(id),
+  category_id int NOT NULL,
+  FOREIGN KEY (category_id) REFERENCES categories(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
