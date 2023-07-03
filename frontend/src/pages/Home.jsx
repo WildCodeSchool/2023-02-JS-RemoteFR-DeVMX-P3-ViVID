@@ -1,4 +1,5 @@
 import MainSection from "../components/MainSection";
+
 import "./home.scss";
 
 export default function Home() {
