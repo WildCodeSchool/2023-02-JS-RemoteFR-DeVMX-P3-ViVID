@@ -1,5 +1,4 @@
------- CREATE TABLE ROLES ------ 
-DROP TABLE IF EXISTS roles;
+-- CREATE TABLE ROLES -- 
 CREATE TABLE roles (
   id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   role VARCHAR(100) NOT NULL
@@ -7,15 +6,14 @@ CREATE TABLE roles (
 
 INSERT INTO roles (role) VALUES ("user"), ("admin");
 
------- CREATE TABLE USERS ------ 
-DROP TABLE IF EXISTS users;
+-- CREATE TABLE USERS -- 
 CREATE TABLE users (
   id int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
   firstname varchar(255) NOT NULL,
   lastname varchar(255) NOT NULL,
   email varchar(255) NOT NULL,
   hashedPassword varchar(255) NOT NULL,
-  role_id VARCHAR(100) NOT NULL, FOREIGN KEY (role_id) REFERENCES roles(id),
+  role_id int NOT NULL, FOREIGN KEY (role_id) REFERENCES roles(id),
   inscription_date date NOT NULL 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -47,7 +45,7 @@ VALUES
   );
 
 -- CREATE TABLE VIDEOS -- START
-DROP TABLE IF EXISTS videos;
+
 CREATE TABLE videos (
   id int(11) UNSIGNED primary key NOT NULL AUTO_INCREMENT,
   title varchar(255) NOT NULL,
@@ -151,7 +149,6 @@ VALUES(
   );
 
 -- CREATE TABLE FAVORITES -- START
-DROP TABLE IF EXISTS favorites;
 
 CREATE TABLE favorites (
   id int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -160,8 +157,6 @@ CREATE TABLE favorites (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- CREATE TABLE CATEGORIES -- START
-DROP TABLE IF EXISTS categories;
-
 CREATE TABLE categories (
   id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   category VARCHAR(255) NOT NULL
@@ -178,7 +173,6 @@ VALUES
   ('Champ');
 
 -- CREATE TABLE VIDEO_CATEGORY -- START
-DROP TABLE IF EXISTS video_category;
 
 CREATE TABLE video_category (
   id int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -187,17 +181,17 @@ CREATE TABLE video_category (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
   -- CREATE TABLE sections -- START
-DROP TABLE IF EXISTS sections;
+
 CREATE TABLE sections (
   id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   section VARCHAR(255) NOT NULL,
   is_dynamic TINYINT(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;  
 
-INSERT INTO sections (section) VALUES ('slider', 0), ('grid', 0), ('carousel', 0);
+INSERT INTO sections (section, is_dynamic) VALUES ('slider', 0), ('grid', 0), ('carousel', 0);
 
 -- CREATE TABLE section_category -- START
-DROP TABLE IF EXISTS section_category;
+
 CREATE TABLE section_category  (
   id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   section_id int NOT NULL, FOREIGN KEY (section_id) REFERENCES sections(id),
@@ -206,9 +200,9 @@ CREATE TABLE section_category  (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- CREATE TABLE video_section --
-DROP TABLE IF EXISTS video_section;
+
 CREATE TABLE video_section  (
   id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   section_id int NOT NULL, FOREIGN KEY (section_id) REFERENCES sections(id),
-  video_id int NOT NULL, FOREIGN KEY (video_id) REFERENCES videos(id)
+  video_id int(11) UNSIGNED NOT NULL, FOREIGN KEY (video_id) REFERENCES videos(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
