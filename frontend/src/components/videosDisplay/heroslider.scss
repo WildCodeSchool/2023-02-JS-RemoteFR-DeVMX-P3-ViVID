@@ -40,12 +40,6 @@
       object-fit: cover;
       display: none;
     }
-
-  > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: none;
   }
 
   .active {
@@ -147,6 +141,7 @@
   .btn-prev-next-container {
     bottom: 130%;
   }
+}
 
 @keyframes fadeInRight {
   from {
