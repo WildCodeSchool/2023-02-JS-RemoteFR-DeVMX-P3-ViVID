@@ -46,17 +46,6 @@ VALUES
     '2023-06-08'
   );
 
--- -- CREATE TABLE user_role -- START
--- DROP TABLE IF EXISTS user_role;
-
--- CREATE TABLE user_role (
---   id int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
---   user_id int(11) UNSIGNED NOT NULL,
---   FOREIGN KEY (user_id) REFERENCES users(id),
---   role_id int(11) UNSIGNED NOT NULL,
---   FOREIGN KEY (role_id) REFERENCES roles(id)
--- ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 -- CREATE TABLE VIDEOS -- START
 DROP TABLE IF EXISTS videos;
 CREATE TABLE videos (

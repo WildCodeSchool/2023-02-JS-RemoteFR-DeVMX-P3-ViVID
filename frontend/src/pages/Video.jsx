@@ -8,6 +8,7 @@ export default function Video(videoid) {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/videos/${videoid}`)
       .then(([res]) => {
+        console.warn(res);
         setVideo(res[0].json());
         console.warn(res);
       })
