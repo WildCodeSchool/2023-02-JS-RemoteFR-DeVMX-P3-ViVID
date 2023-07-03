@@ -27,7 +27,7 @@ export default function carousel() {
       <div className="carousel">
         {carouselVid &&
           carouselVid.map((obj) => (
-            <Link className="cell" to={`/Videos/:${obj.id}`} key={obj.id}>
+            <Link className="cell" to={`/Videos/${obj.id}`} key={obj.id}>
               <img
                 src={`${import.meta.env.VITE_BACKEND_URL}${obj.cover_img}`}
                 alt={obj.title}
