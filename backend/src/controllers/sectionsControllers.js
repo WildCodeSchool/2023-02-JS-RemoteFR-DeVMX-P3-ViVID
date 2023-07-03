@@ -1,7 +1,7 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.videos
+  models.sections
     .findAll()
     .then(([rows]) => {
       res.send(rows);
@@ -12,20 +12,8 @@ const browse = (req, res) => {
     });
 };
 
-const readFavorites = (req, res) => {
-  models.videos
-    .findFavorites()
-    .then(([rows]) => {
-      res.send(rows);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-
 const read = (req, res) => {
-  models.videos
+  models.sections
     .find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
@@ -40,52 +28,14 @@ const read = (req, res) => {
     });
 };
 
-const getByIds = (req, res) => {
-  models.videos
-    .getMultipleVideos(req.body)
+const getByCategoryAndPosition = (req, res) => {
+  models.sections
+    .findByCategoryAndPosition(req.params)
     .then(([rows]) => {
-      if ([rows] === null) {
+      if (rows[0] == null) {
         res.sendStatus(404);
       } else {
-        res.send(rows);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-
-const getBySection = (req, res) => {
-  models.videos
-    .findbySection(req.body)
-    .then(([rows]) => {
-      if ([rows] === null) {
-        res.sendStatus(404);
-      } else {
-        res.send(rows);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-
-const edit = (req, res) => {
-  const video = req.body;
-
-  // TODO validations (length, format...)
-
-  video.id = parseInt(req.params.id, 10);
-
-  models.videos
-    .update(video)
-    .then(([result]) => {
-      if (result.affectedRows === 0) {
-        res.sendStatus(404);
-      } else {
-        res.sendStatus(204);
+        res.send(rows[0]);
       }
     })
     .catch((err) => {
@@ -99,10 +49,10 @@ const add = (req, res) => {
 
   // TODO validations (length, format...)
 
-  models.videos
+  models.sections
     .insert(video)
     .then(([result]) => {
-      res.location(`/videos/${result.insertId}`).sendStatus(201);
+      res.location(`/sections/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);
@@ -111,7 +61,7 @@ const add = (req, res) => {
 };
 
 const destroy = (req, res) => {
-  models.videos
+  models.sections
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
@@ -128,11 +78,8 @@ const destroy = (req, res) => {
 
 module.exports = {
   browse,
-  readFavorites,
+  getByCategoryAndPosition,
   read,
-  getByIds,
-  getBySection,
-  edit,
   add,
   destroy,
 };
