@@ -6,14 +6,16 @@ import UserContext from "../contexts/UserContext";
 import "./ModalConnection.scss";
 
 export default function ModalConnection({ isOpen, onCloseModal }) {
-  if (!isOpen) {
-    return null;
-  }
   const { setUsers } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
+  const [isLoggedIn, setisLoggedIn] = useState(false);
   const navigate = useNavigate();
+
+  if (!isOpen || isLoggedIn) {
+    return null;
+  }
 
   const getUser = (e) => {
     e.preventDefault();
@@ -36,6 +38,8 @@ export default function ModalConnection({ isOpen, onCloseModal }) {
             navigate("/");
           }, 500);
         }
+        onCloseModal();
+        setisLoggedIn(true);
       })
       .catch((err) => console.error(err));
   };
