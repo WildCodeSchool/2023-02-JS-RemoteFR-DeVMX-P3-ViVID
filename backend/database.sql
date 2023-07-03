@@ -56,19 +56,19 @@ CREATE TABLE users (
   firstname varchar(255) NOT NULL,
   lastname varchar(255) NOT NULL,
   email varchar(255) NOT NULL,
-  password varchar(255) NOT NULL,
-  role varchar(255) NOT NULL,
+  hpassword varchar(255) NOT NULL,
+  role_id INT NOT NULL,
   inscription_date date NOT NULL 
 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-INSERT INTO users (firstname, lastname, email, password, role, inscription_date) 
+INSERT INTO users (firstname, lastname, email, hpassword, role_id, inscription_date) 
 VALUES 
   (
     'Vivid',
     'videos',
     'vivid@mail.com',
     'wildcode',
-    'admin',
+    2,
     '2023-06-07'
   ),
   (
@@ -76,7 +76,7 @@ VALUES
     'Doe',
     'john.doe@mail.com',
     '*********',
-    'user',
+    1,
     '2023-06-08'
   ), 
   (
@@ -84,7 +84,7 @@ VALUES
     'Doe',
     'jane.doe@mail.com',
     '********',
-    'user',
+    1,
     '2023-06-08'
   );
 

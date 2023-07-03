@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import LeftNavBar from "./components/navBar/LeftNavBar";
 import Home from "./pages/Home";
@@ -6,11 +6,12 @@ import Video from "./pages/Video";
 import Footer from "./components/Footer/Footer";
 import Admin from "./pages/Admin";
 import "./App.scss";
-import ProtectedRoute from "./layouts/ProtectedRoute";
+import AdminProtectedRoutes from "./layouts/AdminProtectedRoutes";
+// import ProtectedRoute from "./layouts/ProtectedRoute";
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Header />
       <LeftNavBar />
       <Routes>
@@ -25,14 +26,21 @@ function App() {
         <Route path="/Mer&oceans" element={<Sea />}></Route>
         <Route path="/Urbain" element={<Urban />}></Route>
         <Route path="/Champ" element={<Field />}></Route> */}
-        <Route path="/admin" element={<ProtectedRoute />}>
-          <Route path="a" element={<Admin />} />
+
+        {/* LOGGED ADMIN ROUTES */}
+        <Route
+          path="/admin"
+          element={
+            <AdminProtectedRoutes>{/* <NavLayout /> */}</AdminProtectedRoutes>
+          }
+        >
+          <Route path="dashboard" element={<Admin />} />
         </Route>
         <Route path="/videos" element={<Video />} />
         {/* <Route path="*" element={<NotFound />}></Route> */}
       </Routes>
       <Footer />
-    </>
+    </BrowserRouter>
   );
 }
 

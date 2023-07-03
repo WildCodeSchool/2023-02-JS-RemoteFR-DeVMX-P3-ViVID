@@ -44,6 +44,25 @@ const read = (req, res) => {
     });
 };
 
+const getUserByEmail = (req, res, next) => {
+  const { email } = req.body;
+
+  models.users
+    .selectByEmail(email)
+    .then(([users]) => {
+      if (users[0] != null) {
+        [req.user] = users;
+        next();
+      } else {
+        res.sendStatus(401);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error retrieving data from database");
+    });
+};
+
 const edit = (req, res) => {
   const user = req.body;
 
@@ -101,6 +120,7 @@ const destroy = (req, res) => {
 module.exports = {
   browse,
   read,
+  getUserByEmail,
   edit,
   add,
   destroy,
