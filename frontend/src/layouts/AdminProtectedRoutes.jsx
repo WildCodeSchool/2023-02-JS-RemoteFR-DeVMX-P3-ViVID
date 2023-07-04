@@ -7,7 +7,7 @@ function AdminProtectedRoute({ children }) {
   const { users } = useContext(UserContext);
 
   if (!users || users.role_id === 2) {
-    return <Navigate to="/admin/dashboard" replace />;
+    return <Navigate to="/admin" replace />;
   }
 
   return children;

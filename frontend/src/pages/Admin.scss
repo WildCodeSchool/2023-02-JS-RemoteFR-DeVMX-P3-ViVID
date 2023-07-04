@@ -1,5 +1,5 @@
 .admin {
-  padding-top:60px;
+  padding-top: 60px;
   background: var(--darkColor);
 
   ul {
@@ -12,7 +12,7 @@
 
     li {
       margin: 10px 5px;
-      
+
       button {
         padding: 10px 5px;
         border: none;
@@ -20,10 +20,9 @@
         font-size: 0.9rem;
         color: white;
         transition: 0.1s ease;
-        
+
         &:hover {
           border-bottom: 2px solid var(--goldColor);
-
         }
       }
     }
@@ -38,22 +37,22 @@
   }
 }
 
-@media screen and (min-width:768px) {
+@media screen and (min-width: 768px) {
   .admin {
-    padding-top:60px;
+    padding-top: 60px;
     margin-left: 70px;
     background: var(--darkColor);
-  
+
     ul {
       display: flex;
       justify-content: center;
       text-decoration: none;
       list-style: none;
       height: 60px;
-  
+
       li {
         margin: 10px 5px;
-        
+
         button {
           padding: 10px 5px;
           border: none;
@@ -61,19 +60,18 @@
           font-size: 1rem;
           color: white;
           transition: 0.1s ease;
-          
+
           &:hover {
             border-bottom: 2px solid var(--goldColor);
-  
           }
         }
       }
     }
-  
+
     .display {
       display: contents;
     }
-  
+
     .hide {
       display: none;
     }

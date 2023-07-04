@@ -31,7 +31,7 @@ export default function ModalConnection({ isOpen, onCloseModal }) {
         if (res.data.role_id === 2) {
           setUsers(res.data);
           setTimeout(() => {
-            navigate("/admin/dashboard");
+            navigate("/admin");
           }, 500);
         } else {
           setTimeout(() => {
@@ -88,11 +88,7 @@ export default function ModalConnection({ isOpen, onCloseModal }) {
 
               {/* <a href="#">Mot de passe oublié ?</a> */}
 
-              <button
-                type="submit"
-                className="modalBtnConnect"
-                // onClick={onCloseModal()}
-              >
+              <button type="submit" className="modalBtnConnect">
                 Se connecter
               </button>
             </form>

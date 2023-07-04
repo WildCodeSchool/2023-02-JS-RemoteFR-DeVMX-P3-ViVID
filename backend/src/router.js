@@ -6,12 +6,12 @@ const usersControllers = require("./controllers/usersControllers");
 const videosControllers = require("./controllers/videosControllers");
 const categoriesControllers = require("./controllers/categoriesControllers");
 const sectionsControllers = require("./controllers/sectionsControllers");
+const { hashPassword } = require("./services/hashPassword");
 
 router.get("/users", usersControllers.browse);
 router.get("/users/:id", usersControllers.read);
-router.put("/users/:id", usersControllers.edit);
+router.put("/users/:id", hashPassword, usersControllers.edit);
 router.post("/users", usersControllers.add);
-router.post("/login", usersControllers.getUserByEmail);
 router.post("/login", usersControllers.login);
 router.delete("/users/:id", usersControllers.destroy);
 

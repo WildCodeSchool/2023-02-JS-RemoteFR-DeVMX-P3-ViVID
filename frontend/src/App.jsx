@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Home from "./pages/Home";
-import Admin from "./pages/Admin";
 import Video from "./pages/Video";
 import LeftNavBar from "./components/navBar/LeftNavBar";
 import Footer from "./components/Footer/Footer";
+import Admin from "./pages/Admin";
 import "./App.scss";
 import AdminProtectedRoutes from "./layouts/AdminProtectedRoutes";
 // import ProtectedRoute from "./layouts/ProtectedRoute";
@@ -31,14 +31,14 @@ function App() {
         <Route
           path="/admin"
           element={
-            <AdminProtectedRoutes>{/* <NavLayout /> */}</AdminProtectedRoutes>
+            <AdminProtectedRoutes>
+              <Route path="" element={<Admin />} />
+            </AdminProtectedRoutes>
           }
-        >
-          <Route path="dashboard" element={<Admin />} />
-        </Route>
+        />
         {/* <Route path="/connexion" element={<SignIn />} /> */}
         {/* <Route path="/profile" element={<Profile />} /> */}
-        <Route path="/Admin" element={<Admin />} />
+        {/* <Route path="/Admin" element={<Admin />} /> */}
         {/* <Route path="/Favorites" element={<Favorites />} /> */}
         {/* <Route path="/Ciel&nuages" element={<Sky />} /> */}
         {/* <Route path="/Montagnes" element={<Mountain />} /> */}
