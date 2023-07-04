@@ -1,15 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import LeftNavBar from "./components/navBar/LeftNavBar";
-
 import Home from "./pages/Home";
 import Admin from "./pages/Admin";
 import Video from "./pages/Video";
-
-import Header from "./components/Header/Header";
 import LeftNavBar from "./components/navBar/LeftNavBar";
 import Footer from "./components/Footer/Footer";
-
 import "./App.scss";
 import AdminProtectedRoutes from "./layouts/AdminProtectedRoutes";
 // import ProtectedRoute from "./layouts/ProtectedRoute";
