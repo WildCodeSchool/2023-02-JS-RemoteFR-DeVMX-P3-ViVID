@@ -12,6 +12,22 @@ const browse = (req, res) => {
     });
 };
 
+const login = (req, res) => {
+  models.users
+    .findUser(req.body)
+    .then(([rows]) => {
+      if (rows === null) {
+        res.sendStatus(404);
+      } else {
+        res.send(rows[0]);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const read = (req, res) => {
   models.users
     .find(req.params.id)
@@ -25,6 +41,25 @@ const read = (req, res) => {
     .catch((err) => {
       console.error(err);
       res.sendStatus(500);
+    });
+};
+
+const getUserByEmail = (req, res, next) => {
+  const { email } = req.body;
+
+  models.users
+    .selectByEmail(email)
+    .then(([users]) => {
+      if (users[0] != null) {
+        [req.user] = users;
+        next();
+      } else {
+        res.sendStatus(401);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error retrieving data from database");
     });
 };
 
@@ -85,7 +120,9 @@ const destroy = (req, res) => {
 module.exports = {
   browse,
   read,
+  getUserByEmail,
   edit,
   add,
   destroy,
+  login,
 };
