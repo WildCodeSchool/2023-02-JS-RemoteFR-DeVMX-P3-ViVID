@@ -23,7 +23,7 @@ VALUES
     'Vivid',
     'videos',
     'vivid@mail.com',
-    '',
+    'test',
     2,
     '2023-06-07'
   ),
