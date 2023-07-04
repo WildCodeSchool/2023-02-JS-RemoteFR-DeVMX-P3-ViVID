@@ -42,20 +42,13 @@
     }
   }
 
-  > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: none;
-  }
-
   .active {
     width: 40px;
     height: 5px;
     transform: scale(1.05);
   }
-  
 }
+
 .btn-prev-next-container {
   z-index: 2;
   position: relative;
@@ -137,41 +130,17 @@
       > img {
         display: block;
       }
+    }
 
     .active {
       width: 110px;
       height: 65px;
     }
-      
-  .btn-prev-next-container {
-    bottom: 130%;
-  }
-
-  .btnPreviousContainer,
-  .btnNextContainer {
-    width: 30px;
-    
-    .active {
-      width: 110px;
-      height: 65px;
-    }
-    
   }
 
   .btn-prev-next-container {
     bottom: 130%;
   }
-}
-
-.btnPreviousContainer,
-.btnNextContainer {
-  width: 30px;
-}
-
-.video-btn {
-  bottom: 100%;
-  left: 10%;
-  width: 30%;
 }
 
 @keyframes fadeInRight {
