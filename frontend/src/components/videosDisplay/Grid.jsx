@@ -1,95 +1,33 @@
 import "./grid.scss";
-import vid1 from "../../assets/videos/verdure.jpg";
-import vid2 from "../../assets/videos/snow-road.jpg";
-import vid3 from "../../assets/videos/forest-beach2.jpg";
-import vid4 from "../../assets/videos/cloud-mountain.jpg";
-import vid5 from "../../assets/videos/mountain.jpg";
-import vid6 from "../../assets/videos/forest-beach.jpg";
-import vid7 from "../../assets/videos/urbain.jpg";
-import vid8 from "../../assets/videos/red-mountain.jpg";
-import vid9 from "../../assets/videos/white-city.jpg";
-import vid10 from "../../assets/videos/blue-forest.jpg";
-import vid11 from "../../assets/videos/cloud-city.jpg";
-import vid12 from "../../assets/videos/sea.jpg";
-import vid13 from "../../assets/videos/street.jpg";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Grid() {
+  const videoIds = { video: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] };
+  const [gridVideos, setGridVideos] = useState([]);
+
+  useEffect(() => {
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/videos/loadVideos`, videoIds)
+      .then((res) => {
+        setGridVideos(res.data);
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
   return (
     <div className="grid">
-      <button type="button">
-        <img src={vid1} alt="" />
-        <h2>Titre</h2>
-      </button>
-
-      <button type="button">
-        <img src={vid2} alt="" />
-        <h2>Titre</h2>
-      </button>
-
-      <button type="button">
-        <img src={vid3} alt="" />
-        <h2>Titre</h2>
-      </button>
-
-      <button type="button">
-        <img src={vid4} alt="" />
-        <h2>Titre</h2>
-      </button>
-
-      <button type="button">
-        <img src={vid5} alt="" />
-        <h2>Titre</h2>
-      </button>
-
-      <button type="button">
-        <img src={vid6} alt="" />
-        <h2>Titre</h2>
-      </button>
-
-      <button type="button">
-        <img src={vid7} alt="" />
-        <h2>Titre</h2>
-      </button>
-
-      <button type="button">
-        <img src={vid8} alt="" />
-        <h2>Titre</h2>
-      </button>
-
-      <button type="button">
-        <img src={vid9} alt="" />
-        <h2>Titre</h2>
-      </button>
-
-      <button type="button">
-        <img src={vid10} alt="" />
-        <h2>Titre</h2>
-      </button>
-
-      <button type="button">
-        <img src={vid11} alt="" />
-        <h2>Titre</h2>
-      </button>
-
-      <button type="button">
-        <img src={vid12} alt="" />
-        <h2>Titre</h2>
-      </button>
-
-      <button type="button">
-        <img src={vid13} alt="" />
-        <h2>Titre</h2>
-      </button>
-
-      <button type="button">
-        <img src={vid3} alt="" />
-        <h2>Titre</h2>
-      </button>
-
-      <button type="button">
-        <img src={vid4} alt="" />
-        <h2>Titre</h2>
-      </button>
+      {gridVideos &&
+        gridVideos.map((vid) => (
+          <Link className="card" key={vid.id} to={`/videos/${vid.id}`}>
+            <img
+              src={`${import.meta.env.VITE_BACKEND_URL}${vid.cover_img}`}
+              alt={vid.title}
+            />
+            <h2>{vid.title}</h2>
+          </Link>
+        ))}
     </div>
   );
 }

@@ -5,6 +5,36 @@ class VideosManager extends AbstractManager {
     super({ table: "videos" });
   }
 
+  findFavorites(id) {
+    return this.database.query(
+      `select * from ${this.table}
+    inner join favorites on videos.id = favorites.video_id
+    where favorites.user_id = ?`,
+      [id]
+    );
+  }
+
+  getMultipleVideos(ids) {
+    let sqlRequest = `select * from ${this.table} where id in ( ?`;
+    const [idsValues] = Object.values(ids);
+
+    for (let i = 0; i <= idsValues.length - 2; i += 1) {
+      sqlRequest += `, ?`;
+    }
+    sqlRequest += ")";
+    return this.database.query(sqlRequest, idsValues);
+  }
+
+  findbySection(info) {
+    return this.database.query(
+      `select * from ${this.table}
+    inner join section_video on videos.id = section_video.video_id
+    inner join video_category on videos.id = video_category.video_id
+    where section_id = ? and category_id = ?`,
+      [info.section_id, info.category_id]
+    );
+  }
+
   insert(video) {
     return this.database.query(
       `insert into ${this.table} (title, duration, views_count, upload_date) values (?, ?, ?, ?)`,

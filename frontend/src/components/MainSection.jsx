@@ -1,4 +1,4 @@
-import Caroussel from "./videosDisplay/Caroussel";
+import Carousel from "./videosDisplay/Carousel";
 import Grid from "./videosDisplay/Grid";
 import ModalConnection from "./ModalConnection";
 import HeroSlider from "./videosDisplay/HeroSlider";
@@ -9,7 +9,7 @@ export default function MainSection() {
   return (
     <section className="body">
       <HeroSlider />
-      <Caroussel />
+      <Carousel />
       <Grid />
       <ModalConnection />
     </section>
