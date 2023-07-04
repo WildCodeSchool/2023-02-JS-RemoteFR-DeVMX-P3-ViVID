@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
-import LeftNavBar from "./components/navBar/LeftNavBar";
 import Home from "./pages/Home";
 import Admin from "./pages/Admin";
 import Video from "./pages/Video";
