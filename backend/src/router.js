@@ -1,6 +1,5 @@
 const express = require("express");
 const multer = require("multer");
-
 const router = express.Router();
 
 const usersControllers = require("./controllers/usersControllers");
@@ -9,6 +8,9 @@ const categoriesControllers = require("./controllers/categoriesControllers");
 const sectionsControllers = require("./controllers/sectionsControllers");
 const uploadVideo = require("./services/uploadVideo");
 const uploadImg = require("./services/uploadImg");
+
+const validateLogin = require("./services/validateLogin");
+const hashPassword = require("./services/hashPassword");
 
 router.get("/users", usersControllers.browse);
 router.get("/users/:id", usersControllers.read);
