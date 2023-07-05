@@ -1,70 +1,43 @@
-import { useState } from "react";
-
-import "./Admin.scss";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import AddVideos from "../components/Admin/AddVideos";
-import HomeSetting from "../components/Admin/HomeSetting";
-import SkyCloudSetting from "../components/Admin/SkyCloudSetting";
-import MountainSetting from "../components/Admin/MountainSetting";
-import ForestSetting from "../components/Admin/ForestSetting";
-import SeaOceanSetting from "../components/Admin/SeaOceanSetting";
-import UrbanSetting from "../components/Admin/UrbanSetting";
-import FieldSetting from "../components/Admin/FieldSetting";
+import CategoriesSettings from "../components/Admin/CategoriesSettings";
+import "./Admin.scss";
 
 export default function Admin() {
+  const [categories, setCategories] = useState([]);
   const [tab, setTab] = useState(1);
+
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/categories`)
+      .then((result) => setCategories(result.data))
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
     <div className="admin">
       <ul>
-        <li>
-          <button type="button" onClick={() => setTab(1)}>
+        {categories.map((category) => (
+          <li key={category.id}>
+            <button type="button" onClick={() => setTab(category.id)}>
+              {category.category}
+            </button>
+          </li>
+        ))}
+
+        <li key={categories.length + 1}>
+          <button type="button" onClick={() => setTab(categories.length + 1)}>
             Ajouter une vidéo
           </button>
         </li>
-        <li>
-          <button type="button" onClick={() => setTab(2)}>
-            Accueil
-          </button>
-        </li>
-        <li>
-          <button type="button" onClick={() => setTab(3)}>
-            Ciel & Nuages
-          </button>
-        </li>
-        <li>
-          <button type="button" onClick={() => setTab(4)}>
-            Montagnes
-          </button>
-        </li>
-        <li>
-          <button type="button" onClick={() => setTab(5)}>
-            Forêts
-          </button>
-        </li>
-        <li>
-          <button type="button" onClick={() => setTab(6)}>
-            Mer & Océans
-          </button>
-        </li>
-        <li>
-          <button type="button" onClick={() => setTab(7)}>
-            Urbain
-          </button>
-        </li>
-        <li>
-          <button type="button" onClick={() => setTab(8)}>
-            Champ
-          </button>
-        </li>
       </ul>
-      <AddVideos tab={tab} />
-      <HomeSetting tab={tab} />
-      <SkyCloudSetting tab={tab} />
-      <MountainSetting tab={tab} />
-      <ForestSetting tab={tab} />
-      <SeaOceanSetting tab={tab} />
-      <UrbanSetting tab={tab} />
-      <FieldSetting tab={tab} />
+
+      {tab === categories.length + 1 ? (
+        <AddVideos key={tab} categories={categories} />
+      ) : (
+        <CategoriesSettings tab={tab} />
+      )}
     </div>
   );
 }

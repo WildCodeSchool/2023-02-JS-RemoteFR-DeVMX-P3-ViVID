@@ -96,9 +96,7 @@ const edit = (req, res) => {
 
 const add = (req, res) => {
   const video = req.body;
-
   // TODO validations (length, format...)
-
   models.videos
     .insert(video)
     .then(([result]) => {
