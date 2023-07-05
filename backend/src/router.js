@@ -6,13 +6,18 @@ const usersControllers = require("./controllers/usersControllers");
 const videosControllers = require("./controllers/videosControllers");
 const categoriesControllers = require("./controllers/categoriesControllers");
 const sectionsControllers = require("./controllers/sectionsControllers");
-const { hashPassword } = require("./services/hashPassword");
+const authControllers = require("./controllers/authControllers");
+
+const { hashPassword } = require("./services/auth");
+const { checkIds } = require("./middlewares/auth");
 
 router.get("/users", usersControllers.browse);
 router.get("/users/:id", usersControllers.read);
 router.put("/users/:id", hashPassword, usersControllers.edit);
-router.post("/users", usersControllers.add);
-router.post("/login", usersControllers.login);
+router.post("/users", hashPassword, usersControllers.add);
+// router.post("/login", verifyPassword, usersControllers.getUserByEmail);
+router.post("/login", checkIds, authControllers.login);
+
 router.delete("/users/:id", usersControllers.destroy);
 
 router.get("/videos", videosControllers.browse);
@@ -36,5 +41,6 @@ router.delete("/categories/:id", categoriesControllers.destroy);
 router.get("/sections", sectionsControllers.browse);
 router.get("/sections/:id", sectionsControllers.read); // delete if not used
 router.get("/sectionChoice", sectionsControllers.getByCategoryAndPosition);
+// router.use(verifyToken);
 
 module.exports = router;

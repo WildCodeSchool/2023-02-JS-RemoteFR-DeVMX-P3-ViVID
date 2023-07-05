@@ -8,8 +8,9 @@ const hashPassword = async (req, res, next) => {
       timeCost: 3,
       parallelism: 1,
     };
-    const hashedPassword = await argon2.hash(password, hashingOptions);
-    req.body.password = hashedPassword;
+    const hpassword = await argon2.hash(password, hashingOptions);
+    req.body.hpassword = hpassword;
+
     next();
   } catch (err) {
     console.error(err);

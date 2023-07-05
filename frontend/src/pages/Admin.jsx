@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import UserContext from "../contexts/UserContext";
 
 import "./Admin.scss";
 import AddVideos from "../components/Admin/AddVideos";
@@ -12,6 +13,8 @@ import FieldSetting from "../components/Admin/FieldSetting";
 
 export default function Admin() {
   const [tab, setTab] = useState(1);
+  const { users } = useContext(UserContext);
+  console.info(users);
 
   return (
     <div className="admin">

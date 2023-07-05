@@ -6,8 +6,8 @@ import UserContext from "../contexts/UserContext";
 function AdminProtectedRoute({ children }) {
   const { users } = useContext(UserContext);
 
-  if (!users || users.role_id === 2) {
-    return <Navigate to="/admin" replace />;
+  if (!users || users.role_id !== 2) {
+    return <Navigate to="/" replace />;
   }
 
   return children;

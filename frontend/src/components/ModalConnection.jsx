@@ -6,7 +6,7 @@ import UserContext from "../contexts/UserContext";
 import "./ModalConnection.scss";
 
 export default function ModalConnection({ isOpen, onCloseModal }) {
-  const { setUsers } = useContext(UserContext);
+  const { users, setUsers } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
@@ -30,6 +30,8 @@ export default function ModalConnection({ isOpen, onCloseModal }) {
       .then((res) => {
         if (res.data.role_id === 2) {
           setUsers(res.data);
+          console.info(res.data);
+          console.info(users);
           setTimeout(() => {
             navigate("/admin");
           }, 500);

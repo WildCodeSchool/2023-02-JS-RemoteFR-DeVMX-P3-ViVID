@@ -11,19 +11,19 @@ CREATE TABLE users (
   id int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
   firstname varchar(255) NOT NULL,
   lastname varchar(255) NOT NULL,
-  email varchar(255) NOT NULL,
-  hashedPassword varchar(255) NOT NULL,
+  email varchar(255) UNIQUE NOT NULL,
+  hpassword varchar(255) NOT NULL,
   role_id int NOT NULL, FOREIGN KEY (role_id) REFERENCES roles(id),
   inscription_date date NOT NULL 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO users (firstname, lastname, email, hashedPassword, role_id, inscription_date) 
+INSERT INTO users (firstname, lastname, email, hpassword, role_id, inscription_date) 
 VALUES 
-  (
+(
     'Vivid',
     'videos',
     'vivid@mail.com',
-    'test',
+    '$argon2id$v=19$m=65536,t=3,p=1$XGszlKsnrd7ebOkqWMucTg$3oUIyPPa8RvW/beMBr8YEN7/M8z6MxFuwF0EDy7A7lw',
     2,
     '2023-06-07'
   ),
@@ -31,7 +31,7 @@ VALUES
     'John',
     'Doe',
     'john.doe@mail.com',
-    '',
+    'test',
     1,
     '2023-06-08'
   ), 
@@ -39,7 +39,7 @@ VALUES
     'Jane',
     'Doe',
     'jane.doe@mail.com',
-    '',
+    'test',
     1,
     '2023-06-08'
   );
