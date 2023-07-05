@@ -7,12 +7,15 @@ const videosControllers = require("./controllers/videosControllers");
 const categoriesControllers = require("./controllers/categoriesControllers");
 const sectionsControllers = require("./controllers/sectionsControllers");
 
+const validateLogin = require("./services/validateLogin");
+const hashPassword = require("./services/hashPassword");
+
 router.get("/users", usersControllers.browse);
 router.get("/users/:id", usersControllers.read);
 router.put("/users/:id", usersControllers.edit);
-router.post("/users", usersControllers.add);
+router.post("/users", hashPassword, usersControllers.add);
 router.post("/login", usersControllers.getUserByEmail);
-router.post("/login", usersControllers.login);
+router.post("/login", validateLogin, usersControllers.login);
 router.delete("/users/:id", usersControllers.destroy);
 
 router.get("/videos", videosControllers.browse);
