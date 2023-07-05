@@ -49,103 +49,117 @@ VALUES
 CREATE TABLE videos (
   id int(11) UNSIGNED primary key NOT NULL AUTO_INCREMENT,
   title varchar(255) NOT NULL,
-  duration int NOT NULL,
-  views_count int NOT NULL,
+  duration varchar(50) NOT NULL,
+  views_count int DEFAULT NULL,
   upload_date DATE NOT NULL,
-  cover_img varchar(255) NOT NULL
+  thumbnail varchar(255) NOT NULL,
+  video varchar(254) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO videos (title, duration, views_count, upload_date, cover_img) 
+INSERT INTO videos (title, duration, views_count, upload_date, thumbnail, video) 
 VALUES(
     'Nature sauvage',
-    120,
+    "00:02:00",
     23,
     '2023-06-08',
-    '/assets/images/blue-forest.jpg'
+    '/assets/images/blue-forest.jpg',
+    '/uploads/videos/1b966a3a-bc5a-46da-a2a0-adb4941e645b-river_road_forest.mp4'
   ),
   (
     'Plaine sauvages',
-    20,
+    "00:02:00",
     123,
     '2023-06-08',
-    '/assets/images/cloud-city.jpg'
+    '/assets/images/cloud-city.jpg',
+    '-'
   ),
   (
     'Paris Urbains',
-    250,
+    "00:02:00",
     2350,
     '2023-06-08',
-    '/assets/images/cloud-mountain.jpg'
+    '/assets/images/cloud-mountain.jpg',
+    '-'
   ),
   (
     'plan des forets',
-    120,
+    "00:02:00",
     23,
     '2023-06-08',
-    '/assets/images/forest-beach.jpg'
+    '/assets/images/forest-beach.jpg',
+    '-'
   ),
   (
     'Amazonie',
-    180,
+    "00:02:00",
     283,
     '2023-06-08',
-    '/assets/images/forest-beach2.jpg'
+    '/assets/images/forest-beach2.jpg',
+    '-'
   ),
   (
     'red mountain',
-    120,
+    "00:02:00",
     23,
     '2023-06-08',
-    '/assets/images/red-mountain.jpg'
+    '/assets/images/red-mountain.jpg',
+    '-'
   ),
   (
     'red mountain',
-    120,
+    "00:02:00",
     23,
     '2023-06-08',
-    '/assets/images/mountain.jpg'
+    '/assets/images/mountain.jpg',
+    '-'
   ),
   (
     'red mountain',
-    120,
+    "00:02:00",
     23,
     '2023-06-08',
-    '/assets/images/sea.jpg'
+    '/assets/images/sea.jpg',
+    '-'
   ),
   (
     'red mountain',
-    120,
+    "00:02:00",
     23,
     '2023-06-08',
-    '/assets/images/snow-road.jpg'
+    '/assets/images/snow-road.jpg',
+    '-'
   ),
   (
     'red mountain',
-    120,
+    "00:02:00",
     23,
     '2023-06-08',
-    '/assets/images/street.jpg'
+    '/assets/images/street.jpg',
+    '-'
   ),
   (
     'red mountain',
-    120,
+    "00:02:00",
     23,
     '2023-06-08',
-    '/assets/images/urbain.jpg'
+    '/assets/images/urbain.jpg',
+    '-'
   ),
   (
     'red mountain',
-    120,
+    "00:02:00",
     23,
     '2023-06-08',
-    '/assets/images/verdure.jpg'
+    '/assets/images/verdure.jpg',
+    '-'
   ),
   (
     'red mountain',
-    120,
+    "00:02:00",
     23,
     '2023-06-08',
-    '/assets/images/white-city.jpg'
+    '/assets/images/white-city.jpg',
+    '-'
   );
 
 -- CREATE TABLE FAVORITES -- START
