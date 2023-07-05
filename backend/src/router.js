@@ -6,6 +6,7 @@ const usersControllers = require("./controllers/usersControllers");
 const videosControllers = require("./controllers/videosControllers");
 const categoriesControllers = require("./controllers/categoriesControllers");
 const sectionsControllers = require("./controllers/sectionsControllers");
+const videosSectionControllers = require("./controllers/videosSectionControllers");
 
 router.get("/users", usersControllers.browse);
 router.get("/users/:id", usersControllers.read);
@@ -34,6 +35,7 @@ router.post("/categories", categoriesControllers.add);
 router.delete("/categories/:id", categoriesControllers.destroy);
 
 router.get("/sections", sectionsControllers.browse);
+router.get("/videosSections", videosSectionControllers.browse);
 router.get("/sections/:id", sectionsControllers.read); // delete if not used
 router.get("/sectionChoice", sectionsControllers.getByCategoryAndPosition);
 
