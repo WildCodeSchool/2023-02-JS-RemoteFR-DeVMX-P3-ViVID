@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useContext, useState } from "react";
 import axios from "axios";
+import UserExport from "../contexts/UserContext";
+
 import AddVideos from "../components/Admin/AddVideos";
 import CategoriesSettings from "../components/Admin/CategoriesSettings";
 import "./Admin.scss";
@@ -7,6 +9,15 @@ import "./Admin.scss";
 export default function Admin() {
   const [categories, setCategories] = useState([]);
   const [tab, setTab] = useState(1);
+  const { users } = useContext(UserExport.UserContext);
+  console.info(users);
+
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/categories`)
+      .then((result) => setCategories(result.data))
+      .catch((err) => console.error(err));
+  }, []);
 
   useEffect(() => {
     axios

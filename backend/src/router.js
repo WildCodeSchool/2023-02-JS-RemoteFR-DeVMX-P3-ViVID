@@ -1,5 +1,6 @@
 const express = require("express");
 const multer = require("multer");
+
 const router = express.Router();
 
 const usersControllers = require("./controllers/usersControllers");
@@ -9,15 +10,18 @@ const sectionsControllers = require("./controllers/sectionsControllers");
 const uploadVideo = require("./services/uploadVideo");
 const uploadImg = require("./services/uploadImg");
 
-const validateLogin = require("./services/validateLogin");
-const hashPassword = require("./services/hashPassword");
+const authControllers = require("./controllers/authControllers");
+
+const { hashPassword } = require("./services/auth");
+const { checkIds, verifyCookie } = require("./middlewares/auth");
 
 router.get("/users", usersControllers.browse);
-router.get("/users/:id", usersControllers.read);
-router.put("/users/:id", usersControllers.edit);
-router.post("/users", usersControllers.add);
-router.post("/login", usersControllers.getUserByEmail);
-router.post("/login", usersControllers.login);
+router.get("/users/:id", verifyCookie, usersControllers.read);
+router.put("/users/:id", hashPassword, usersControllers.edit);
+router.post("/users", hashPassword, usersControllers.add);
+// router.post("/login", verifyPassword, usersControllers.getUserByEmail);
+router.post("/login", checkIds, authControllers.login);
+
 router.delete("/users/:id", usersControllers.destroy);
 
 router.get("/videos", videosControllers.browse);
@@ -47,5 +51,6 @@ router.delete("/categories/:id", categoriesControllers.destroy);
 router.get("/sections", sectionsControllers.browse);
 router.get("/sections/:id", sectionsControllers.read); // delete if not used
 router.get("/sectionChoice", sectionsControllers.getByCategoryAndPosition);
+// router.use(verifyToken);
 
 module.exports = router;

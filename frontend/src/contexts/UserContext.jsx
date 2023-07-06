@@ -1,17 +1,21 @@
-import { createContext, useState, useMemo } from "react";
+import { createContext, useMemo, useState } from "react";
 import { PropTypes } from "prop-types";
 
 const UserContext = createContext();
 
-export function UserProvider({ children }) {
-  const [users, setUsers] = useState({});
-  // const [token, setToken] = useState("");
-  const value = useMemo(() => ({ users, setUsers }), [users]);
+function ContextProvider({ children }) {
+  const [users, setUsers] = useState();
 
-  return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
+  const contextValue = useMemo(() => ({ users, setUsers }), [users, setUsers]);
+
+  return (
+    <UserContext.Provider value={contextValue}>{children}</UserContext.Provider>
+  );
 }
-UserProvider.propTypes = {
+ContextProvider.propTypes = {
   children: PropTypes.shape().isRequired,
 };
 
-export default UserContext;
+const UserExport = { UserContext, ContextProvider };
+
+export default UserExport;
