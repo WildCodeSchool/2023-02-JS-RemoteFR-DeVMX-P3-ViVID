@@ -1,4 +1,5 @@
 const express = require("express");
+const multer = require("multer");
 
 const router = express.Router();
 
@@ -6,6 +7,9 @@ const usersControllers = require("./controllers/usersControllers");
 const videosControllers = require("./controllers/videosControllers");
 const categoriesControllers = require("./controllers/categoriesControllers");
 const sectionsControllers = require("./controllers/sectionsControllers");
+const uploadVideo = require("./services/uploadVideo");
+const uploadImg = require("./services/uploadImg");
+
 const authControllers = require("./controllers/authControllers");
 
 const { hashPassword } = require("./services/auth");
@@ -28,6 +32,12 @@ router.post("/videos/videosBySection", videosControllers.getBySection);
 router.put("/videos/:id", videosControllers.edit);
 router.post("/videos", videosControllers.add);
 router.delete("/videos/:id", videosControllers.destroy);
+
+const uploadv = multer({ dest: "./public/uploads/videos" });
+const uploadi = multer({ dest: "./public/uploads/images" });
+
+router.post("/api/image", uploadi.single("thumbnail"), uploadImg.postFile);
+router.post("/api/video", uploadv.single("video"), uploadVideo.postFile);
 
 router.get("/favorites", videosControllers.readFavorites);
 router.get("/favorites", videosControllers.readFavorites);

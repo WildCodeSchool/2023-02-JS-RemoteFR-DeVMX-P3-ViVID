@@ -35,24 +35,25 @@ class VideosManager extends AbstractManager {
     );
   }
 
-  insert(video) {
+  insert(data) {
     return this.database.query(
-      `insert into ${this.table} (title, duration, views_count, upload_date) values (?, ?, ?, ?)`,
-      [video.title, video.duration, video.views_count, video.upload_date]
+      `insert into ${this.table} (title, duration, views_count, upload_date, thumbnail, video) 
+      values (?, ?, ?, ?, ?, ?)`,
+      [
+        data.title,
+        data.duration,
+        data.views_count,
+        data.upload_date,
+        `/uploads/images/${data.thumbnail}`,
+        `/uploads/videos/${data.video}`,
+      ]
     );
   }
 
   update(video) {
     return this.database.query(
-      `update ${this.table} set title = ?, duration = ?, views_count = ?, upload_date= ? where id = ?`,
-      [
-        video.title,
-        video.title,
-        video.duration,
-        video.views_count,
-        video.upload_date,
-        video.id,
-      ]
+      `update ${this.table} set title = ? where id = ?`,
+      [video.title, video.id]
     );
   }
 }

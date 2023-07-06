@@ -1,7 +1,32 @@
-#addVideoContainer {
-  .pAddVideo {
-    margin-top: 200px;
-    text-align: center;
-    color: white;
+#addVideo {
+  padding: 80px 0 50px;
+  color: white;
+  min-height: 61vh;
+  width: 100%;
+  .form {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: fit-content;
+    input,
+    select,
+    textarea,
+    button {
+      width: 100%;
+      max-width: 300px;
+      height: 30px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      padding-left: 8px;
+      #file-upload-button {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+    textarea {
+      resize: none;
+      height: 150px;
+    }
   }
 }

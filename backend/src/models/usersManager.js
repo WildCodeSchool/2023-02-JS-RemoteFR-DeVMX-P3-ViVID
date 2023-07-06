@@ -14,19 +14,19 @@ class usersManager extends AbstractManager {
 
   selectByEmail(email) {
     return this.database.query(
-      "select id, firstname, lastname, hpassword, role_id, inscription_date from users where email = ?",
+      "select id, firstname, lastname, hashedPassword, role_id, inscription_date from users where email = ?",
       [email]
     );
   }
 
   insert(user) {
     return this.database.query(
-      `insert into ${this.table} (firstname, lastname, email, hpassword, role_id, inscription_date) values (?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (firstname, lastname, email, hashedPassword, role_id, inscription_date) values (?, ?, ?, ?, ?, ?)`,
       [
         user.firstname,
         user.lastname,
         user.email,
-        user.hpassword,
+        user.hashedPassword,
         user.role_id,
         user.inscription_date,
       ]
@@ -35,12 +35,12 @@ class usersManager extends AbstractManager {
 
   update(user) {
     return this.database.query(
-      `update ${this.table} set firstname = ?, lastname = ?, email = ?, hpassword = ?, role_id = ?, inscription_date = ? where id = ?`,
+      `update ${this.table} set firstname = ?, lastname = ?, email = ?, hashedPassword = ?, role_id = ?, inscription_date = ? where id = ?`,
       [
         user.firstname,
         user.lastname,
         user.email,
-        user.hpassword,
+        user.hashedPassword,
         user.role_id,
         user.inscription_date,
         user.id,
