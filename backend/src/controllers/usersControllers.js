@@ -12,38 +12,6 @@ const browse = (req, res) => {
     });
 };
 
-const login = (req, res) => {
-  models.users
-    .findUser(req.body)
-    .then(([rows]) => {
-      if (rows === null) {
-        res.sendStatus(404);
-      } else {
-        res.send(rows[0]);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-
-const read = (req, res) => {
-  models.users
-    .find(req.params.id)
-    .then(([rows]) => {
-      if (rows[0] == null) {
-        res.sendStatus(404);
-      } else {
-        res.send(rows[0]);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-
 const getUserByEmail = (req, res, next) => {
   const { email } = req.body;
 
@@ -60,6 +28,22 @@ const getUserByEmail = (req, res, next) => {
     .catch((err) => {
       console.error(err);
       res.status(500).send("Error retrieving data from database");
+    });
+};
+
+const read = (req, res) => {
+  models.users
+    .find(req.params.id)
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.sendStatus(404);
+      } else {
+        res.send(rows[0]);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
     });
 };
 
@@ -93,7 +77,11 @@ const add = (req, res) => {
   models.users
     .insert(user)
     .then(([result]) => {
-      res.location(`/users/${result.insertId}`).sendStatus(201);
+      if (result.affectedRows === 1) {
+        res.status(201).send("This user has been created");
+      } else {
+        res.sendStatus(500);
+      }
     })
     .catch((err) => {
       console.error(err);
@@ -124,5 +112,4 @@ module.exports = {
   edit,
   add,
   destroy,
-  login,
 };

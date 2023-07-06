@@ -1,10 +1,10 @@
 import { Navigate } from "react-router-dom";
 import { useContext } from "react";
 import PropTypes from "prop-types";
-import UserContext from "../contexts/UserContext";
+import UserExport from "../contexts/UserContext";
 
 function ProtectedRoute({ children }) {
-  const { users } = useContext(UserContext);
+  const { users } = useContext(UserExport.UserContext);
 
   if (!users) {
     return <Navigate to="/" replace />;
