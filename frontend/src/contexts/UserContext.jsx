@@ -5,8 +5,12 @@ const UserContext = createContext();
 
 function ContextProvider({ children }) {
   const [users, setUsers] = useState();
+  const [token, setToken] = useState();
 
-  const contextValue = useMemo(() => ({ users, setUsers }), [users, setUsers]);
+  const contextValue = useMemo(
+    () => ({ users, setUsers, token, setToken }),
+    [users, setUsers]
+  );
 
   return (
     <UserContext.Provider value={contextValue}>{children}</UserContext.Provider>
