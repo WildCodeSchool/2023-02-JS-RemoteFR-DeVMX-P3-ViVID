@@ -1,16 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from "./pages/Home";
 import Admin from "./pages/Admin";
+import Home from "./pages/Home";
 import Video from "./pages/Video";
-import NotFound from "./pages/NotFound";
-
 import Header from "./components/Header/Header";
+import NotFound from "./pages/NotFound";
 import LeftNavBar from "./components/navBar/LeftNavBar";
 import Footer from "./components/Footer/Footer";
 
 import AdminProtectedRoutes from "./layouts/AdminProtectedRoutes";
-// import ProtectedRoute from "./layouts/ProtectedRoute";
 
 import "./App.scss";
 
@@ -19,9 +17,11 @@ function App() {
     <BrowserRouter>
       <Header />
       <LeftNavBar />
+
       <Routes>
         {/* PUBLIC ROUTES */}
         <Route path="/" element={<Home />} />
+        <Route path="/videos" element={<Video />} />
         <Route path="*" element={<NotFound />} />
         {/* <Route path="/connexion" element={<SignIn />}> */}
         {/* <Route path="/profile" element={<Profile />}> */}
@@ -39,9 +39,12 @@ function App() {
         <Route
           path="/admin"
           element={
-            <AdminProtectedRoutes>{/* <NavLayout /> */}</AdminProtectedRoutes>
+            <AdminProtectedRoutes>
+              <Admin />
+            </AdminProtectedRoutes>
           }
-        >
+        />
+        <Route>
           <Route path="dashboard" element={<Admin />} />
         </Route>
         {/* <Route path="/connexion" element={<SignIn />} /> */}
@@ -56,6 +59,7 @@ function App() {
         {/* <Route path="/Champ" element={<Field />} /> */}
         <Route path="/videos" element={<Video />} />
       </Routes>
+
       <Footer />
     </BrowserRouter>
   );

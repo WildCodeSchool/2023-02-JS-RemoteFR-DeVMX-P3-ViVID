@@ -1,7 +1,7 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.users
+  models.videosSection
     .findAll()
     .then(([rows]) => {
       res.send(rows);
@@ -12,27 +12,8 @@ const browse = (req, res) => {
     });
 };
 
-const getUserByEmail = (req, res, next) => {
-  const { email } = req.body;
-
-  models.users
-    .selectByEmail(email)
-    .then(([users]) => {
-      if (users[0] != null) {
-        [req.user] = users;
-        next();
-      } else {
-        res.sendStatus(401);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send("Error retrieving data from database");
-    });
-};
-
 const read = (req, res) => {
-  models.users
+  models.videosSection
     .find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
@@ -48,14 +29,14 @@ const read = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const user = req.body;
+  const video = req.body;
 
   // TODO validations (length, format...)
 
-  user.id = parseInt(req.params.id, 10);
+  video.id = parseInt(req.params.id, 10);
 
-  models.users
-    .update(user)
+  models.videosSection
+    .update(video)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -70,18 +51,14 @@ const edit = (req, res) => {
 };
 
 const add = (req, res) => {
-  const user = req.body;
+  const video = req.body;
 
   // TODO validations (length, format...)
 
-  models.users
-    .insert(user)
+  models.videosSection
+    .insert(video)
     .then(([result]) => {
-      if (result.affectedRows === 1) {
-        res.status(201).send("This user has been created");
-      } else {
-        res.sendStatus(500);
-      }
+      res.location(`/videos/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);
@@ -90,7 +67,7 @@ const add = (req, res) => {
 };
 
 const destroy = (req, res) => {
-  models.users
+  models.videosSection
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
@@ -108,7 +85,6 @@ const destroy = (req, res) => {
 module.exports = {
   browse,
   read,
-  getUserByEmail,
   edit,
   add,
   destroy,

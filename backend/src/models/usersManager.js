@@ -7,7 +7,7 @@ class usersManager extends AbstractManager {
 
   findUser(user) {
     return this.database.query(
-      `SELECT id, firstname, lastname, hashedPassword, role_id, inscription_date FROM ${this.table} WHERE email = ?`,
+      `SELECT id, firstname, lastname, email, hpassword, role_id, inscription_date FROM ${this.table} WHERE email = ?`,
       [user.email]
     );
   }
