@@ -2,11 +2,12 @@ import { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import UserContext from "../contexts/UserContext";
+import UserExport from "../contexts/UserContext";
+
 import "./ModalConnection.scss";
 
 export default function ModalConnection({ isOpen, onCloseModal }) {
-  const { users, setUsers } = useContext(UserContext);
+  const { users, setUsers } = useContext(UserExport.UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
@@ -28,9 +29,10 @@ export default function ModalConnection({ isOpen, onCloseModal }) {
         password,
       })
       .then((res) => {
-        if (res.data.role_id === 2) {
-          setUsers(res.data);
-          console.info(res.data);
+        console.info(res);
+        if (res.data.currentuser.role_id === 2) {
+          setUsers(res.data.currentuser);
+          console.info(res.data.currentuser);
           console.info(users);
           setTimeout(() => {
             navigate("/admin");

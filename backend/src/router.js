@@ -9,10 +9,10 @@ const sectionsControllers = require("./controllers/sectionsControllers");
 const authControllers = require("./controllers/authControllers");
 
 const { hashPassword } = require("./services/auth");
-const { checkIds } = require("./middlewares/auth");
+const { checkIds, verifyCookie } = require("./middlewares/auth");
 
 router.get("/users", usersControllers.browse);
-router.get("/users/:id", usersControllers.read);
+router.get("/users/:id", verifyCookie, usersControllers.read);
 router.put("/users/:id", hashPassword, usersControllers.edit);
 router.post("/users", hashPassword, usersControllers.add);
 // router.post("/login", verifyPassword, usersControllers.getUserByEmail);

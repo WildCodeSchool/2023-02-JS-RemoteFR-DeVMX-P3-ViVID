@@ -37,4 +37,21 @@ const verifyToken = (req, res, next) => {
   }
 };
 
-module.exports = { checkIds, verifyToken };
+const verifyCookie = (req, res, next) => {
+  if (req.cookies) {
+    jwt.verify(req.cookies.token, process.env.JWT_SECRET, (err, decode) => {
+      if (err) {
+        res.status(401).json({
+          msg: "Sorry, you must be authenticated to access this resource.",
+        });
+      } else {
+        req.token = decode;
+        next();
+      }
+    });
+  } else {
+    res.status(401).json({ msg: "Sorry, wrong credits" });
+  }
+};
+
+module.exports = { checkIds, verifyToken, verifyCookie };
