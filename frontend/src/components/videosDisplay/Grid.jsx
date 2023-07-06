@@ -22,7 +22,7 @@ export default function Grid() {
         gridVideos.map((vid) => (
           <Link className="card" key={vid.id} to={`/videos/${vid.id}`}>
             <img
-              src={`${import.meta.env.VITE_BACKEND_URL}${vid.cover_img}`}
+              src={`${import.meta.env.VITE_BACKEND_URL}${vid.thumbnail}`}
               alt={vid.title}
             />
             <h2>{vid.title}</h2>
