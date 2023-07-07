@@ -1,4 +1,5 @@
 const express = require("express");
+const multer = require("multer");
 
 const router = express.Router();
 
@@ -6,11 +7,21 @@ const usersControllers = require("./controllers/usersControllers");
 const videosControllers = require("./controllers/videosControllers");
 const categoriesControllers = require("./controllers/categoriesControllers");
 const sectionsControllers = require("./controllers/sectionsControllers");
+const videosSectionControllers = require("./controllers/videosSectionControllers");
+const authControllers = require("./controllers/authControllers");
+
+const uploadVideo = require("./services/uploadVideo");
+const uploadImg = require("./services/uploadImg");
+
+const { hashPassword } = require("./services/auth");
+const { checkIds, verifyCookie } = require("./middlewares/auth");
 
 router.get("/users", usersControllers.browse);
-router.get("/users/:id", usersControllers.read);
-router.put("/users/:id", usersControllers.edit);
-router.post("/users", usersControllers.add);
+router.get("/users/:id", verifyCookie, usersControllers.read);
+router.put("/users/:id", hashPassword, usersControllers.edit);
+router.post("/users", hashPassword, usersControllers.add);
+router.post("/login", checkIds, authControllers.login);
+
 router.delete("/users/:id", usersControllers.destroy);
 
 router.get("/videos", videosControllers.browse);
@@ -22,6 +33,12 @@ router.put("/videos/:id", videosControllers.edit);
 router.post("/videos", videosControllers.add);
 router.delete("/videos/:id", videosControllers.destroy);
 
+const uploadv = multer({ dest: "./public/uploads/videos" });
+const uploadi = multer({ dest: "./public/uploads/images" });
+
+router.post("/api/image", uploadi.single("thumbnail"), uploadImg.postFile);
+router.post("/api/video", uploadv.single("video"), uploadVideo.postFile);
+
 router.get("/favorites", videosControllers.readFavorites);
 router.get("/favorites", videosControllers.readFavorites);
 
@@ -32,7 +49,10 @@ router.post("/categories", categoriesControllers.add);
 router.delete("/categories/:id", categoriesControllers.destroy);
 
 router.get("/sections", sectionsControllers.browse);
+router.get("/videosSections", videosSectionControllers.browse);
+router.put("/videosSections", videosSectionControllers.add);
 router.get("/sections/:id", sectionsControllers.read); // delete if not used
 router.get("/sectionChoice", sectionsControllers.getByCategoryAndPosition);
+// router.use(verifyToken);
 
 module.exports = router;

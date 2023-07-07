@@ -12,6 +12,25 @@ const browse = (req, res) => {
     });
 };
 
+const getUserByEmail = (req, res, next) => {
+  const { email } = req.body;
+
+  models.users
+    .selectByEmail(email)
+    .then(([users]) => {
+      if (users[0] != null) {
+        [req.user] = users;
+        next();
+      } else {
+        res.sendStatus(401);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error retrieving data from database");
+    });
+};
+
 const read = (req, res) => {
   models.users
     .find(req.params.id)
@@ -58,7 +77,11 @@ const add = (req, res) => {
   models.users
     .insert(user)
     .then(([result]) => {
-      res.location(`/users/${result.insertId}`).sendStatus(201);
+      if (result.affectedRows === 1) {
+        res.status(201).send("This user has been created");
+      } else {
+        res.sendStatus(500);
+      }
     })
     .catch((err) => {
       console.error(err);
@@ -85,6 +108,7 @@ const destroy = (req, res) => {
 module.exports = {
   browse,
   read,
+  getUserByEmail,
   edit,
   add,
   destroy,
