@@ -1,16 +1,17 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import SearchBar from "./SearchBar";
-import BtnSubscribe from "./BtnSubscribe";
+import { useState } from "react";
+
 import BtnConnection from "./BtnConnection";
+import BtnDisonnect from "./BtnDisconnect";
+import BtnSubscribe from "./BtnSubscribe";
 import ModalConnection from "../ModalConnection";
 import ModalSubscribe from "../ModalSubscribe";
 import NavModal from "../navBar/NavModal";
-
-import "./Header.scss";
+import SearchBar from "./SearchBar";
 
 import logo from "../../assets/vivid_logo.png";
-import BtnDisonnect from "./BtnDisconnect";
+
+import "./Header.scss";
 
 export default function Header() {
   const [modalOpen, setModalOpen] = useState(false);
