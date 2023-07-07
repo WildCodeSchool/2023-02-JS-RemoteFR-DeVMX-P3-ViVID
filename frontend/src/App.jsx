@@ -21,7 +21,8 @@ function App() {
       <Routes>
         {/* PUBLIC ROUTES */}
         <Route path="/" element={<Home />} />
-        <Route path="/videos" element={<Video />} />
+        {/* <Route path="/videos" element={<Video />} /> */}
+        <Route path="/videos/:id" element={<Video />} />
         <Route path="*" element={<NotFound />} />
         {/* <Route path="/connexion" element={<SignIn />}> */}
         {/* <Route path="/profile" element={<Profile />}> */}
