@@ -17,7 +17,7 @@ export default function Video(videoid) {
 
   return (
     <div className="video">
-      <img src={video.cover_img} alt={video.title} />
+      <img src={video.thumbnail} alt={video.title} />
       <div className="buttons">
         <button type="button">
           <img src={play} alt="play" />

@@ -21,7 +21,8 @@ function App() {
       <Routes>
         {/* PUBLIC ROUTES */}
         <Route path="/" element={<Home />} />
-        <Route path="/videos" element={<Video />} />
+        {/* <Route path="/videos" element={<Video />} /> */}
+        <Route path="/videos/:id" element={<Video />} />
         <Route path="*" element={<NotFound />} />
         {/* <Route path="/connexion" element={<SignIn />}> */}
         {/* <Route path="/profile" element={<Profile />}> */}
@@ -47,16 +48,6 @@ function App() {
         <Route>
           <Route path="dashboard" element={<Admin />} />
         </Route>
-        {/* <Route path="/connexion" element={<SignIn />} /> */}
-        {/* <Route path="/profile" element={<Profile />} /> */}
-        {/* <Route path="/Admin" element={<Admin />} /> */}
-        {/* <Route path="/Favorites" element={<Favorites />} /> */}
-        {/* <Route path="/Ciel&nuages" element={<Sky />} /> */}
-        {/* <Route path="/Montagnes" element={<Mountain />} /> */}
-        {/* <Route path="/Forets" element={<Forest />} /> */}
-        {/* <Route path="/Mer&oceans" element={<Sea />} /> */}
-        {/* <Route path="/Urbain" element={<Urban />} /> */}
-        {/* <Route path="/Champ" element={<Field />} /> */}
         <Route path="/videos" element={<Video />} />
       </Routes>
 
