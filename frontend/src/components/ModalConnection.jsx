@@ -7,7 +7,7 @@ import UserExport from "../contexts/UserContext";
 import "./ModalConnection.scss";
 
 export default function ModalConnection({ isOpen, onCloseModal }) {
-  const { users, setUsers } = useContext(UserExport.UserContext);
+  const { setUsers, setToken } = useContext(UserExport.UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
@@ -24,16 +24,22 @@ export default function ModalConnection({ isOpen, onCloseModal }) {
       setMsg("Veuillez renseigner vos identifiants");
     }
     axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}/login`, {
-        email,
-        password,
-      })
+      .post(
+        `${import.meta.env.VITE_BACKEND_URL}/login`,
+        {
+          email,
+          password,
+        },
+        {
+          withCredentials: true,
+          credentials: "include",
+        }
+      )
       .then((res) => {
         console.info(res);
         if (res.data.currentuser.role_id === 2) {
           setUsers(res.data.currentuser);
-          console.info(res.data.currentuser);
-          console.info(users);
+          setToken(res.data.token);
           setTimeout(() => {
             navigate("/admin");
           }, 500);

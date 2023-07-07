@@ -34,7 +34,7 @@ const login = (req, res) => {
             res
               .status(200)
               .cookie("token", token, { httpOnly: true, secure: false })
-              .json({ currentuser });
+              .send({ currentuser, token });
           }
         })
         .catch((err) => {
