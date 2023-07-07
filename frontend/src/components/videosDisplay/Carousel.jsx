@@ -29,7 +29,7 @@ export default function carousel() {
           carouselVid.map((obj) => (
             <Link className="cell" to={`/Videos/${obj.id}`} key={obj.id}>
               <img
-                src={`${import.meta.env.VITE_BACKEND_URL}${obj.cover_img}`}
+                src={`${import.meta.env.VITE_BACKEND_URL}${obj.thumbnail}`}
                 alt={obj.title}
               />
             </Link>
