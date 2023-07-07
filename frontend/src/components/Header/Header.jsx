@@ -10,6 +10,7 @@ import NavModal from "../navBar/NavModal";
 import "./Header.scss";
 
 import logo from "../../assets/vivid_logo.png";
+import BtnDisonnect from "./BtnDisconnect";
 
 export default function Header() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -57,6 +58,7 @@ export default function Header() {
       <div className="signInContainer">
         <BtnSubscribe onOpenModal={openSubModal} />
         <BtnConnection onOpenModal={openModal} />
+        <BtnDisonnect />
         <ModalConnection isOpen={modalOpen} onCloseModal={closeModal} />
         <ModalSubscribe isOpen={subModalOpen} onCloseModal={subCloseModal} />
       </div>
