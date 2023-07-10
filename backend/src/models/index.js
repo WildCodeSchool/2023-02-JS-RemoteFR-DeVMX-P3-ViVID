@@ -34,6 +34,8 @@ const VideosManager = require("./VideosManager");
 const CategoriesManager = require("./categoriesManager");
 const SectionsManager = require("./sectionsManager");
 const VideosSectionManager = require("./videosSectionManager");
+const VideosCategoriesManager = require("./videosCategoriesManager");
+
 const AuthManager = require("./AuthManager");
 
 models.videos = new VideosManager();
@@ -52,7 +54,8 @@ models.sections.setDatabase(pool);
 models.videosSection = new VideosSectionManager();
 models.videosSection.setDatabase(pool);
 
-// models.users.setDatabase(pool);
+models.videoCategory = new VideosCategoriesManager();
+models.videoCategory.setDatabase(pool);
 
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
