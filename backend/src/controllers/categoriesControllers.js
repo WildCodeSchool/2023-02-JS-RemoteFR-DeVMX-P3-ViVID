@@ -51,7 +51,7 @@ const edit = (req, res) => {
 };
 
 const add = (req, res) => {
-  const category = req.body;
+  const { category } = req.body;
 
   // TODO validations (length, format...)
 
@@ -68,7 +68,7 @@ const add = (req, res) => {
 
 const destroy = (req, res) => {
   models.categories
-    .delete(req.params.id)
+    .deleteById(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
