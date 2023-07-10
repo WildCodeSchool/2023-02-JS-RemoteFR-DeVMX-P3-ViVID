@@ -149,7 +149,7 @@ export default function ModalSubscribe({ isOpen, onCloseModal }) {
               </div>
               <div className="verification-password">
                 <label className="form_label" htmlFor="verificationPassword">
-                  Vérification du Mot de Passe : )
+                  Vérification du Mot de Passe :
                 </label>
                 <input
                   className="form_input"
@@ -223,7 +223,6 @@ export default function ModalSubscribe({ isOpen, onCloseModal }) {
                 <Link to="/" onClick={onCloseModal}>
                   nous contacter
                 </Link>
-                ;
               </p>
               <br />
               <p>• Par email : à l'adresse sav@vivid.fr</p>
