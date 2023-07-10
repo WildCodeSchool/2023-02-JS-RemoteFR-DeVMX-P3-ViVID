@@ -1,23 +1,15 @@
-import { useEffect, useContext, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import UserExport from "../contexts/UserContext";
+// import UserExport from "../contexts/UserContext";
 
-import AddVideos from "../components/Admin/AddVideos";
+import AddVideosCategories from "../components/Admin/AddVideosCategories";
 import CategoriesSettings from "../components/Admin/CategoriesSettings";
 import "./Admin.scss";
 
 export default function Admin() {
   const [categories, setCategories] = useState([]);
   const [tab, setTab] = useState(1);
-  const { users } = useContext(UserExport.UserContext);
-  console.info(users);
-
-  useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/categories`)
-      .then((result) => setCategories(result.data))
-      .catch((err) => console.error(err));
-  }, []);
+  // const { users } = useContext(UserExport.UserContext);
 
   useEffect(() => {
     axios
@@ -39,13 +31,13 @@ export default function Admin() {
 
         <li key={categories.length + 1}>
           <button type="button" onClick={() => setTab(categories.length + 1)}>
-            Ajouter une vidéo
+            Ajout & suppression
           </button>
         </li>
       </ul>
 
       {tab === categories.length + 1 ? (
-        <AddVideos key={tab} categories={categories} />
+        <AddVideosCategories key={tab} categories={categories} />
       ) : (
         <CategoriesSettings tab={tab} />
       )}
