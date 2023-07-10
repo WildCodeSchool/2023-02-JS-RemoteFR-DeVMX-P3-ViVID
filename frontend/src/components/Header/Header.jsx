@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import BtnConnection from "./BtnConnection";
 import BtnDisonnect from "./BtnDisconnect";
@@ -8,6 +8,7 @@ import ModalConnection from "../ModalConnection";
 import ModalSubscribe from "../ModalSubscribe";
 import NavModal from "../navBar/NavModal";
 import SearchBar from "./SearchBar";
+import UserExport from "../../contexts/UserContext";
 
 import logo from "../../assets/vivid_logo.png";
 
@@ -17,6 +18,7 @@ export default function Header() {
   const [modalOpen, setModalOpen] = useState(false);
   const [subModalOpen, setSubModalOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { token } = useContext(UserExport.UserContext);
 
   const openModal = () => {
     setModalOpen(true);
@@ -57,9 +59,9 @@ export default function Header() {
 
       <SearchBar />
       <div className="signInContainer">
-        <BtnSubscribe onOpenModal={openSubModal} />
-        <BtnConnection onOpenModal={openModal} />
-        <BtnDisonnect />
+        {!token && <BtnSubscribe onOpenModal={openSubModal} />}
+        {!token && <BtnConnection onOpenModal={openModal} />}
+        {token && <BtnDisonnect />}
         <ModalConnection isOpen={modalOpen} onCloseModal={closeModal} />
         <ModalSubscribe isOpen={subModalOpen} onCloseModal={subCloseModal} />
       </div>

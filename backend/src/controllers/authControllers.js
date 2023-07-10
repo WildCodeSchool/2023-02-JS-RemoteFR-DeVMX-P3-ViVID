@@ -33,7 +33,7 @@ const login = (req, res) => {
             delete currentuser.hpassword;
             res
               .status(200)
-              .cookie("token", token, { httpOnly: true, secure: false })
+              .cookie("token", token, { httpOnly: false, secure: false })
               .send({ currentuser, token });
           }
         })
@@ -42,11 +42,6 @@ const login = (req, res) => {
         });
     })
     .catch((err) => console.info(err));
-
-  // vérifier password
-
-  // crée un token, je le mets dans un cookie
-
-  // je renvoie au front le cookie avec le token dedans + des infos sur le user
 };
+
 module.exports = { login };
