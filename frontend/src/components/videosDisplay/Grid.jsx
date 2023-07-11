@@ -2,13 +2,16 @@ import { useEffect, useState } from "react";
 import "./grid.scss";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import PropTypes from "prop-types";
 
-export default function Grid() {
+export default function Grid({ category }) {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/videos`)
+      .post(`${import.meta.env.VITE_BACKEND_URL}/videos/videosByCategory`, {
+        category_id: category,
+      })
       .then((res) => setVideos(res.data))
       .catch((err) => console.error(err));
   }, []);
@@ -28,3 +31,7 @@ export default function Grid() {
     </div>
   );
 }
+
+Grid.propTypes = {
+  category: PropTypes.number.isRequired,
+};
