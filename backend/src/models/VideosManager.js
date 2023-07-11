@@ -35,6 +35,15 @@ class VideosManager extends AbstractManager {
     );
   }
 
+  findbyCategory(categoryId) {
+    return this.database.query(
+      `select * from ${this.table}
+    inner join video_category on videos.id = video_category.video_id
+    where category_id = ?`,
+      [categoryId]
+    );
+  }
+
   insert(data) {
     return this.database.query(
       `insert into ${this.table} (title, duration, views_count, upload_date, thumbnail, video) 

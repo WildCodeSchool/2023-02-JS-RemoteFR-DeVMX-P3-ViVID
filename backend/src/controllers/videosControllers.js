@@ -72,6 +72,22 @@ const getBySection = (req, res) => {
     });
 };
 
+const getByCategory = (req, res) => {
+  models.videos
+    .findbyCategory(req.body.category_id)
+    .then(([rows]) => {
+      if ([rows] === null) {
+        res.sendStatus(404);
+      } else {
+        res.send(rows);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const edit = (req, res) => {
   const video = req.body;
 
@@ -100,7 +116,7 @@ const add = (req, res) => {
   models.videos
     .insert(video)
     .then(([result]) => {
-      res.location(`/videos/${result.insertId}`).sendStatus(201);
+      res.status(201).send(`${result.insertId}`);
     })
     .catch((err) => {
       console.error(err);
@@ -130,6 +146,7 @@ module.exports = {
   read,
   getByIds,
   getBySection,
+  getByCategory,
   edit,
   add,
   destroy,

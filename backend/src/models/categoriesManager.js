@@ -6,15 +6,27 @@ class CategoriesManager extends AbstractManager {
   }
 
   insert(category) {
-    return this.database.query(`insert into ${this.table} (name) values (?)`, [
-      category.name,
-    ]);
+    return this.database.query(
+      `insert into ${this.table} (category) values (?)`,
+      [category]
+    );
   }
 
   update(category) {
-    return this.database.query(`update ${this.table} set name = ?`, [
-      category.name,
-    ]);
+    return this.database.query(
+      `update ${this.table} set category = ? where id = ?`,
+      [category.category, category.id]
+    );
+  }
+
+  deleteById(id) {
+    return this.database.query(
+      `delete ${this.table}, video_category from ${this.table}
+    inner join video_category vc
+    on ${this.table}.id = vc.category_id
+    where ${this.table}.id = ?`,
+      [id]
+    );
   }
 }
 
