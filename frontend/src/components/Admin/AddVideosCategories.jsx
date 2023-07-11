@@ -146,10 +146,9 @@ export default function AddVideosCategories() {
   return (
     <div className="wrapper">
       <div id="addVideo">
-        <h2>Ajout de video</h2>
         <form className="form" encType="multipart/form-data">
           <div id="textVideo">
-            <h3>Ajouter une vidéo</h3>
+            <h2>Ajout de video</h2>
             <br />
           </div>
           <label htmlFor="video">Video</label>
@@ -221,10 +220,9 @@ export default function AddVideosCategories() {
       </div>
 
       <div id="CategoryManip">
-        <h2>Modification de catégories</h2>
         <form className="form" encType="multipart/form-data">
-          <div id="textCatégorie">
-            <h3>Ajouter une catégorie</h3>
+          <div id="textCategory">
+            <h2>Modification de catégories</h2>
             <br />
           </div>
           <ul>
@@ -263,7 +261,11 @@ export default function AddVideosCategories() {
               />
             </li>
           </ul>
-          <button type="submit" onClick={(e) => postingCategory(e)}>
+          <button
+            className="add_category"
+            type="submit"
+            onClick={(e) => postingCategory(e)}
+          >
             Ajouter categorie
           </button>
         </form>
