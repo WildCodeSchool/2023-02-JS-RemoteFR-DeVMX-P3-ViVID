@@ -1,6 +1,8 @@
 .wrapper {
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
 
   #addVideo {
     padding: 80px 0 50px;
@@ -17,6 +19,7 @@
       select,
       textarea,
       button {
+        border: none;
         width: 100%;
         max-width: 300px;
         height: 30px;
@@ -38,6 +41,12 @@
           }
         }
       }
+      button {
+        cursor: pointer;
+        background-color: var(--greenColor);
+        color: white;
+        text-transform: uppercase;
+      }
       textarea {
         resize: none;
         height: 150px;
@@ -45,7 +54,7 @@
     }
   }
   #CategoryManip {
-    width: 30%;
+    width: 15%;
     .form {
       padding: 80px 0 50px;
 
@@ -66,10 +75,20 @@
             border-radius: 5px;
             padding-left: 8px;
           }
-          button {
-            cursor: pointer;
-          }
         }
+      }
+      .add_category {
+        cursor: pointer;
+        background-color: var(--greenColor);
+        color: white;
+        text-transform: uppercase;
+        border: none;
+        width: 100%;
+        max-width: 300px;
+        height: 30px;
+      }
+      h2 {
+        color: white;
       }
     }
   }
