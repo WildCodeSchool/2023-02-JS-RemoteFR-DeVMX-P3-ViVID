@@ -48,6 +48,7 @@ export default function AddVideosCategories() {
                     upload_date: new Date().toISOString().slice(0, 10),
                     thumbnail: result.data,
                     video: res.data,
+                    is_public: isPublic,
                   })
                   .then((response) => {
                     if (response.status === 201) {

@@ -86,7 +86,7 @@ VALUES
 ("Urbain 3", "00:00:11", 0, "2023-07-11", "/uploads/images/7208c8f8-e3ba-410a-a76d-eb496baff802-Urban_3.png", "/uploads/videos/28e917ec-01b0-45ff-ac95-fff204d1769b-Urban(3).mp4", 1),   
 ("Urbain 4", "00:00:10", 0, "2023-07-11", "/uploads/images/f824c1d3-52e0-4125-88a2-0d2a17e3572f-Urban_4.png", "/uploads/videos/c53c3082-094d-4db3-8e2e-8a93d7fb6512-Urban(4).mp4", 1),   
 ("Urbain 5", "00:00:10", 0, "2023-07-11", "/uploads/images/c7a7fb20-cf34-42b1-b30b-1698e2f0c4e4-Urban_5.png", "/uploads/videos/0ca09bfe-b0d2-44b2-a4cb-137f8cef9f20-Urban(5).mp4", 1),   
-("Urbain 6", "00:00:10", 0, "2023-07-11", "/uploads/images/99b8d2ed-7386-4128-b4d3-43a30bcafe50-Urban_6.png", "/uploads/videos/97f2218b-2c61-43a2-a46d-7e3f5e9ecc8c-Urban(6).mp4", 1)
+("Urbain 6", "00:00:10", 0, "2023-07-11", "/uploads/images/99b8d2ed-7386-4128-b4d3-43a30bcafe50-Urban_6.png", "/uploads/videos/97f2218b-2c61-43a2-a46d-7e3f5e9ecc8c-Urban(6).mp4", 1),
 ("field", "00:00:17", 0, "2023-07-09", "/uploads/images/e6c52be1-ec1f-489a-865f-2cfdaf3371b3-field.png", "/uploads/videos/0b1479d5-e73f-44c5-af6a-78c9fddb4450-field.mp4", 1),
 ("mer", "00:00:18", 0, "2023-07-09", "/uploads/images/bcfd75e6-f8a9-4de3-a165-6e4c3a4efa4a-mer.png", "/uploads/videos/eb81ae28-288b-42f7-bbd1-d62f10835085-mer.mp4", 1),
 ("montagne", "00:00:20", 0, "2023-07-09", "/uploads/images/5d9ff10f-58f5-4941-8ddb-d20c080a13e3-montagne.png", "/uploads/videos/cbd84a08-a5a8-4d29-abed-a415645def73-montagne.mp4", 0),
@@ -125,6 +125,12 @@ CREATE TABLE video_category (
   video_id int(11) UNSIGNED NOT NULL, FOREIGN KEY (video_id) REFERENCES videos(id),
   category_id int NOT NULL, FOREIGN KEY (category_id) REFERENCES categories(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO video_category (video_id, category_id)
+VALUES 
+(1, 7),(2, 7),(3, 7),(4, 7),(5, 4),(6, 4),(7, 4),(8, 4),(9, 4),(10, 3),
+(11, 3),(12, 3),(13, 3),(14, 5),(15, 5),(16, 5),(17, 5),(18, 2),(19, 2),(20, 2),
+(21, 2),(22, 2),(23, 6),(24, 6),(25, 6),(26, 6), (27, 6),(28, 6),(29, 7),(30, 5),
+(31, 3),(32, 4),(33, 2),(34, 6); 
 
   -- CREATE TABLE sections -- START
 
