@@ -43,7 +43,7 @@
     display: none;
   }
   .col {
-    flex-basis: 30%;
+    flex-basis: 26%;
   }
 }
 
@@ -59,6 +59,7 @@
     }
     .unstyled {
       padding-left: 40%;
+      line-height: 1.75rem;
     }
 
     .btnConnection {
@@ -72,6 +73,7 @@
       flex-direction: column;
       line-height: 1.75rem;
       padding-left: 5%;
+      padding: 25px;
     }
     .social-container {
       padding-left: 5%;

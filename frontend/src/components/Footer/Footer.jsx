@@ -19,8 +19,8 @@ export default function Footer() {
           <FontAwesomeIcon icon={faTwitter} size="2x" />
         </p>
         <div className="description">
-          ViVID est une plateforme unique en son genre de vidéo à la demande sur
-          le thème de vidéo aériennes.
+          ViVID, première plateforme OTT <br /> spécialisée dans les vidéos
+          aériennes.
         </div>
       </div>
       <div className="col">
@@ -28,6 +28,7 @@ export default function Footer() {
           <li>Contact</li>
           <li>A propos</li>
           <li>Plan du site</li>
+          <br />
           &copy;{new Date().getFullYear()} ViViD. All right reserved.
         </ul>
       </div>
