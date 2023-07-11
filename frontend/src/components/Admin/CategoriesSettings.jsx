@@ -7,7 +7,6 @@ import AdminGrid from "./AdminGrid";
 export default function CategoriesSettings({ tab }) {
   const [sections, setSections] = useState([]);
   const [videos, setVideos] = useState([]);
-  const [addSection, setAddSection] = useState(1);
 
   useEffect(() => {
     axios
@@ -48,22 +47,6 @@ export default function CategoriesSettings({ tab }) {
         </select>
         <AdminGrid videos={videos} />
       </div>
-
-      <div key={2} className={addSection === 2 ? "section2" : "hide"}>
-        <label htmlFor="displayTypes">Type d'affichage</label>
-        <select name="displayTypes" id="displayTypes">
-          <option value="">-- Select --</option>
-          {sections.map((section) => (
-            <option key={section.id} value={section.section}>
-              {section.section}
-            </option>
-          ))}
-        </select>
-        <AdminGrid videos={videos} />
-      </div>
-      <button type="button" onClick={() => setAddSection(addSection + 1)}>
-        Ajouter une section
-      </button>
       <button type="submit">Valider</button>
     </form>
   );

@@ -1,9 +1,8 @@
 import Carousel from "../components/videosDisplay/Carousel";
 import Grid from "../components/videosDisplay/Grid";
-import ModalConnection from "../components/ModalConnection";
 import HeroSlider from "../components/videosDisplay/HeroSlider";
 
-import "./home.scss";
+import "./category.scss";
 
 export default function Home() {
   return (
@@ -12,7 +11,6 @@ export default function Home() {
         <HeroSlider />
         <Carousel />
         <Grid />
-        <ModalConnection />
       </section>
     </div>
   );

@@ -68,7 +68,7 @@ const add = (req, res) => {
 
 const destroy = (req, res) => {
   models.categories
-    .deleteById(req.params.id)
+    .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
