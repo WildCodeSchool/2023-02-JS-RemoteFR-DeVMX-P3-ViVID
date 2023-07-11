@@ -24,31 +24,31 @@ export default function LeftNavBar() {
           <img src={home} className="small" alt="Home" />
         </Link>
 
-        <Link to="/Favorites">
+        <Link to="/Favoris">
           <img src={fav} className="small" alt="Favorites" />
         </Link>
 
-        <Link to="/Sky">
+        <Link to="/Ciel&nuages">
           <img src={ciel} alt="Ciel et nuages" />
         </Link>
 
-        <Link to="/Mountain">
+        <Link to="/Montagnes">
           <img src={mountain} alt="Montagnes" />
         </Link>
 
-        <Link to="/Forest">
+        <Link to="/Forets">
           <img src={forest} alt="Forêts" />
         </Link>
 
-        <Link to="/Sea">
+        <Link to="/Mer&oceans">
           <img src={sea} alt="Mer et oceans" />
         </Link>
 
-        <Link to="/Urban">
+        <Link to="/Urbain">
           <img src={urbain} alt="Urbain" />
         </Link>
 
-        <Link to="/Field">
+        <Link to="/Champ">
           <img src={field} alt="Champ" />
         </Link>
       </div>

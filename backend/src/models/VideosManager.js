@@ -46,7 +46,7 @@ class VideosManager extends AbstractManager {
 
   insert(data) {
     return this.database.query(
-      `insert into ${this.table} (title, duration, views_count, upload_date, thumbnail, video) 
+      `insert into ${this.table} (title, duration, views_count, upload_date, thumbnail, video, is_public) 
       values (?, ?, ?, ?, ?, ?)`,
       [
         data.title,
@@ -55,6 +55,7 @@ class VideosManager extends AbstractManager {
         data.upload_date,
         `/uploads/images/${data.thumbnail}`,
         `/uploads/videos/${data.video}`,
+        data.is_public,
       ]
     );
   }
