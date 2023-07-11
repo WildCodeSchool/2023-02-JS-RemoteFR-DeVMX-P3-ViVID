@@ -1,17 +1,17 @@
-import Carousel from "../components/videosDisplay/Carousel";
+import PropTypes from "prop-types";
 import Grid from "../components/videosDisplay/Grid";
-import HeroSlider from "../components/videosDisplay/HeroSlider";
-
 import "./category.scss";
 
-export default function Home() {
+export default function Category({ category }) {
   return (
     <div className="flexContainer">
       <section className="body">
-        <HeroSlider />
-        <Carousel />
-        <Grid />
+        <Grid category={category} />
       </section>
     </div>
   );
 }
+
+Category.propTypes = {
+  category: PropTypes.number.isRequired,
+};
