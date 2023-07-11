@@ -8,6 +8,8 @@ export default function AddVideosCategories() {
   const [title, setTitle] = useState("");
   const [time, setTime] = useState("00:00:00");
   const [categoryId, setCategoryId] = useState(0);
+  const [isPublic, setIsPublic] = useState(0);
+
   const [categories, setCategories] = useState([]);
   const [msg, setMsg] = useState("");
 
@@ -143,6 +145,7 @@ export default function AddVideosCategories() {
   return (
     <div className="wrapper">
       <div id="addVideo">
+        <h2>Ajout de video</h2>
         <form className="form" encType="multipart/form-data">
           <label htmlFor="video">Video</label>
           <input type="file" id="video" ref={inputVideoRef} required />
@@ -187,6 +190,18 @@ export default function AddVideosCategories() {
               </option>
             ))}
           </select>
+          <div id="is_public_input">
+            <label htmlFor="is_public" id="is_public_label">
+              vidéo publique
+            </label>
+            <input
+              type="checkbox"
+              id="is_public"
+              value={isPublic}
+              onChange={() => setIsPublic(!isPublic)}
+              required
+            />
+          </div>
 
           <button type="submit" onClick={(e) => postingVideo(e)}>
             Valider
@@ -201,6 +216,7 @@ export default function AddVideosCategories() {
       </div>
 
       <div id="CategoryManip">
+        <h2>Modification de catégories</h2>
         <form className="form" encType="multipart/form-data">
           <ul>
             {categories.slice(1).map((category) => (

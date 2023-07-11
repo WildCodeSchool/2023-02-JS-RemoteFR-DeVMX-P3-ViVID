@@ -27,6 +27,17 @@
           width: 100%;
           max-width: 300px;
         }
+        #is_public_input {
+          label {
+            display: inline;
+          }
+          #is_public {
+            // amani: j'ai voulu afficher le checkbox + label sur la même ligne mais j'arrivais pas
+            width: 20px;
+            height: 20px;
+            display: inline;
+          }
+        }
       }
       textarea {
         resize: none;
