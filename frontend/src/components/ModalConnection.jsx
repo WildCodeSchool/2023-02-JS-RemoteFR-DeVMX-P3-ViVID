@@ -66,7 +66,9 @@ export default function ModalConnection({ isOpen, onCloseModal }) {
           <div className="signup-section">
             <h3>Pas encore inscrit ?</h3>
             <p>N'attendez plus ! Rejoignez la communauté Vivid !</p>
-            <button type="button">Créer un compte</button>
+            <button type="button" className="create-account">
+              Créer un compte
+            </button>
           </div>
 
           <div className="form-section">
