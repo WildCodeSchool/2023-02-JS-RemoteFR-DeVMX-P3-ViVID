@@ -144,6 +144,10 @@ export default function AddVideosCategories() {
     <div className="wrapper">
       <div id="addVideo">
         <form className="form" encType="multipart/form-data">
+          <div id="textVideo">
+            <h3>Ajouter une vidéo</h3>
+            <br />
+          </div>
           <label htmlFor="video">Video</label>
           <input type="file" id="video" ref={inputVideoRef} required />
 
@@ -202,6 +206,10 @@ export default function AddVideosCategories() {
 
       <div id="CategoryManip">
         <form className="form" encType="multipart/form-data">
+          <div id="textCatégorie">
+            <h3>Ajouter une catégorie</h3>
+            <br />
+          </div>
           <ul>
             {categories.slice(1).map((category) => (
               <li>

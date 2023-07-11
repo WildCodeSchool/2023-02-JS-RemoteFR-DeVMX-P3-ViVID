@@ -1,6 +1,7 @@
 .wrapper {
   display: flex;
   justify-content: space-around;
+  flex-direction: column;
 
   #addVideo {
     padding: 80px 0 50px;
