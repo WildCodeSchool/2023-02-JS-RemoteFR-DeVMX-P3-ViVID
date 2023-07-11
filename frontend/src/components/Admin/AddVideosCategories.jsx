@@ -8,6 +8,8 @@ export default function AddVideosCategories() {
   const [title, setTitle] = useState("");
   const [time, setTime] = useState("00:00:00");
   const [categoryId, setCategoryId] = useState(0);
+  const [isPublic, setIsPublic] = useState(0);
+
   const [categories, setCategories] = useState([]);
   const [msg, setMsg] = useState("");
 
@@ -46,6 +48,7 @@ export default function AddVideosCategories() {
                     upload_date: new Date().toISOString().slice(0, 10),
                     thumbnail: result.data,
                     video: res.data,
+                    is_public: isPublic,
                   })
                   .then((response) => {
                     if (response.status === 201) {
@@ -143,6 +146,7 @@ export default function AddVideosCategories() {
   return (
     <div className="wrapper">
       <div id="addVideo">
+        <h2>Ajout de video</h2>
         <form className="form" encType="multipart/form-data">
           <div id="textVideo">
             <h3>Ajouter une vidéo</h3>
@@ -191,6 +195,18 @@ export default function AddVideosCategories() {
               </option>
             ))}
           </select>
+          <div id="is_public_input">
+            <label htmlFor="is_public" id="is_public_label">
+              vidéo publique
+            </label>
+            <input
+              type="checkbox"
+              id="is_public"
+              value={isPublic}
+              onChange={() => setIsPublic(!isPublic)}
+              required
+            />
+          </div>
 
           <button type="submit" onClick={(e) => postingVideo(e)}>
             Valider
@@ -205,6 +221,7 @@ export default function AddVideosCategories() {
       </div>
 
       <div id="CategoryManip">
+        <h2>Modification de catégories</h2>
         <form className="form" encType="multipart/form-data">
           <div id="textCatégorie">
             <h3>Ajouter une catégorie</h3>

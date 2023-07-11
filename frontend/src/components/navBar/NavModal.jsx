@@ -14,31 +14,31 @@ export default function NavModal({ className }) {
         <p>Accueil</p>
       </Link>
 
-      <Link to="/Favorites" className="link">
+      <Link to="/Favoris" className="link">
         <p>Favoris</p>
       </Link>
 
-      <Link to="/Sky" className="link">
+      <Link to="/Ciel&nuages" className="link">
         <p>Ciel et nuages</p>
       </Link>
 
-      <Link to="/Mountain" className="link">
+      <Link to="/Montagnes" className="link">
         <p>Montagnes</p>
       </Link>
 
-      <Link to="/Forest" className="link">
+      <Link to="/Forets" className="link">
         <p>Forêts</p>
       </Link>
 
-      <Link to="/Sea" className="link">
+      <Link to="/Mer&oceans" className="link">
         <p>Mer et oceans</p>
       </Link>
 
-      <Link to="/Urban" className="link">
+      <Link to="/Urbain" className="link">
         <p>Urbain</p>
       </Link>
 
-      <Link to="/Field" className="link">
+      <Link to="/Champ" className="link">
         <p>Champ</p>
       </Link>
     </div>
