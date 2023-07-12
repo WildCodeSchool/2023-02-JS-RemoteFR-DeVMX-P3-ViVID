@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import UserExport from "../../contexts/UserContext";
 
 import logout from "../../assets/logout.png";
+import back from "../../assets/back.png";
 
 import "./btnDisconnect.scss";
 
@@ -16,11 +17,23 @@ export default function BtnDisonnect() {
   };
 
   return (
-    <button className="btnDisconnect" type="button" onClick={handleDisconnect}>
-      <Link to="/">
-        <img src={logout} alt="logout" />
-        <i>Déconnexion</i>
-      </Link>
-    </button>
+    <>
+      <button className="btnAdmin" type="button">
+        <Link to="/admin">
+          <img src={back} alt="back" />
+          <i>Back To Admin</i>
+        </Link>
+      </button>
+      <button
+        className="btnDisconnect"
+        type="button"
+        onClick={handleDisconnect}
+      >
+        <Link to="/">
+          <img src={logout} alt="logout" />
+          <i>Déconnexion</i>
+        </Link>
+      </button>
+    </>
   );
 }
