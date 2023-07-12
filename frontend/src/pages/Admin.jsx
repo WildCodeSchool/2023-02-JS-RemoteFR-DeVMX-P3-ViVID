@@ -20,17 +20,25 @@ export default function Admin() {
 
   return (
     <div className="admin">
-      <ul>
+      <ul className="ulAdmin">
         {categories.map((category) => (
-          <li key={category.id}>
-            <button type="button" onClick={() => setTab(category.id)}>
+          <li className="liAdmin" key={category.id}>
+            <button
+              className="btnAdmin"
+              type="button"
+              onClick={() => setTab(category.id)}
+            >
               {category.category}
             </button>
           </li>
         ))}
 
-        <li key={categories.length + 1}>
-          <button type="button" onClick={() => setTab(categories.length + 1)}>
+        <li className="liAdmin" key={categories.length + 1}>
+          <button
+            className="btnAdmin"
+            type="button"
+            onClick={() => setTab(categories.length + 1)}
+          >
             Ajout & suppression
           </button>
         </li>
