@@ -1,23 +1,28 @@
+import axios from "axios";
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 import previousImg from "../../assets/previous.png";
 import nextImg from "../../assets/next.png";
 import playVideo from "../../assets/play_logo_white.png";
-
 import "./heroslider.scss";
 
-export default function HeroSlider() {
+export default function HeroSlider({ videoIds }) {
+  const [videos, setVideos] = useState([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [showButton, setShowButton] = useState(false);
-
-  const images = [
-    "https://i.imgur.com/Gu5Cznz.jpg",
-    "https://i.imgur.com/idjXzVQ.jpg",
-    "https://i.imgur.com/8DYumaY.jpg",
-    "https://i.imgur.com/8IuucQZ.jpg",
-    "https://i.imgur.com/P9IVqkS.jpg",
-  ];
+  const images = [];
+  // videos && videos.map((video) => images.push(video.thumbnail));
+  console.warn(videos);
+  useEffect(() => {
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/videos/loadVideos`, {
+        videoIds,
+      })
+      .then((res) => setVideos(res.data))
+      .catch((err) => console.error(err));
+  }, []);
 
   const goToPreviousImage = () => {
     const newIndex =
@@ -53,7 +58,7 @@ export default function HeroSlider() {
   }, []);
 
   useEffect(() => {
-    const imageInterval = setInterval(goToNextImage, 8000);
+    const imageInterval = setInterval(goToNextImage, 5000);
 
     return () => {
       clearInterval(imageInterval);
@@ -113,3 +118,7 @@ export default function HeroSlider() {
     </div>
   );
 }
+
+HeroSlider.propTypes = {
+  videoIds: PropTypes.arrayOf(PropTypes.number).isRequired,
+};

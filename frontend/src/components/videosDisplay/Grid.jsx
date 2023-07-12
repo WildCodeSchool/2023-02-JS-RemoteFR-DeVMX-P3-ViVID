@@ -2,15 +2,24 @@ import { useEffect, useState } from "react";
 import "./grid.scss";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import PropTypes from "prop-types";
 
-export default function Grid() {
+export default function Grid({ categoryId }) {
   const [videos, setVideos] = useState([]);
-
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/videos`)
-      .then((res) => setVideos(res.data))
-      .catch((err) => console.error(err));
+    if (categoryId === 1) {
+      axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}/videos`)
+        .then((res) => setVideos(res.data))
+        .catch((err) => console.error(err));
+    } else {
+      axios
+        .get(
+          `${import.meta.env.VITE_BACKEND_URL}/videosByCategory/${categoryId}`
+        )
+        .then((res) => setVideos(res.data))
+        .catch((err) => console.error(err));
+    }
   }, []);
 
   return (
@@ -28,3 +37,7 @@ export default function Grid() {
     </div>
   );
 }
+
+Grid.propTypes = {
+  categoryId: PropTypes.arrayOf(PropTypes.number).isRequired,
+};

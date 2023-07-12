@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Admin from "./pages/Admin";
-import Home from "./pages/Home";
+import MainSection from "./pages/MainSection";
 import Video from "./pages/Video";
 import Header from "./components/Header/Header";
 import NotFound from "./pages/NotFound";
@@ -20,19 +20,32 @@ function App() {
 
       <Routes>
         {/* PUBLIC ROUTES */}
-        <Route path="/" element={<Home />} />
-        {/* <Route path="/videos" element={<Video />} /> */}
+        <Route path="/" element={<MainSection key={1} categoryId={1} />} />
         <Route path="/videos/:id" element={<Video />} />
-        <Route path="*" element={<NotFound />} />
         {/* <Route path="/connexion" element={<SignIn />}> */}
         {/* <Route path="/profile" element={<Profile />}> */}
         {/* <Route path="/Favorites" element={<Favorites />}> */}
-        {/* <Route path="/Ciel&nuages" element={<Sky />}> */}
-        {/* <Route path="/Montagnes" element={<Mountain />}> */}
-        {/* <Route path="/Forets" element={<Forest />}> */}
-        {/* <Route path="/Mer&oceans" element={<Sea />}> */}
-        {/* <Route path="/Urbain" element={<Urban />}> */}
-        {/* <Route path="/Champ" element={<Field />}> */}
+        <Route
+          path="/Ciel&nuages"
+          element={<MainSection key={2} categoryId={2} />}
+        />
+        <Route
+          path="/Montagnes"
+          element={<MainSection key={3} categoryId={3} />}
+        />
+        <Route
+          path="/Forets"
+          element={<MainSection key={4} categoryId={4} />}
+        />
+        <Route
+          path="/Mer&oceans"
+          element={<MainSection key={5} categoryId={5} />}
+        />
+        <Route
+          path="/Urbain"
+          element={<MainSection key={6} categoryId={6} />}
+        />
+        <Route path="/Champ" element={<MainSection key={7} categoryId={7} />} />
 
         {/* LOGGED USER ROUTES */}
 
@@ -49,8 +62,8 @@ function App() {
           <Route path="dashboard" element={<Admin />} />
         </Route>
         <Route path="/videos" element={<Video />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
-
       <Footer />
     </BrowserRouter>
   );

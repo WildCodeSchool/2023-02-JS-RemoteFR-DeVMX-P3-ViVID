@@ -15,14 +15,14 @@ class VideosManager extends AbstractManager {
   }
 
   getMultipleVideos(ids) {
-    let sqlRequest = `select * from ${this.table} where id in ( ?`;
-    const [idsValues] = Object.values(ids);
-
-    for (let i = 0; i <= idsValues.length - 2; i += 1) {
-      sqlRequest += `, ?`;
+    let sqlRequest = `select * from ${this.table} where id in (?`;
+    if (ids.length >= 2) {
+      for (let i = 0; i <= ids.length - 2; i += 1) {
+        sqlRequest += `, ?`;
+      }
     }
     sqlRequest += ")";
-    return this.database.query(sqlRequest, idsValues);
+    return this.database.query(sqlRequest, ids);
   }
 
   findbySection(info) {
@@ -46,7 +46,7 @@ class VideosManager extends AbstractManager {
 
   insert(data) {
     return this.database.query(
-      `insert into ${this.table} (title, duration, views_count, upload_date, thumbnail, video) 
+      `insert into ${this.table} (title, duration, views_count, upload_date, thumbnail, video, is_public) 
       values (?, ?, ?, ?, ?, ?)`,
       [
         data.title,
@@ -55,6 +55,7 @@ class VideosManager extends AbstractManager {
         data.upload_date,
         `/uploads/images/${data.thumbnail}`,
         `/uploads/videos/${data.video}`,
+        data.is_public,
       ]
     );
   }

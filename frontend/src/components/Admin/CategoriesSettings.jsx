@@ -6,8 +6,11 @@ import AdminGrid from "./AdminGrid";
 
 export default function CategoriesSettings({ tab }) {
   const [sections, setSections] = useState([]);
+  const [chosenSection, setChosenSection] = useState();
+
   const [videos, setVideos] = useState([]);
-  const [addSection, setAddSection] = useState(1);
+  const [checkedVideos, setCheckedVideos] = useState([]);
+  const [msg, setMsg] = useState("");
 
   useEffect(() => {
     axios
@@ -24,47 +27,66 @@ export default function CategoriesSettings({ tab }) {
         .catch((err) => console.error(err));
     } else {
       axios
-        .post(`${import.meta.env.VITE_BACKEND_URL}/videos/videosByCategory`, {
-          category_id: tab,
-        })
+        .get(`${import.meta.env.VITE_BACKEND_URL}/videosByCategory/${tab}`)
         .then((res) => setVideos(res.data))
         .catch((err) => console.error(err));
     }
   }, [tab]);
 
-  const postChoices = () => {};
+  const postChoices = (e) => {
+    e.preventDefault();
+    checkedVideos.map((vid) =>
+      axios
+        .post(`${import.meta.env.VITE_BACKEND_URL}/videosSections`, {
+          video_id: vid.id,
+          section_id: chosenSection,
+          category_id: tab,
+        })
+        .then((res) => {
+          if (res.status === 201) setMsg("done");
+        })
+        .catch((err) => {
+          console.error(err);
+          setMsg("error");
+        })
+    );
+
+    setTimeout(() => {
+      setMsg("");
+    }, 3000);
+  };
 
   return (
-    <form onSubmit={() => postChoices}>
+    <form onSubmit={(e) => postChoices(e)}>
       <div key={1} className="section1">
         <label htmlFor="displayTypes">Type d'affichage</label>
-        <select name="displayTypes" id="displayTypes">
+        <select
+          name="displayTypes"
+          id="displayTypes"
+          defaultValue="--Select--"
+          onChange={(e) => {
+            setChosenSection(e.target.value);
+          }}
+        >
           <option value="">-- Select --</option>
-          {sections.map((section) => (
-            <option key={section.id} value={section.section}>
+          {sections.slice(1).map((section) => (
+            <option key={section.id} value={section.id}>
               {section.section}
             </option>
           ))}
         </select>
-        <AdminGrid videos={videos} />
+        <AdminGrid
+          videos={videos}
+          checkedVideos={checkedVideos}
+          setCheckedVideos={setCheckedVideos}
+        />
       </div>
-
-      <div key={2} className={addSection === 2 ? "section2" : "hide"}>
-        <label htmlFor="displayTypes">Type d'affichage</label>
-        <select name="displayTypes" id="displayTypes">
-          <option value="">-- Select --</option>
-          {sections.map((section) => (
-            <option key={section.id} value={section.section}>
-              {section.section}
-            </option>
-          ))}
-        </select>
-        <AdminGrid videos={videos} />
-      </div>
-      <button type="button" onClick={() => setAddSection(addSection + 1)}>
-        Ajouter une section
-      </button>
       <button type="submit">Valider</button>
+
+      <p className={msg === "done" ? "display" : "hide"}>
+        Vos modifications sont prises en compte
+      </p>
+      <p className={msg === "error" ? "display" : "hide"}>Error ! Reéssayez </p>
     </form>
   );
 }
