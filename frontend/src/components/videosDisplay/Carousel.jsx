@@ -6,11 +6,27 @@ import rightArrow from "../../assets/videos/right-arrow.png";
 import leftArrow from "../../assets/videos/left-arrow.png";
 import "./carousel.scss";
 
-export default function carousel() {
+export default function Carousel() {
   const videoIds = {
-    video: [4, 7, 9, 10, 11, 5, 8],
+    video: [4, 7, 9, 10, 11, 5, 8, 23, 25, 18],
   };
   const [carouselVid, setcarouselVid] = useState([]);
+  const [carouselPosition, setCarouselPosition] = useState(0);
+
+  const handleLeftButtonClick = () => {
+    if (carouselPosition > 0) {
+      setCarouselPosition(carouselPosition - 1);
+    }
+  };
+
+  const handleRightButtonClick = () => {
+    if (carouselPosition === carouselVid.length - 1) {
+      setCarouselPosition(0);
+    } else {
+      setCarouselPosition(carouselPosition + 1);
+    }
+  };
+
   useEffect(() => {
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/videos/loadVideos`, videoIds)
@@ -20,11 +36,14 @@ export default function carousel() {
 
   return (
     <div className="wrapper">
-      <i className="left">
+      <button type="button" className="left" onClick={handleLeftButtonClick}>
         <img src={leftArrow} alt="left-arrow" />
-      </i>
+      </button>
 
-      <div className="carousel">
+      <div
+        className="carousel"
+        style={{ transform: `translateX(-${carouselPosition * 25}%)` }}
+      >
         {carouselVid &&
           carouselVid.map((obj) => (
             <Link className="cell" to={`/Videos/${obj.id}`} key={obj.id}>
@@ -36,9 +55,9 @@ export default function carousel() {
           ))}
       </div>
 
-      <i className="rigth">
+      <button type="button" className="right" onClick={handleRightButtonClick}>
         <img src={rightArrow} alt="right-arrow" />
-      </i>
+      </button>
     </div>
   );
 }
