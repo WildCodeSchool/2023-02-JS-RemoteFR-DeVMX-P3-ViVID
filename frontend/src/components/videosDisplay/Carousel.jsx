@@ -21,7 +21,7 @@ export default function Carousel() {
 
   const handleRightButtonClick = () => {
     if (carouselPosition === carouselVid.length - 1) {
-      setCarouselPosition(0); // Revenir au début si vous êtes à la dernière position
+      setCarouselPosition(0);
     } else {
       setCarouselPosition(carouselPosition + 1);
     }
