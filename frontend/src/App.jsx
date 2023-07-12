@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Admin from "./pages/Admin";
-import Category from "./pages/Category";
+import MainSection from "./pages/MainSection";
 import Video from "./pages/Video";
 import Header from "./components/Header/Header";
 import NotFound from "./pages/NotFound";
@@ -20,20 +20,32 @@ function App() {
 
       <Routes>
         {/* PUBLIC ROUTES */}
-        <Route path="/" element={<Category key={1} category={1} />} />
+        <Route path="/" element={<MainSection key={1} categoryId={1} />} />
         <Route path="/videos/:id" element={<Video />} />
         {/* <Route path="/connexion" element={<SignIn />}> */}
         {/* <Route path="/profile" element={<Profile />}> */}
         {/* <Route path="/Favorites" element={<Favorites />}> */}
         <Route
           path="/Ciel&nuages"
-          element={<Category key={2} category={2} />}
+          element={<MainSection key={2} categoryId={2} />}
         />
-        <Route path="/Montagnes" element={<Category key={3} category={3} />} />
-        <Route path="/Forets" element={<Category key={4} category={4} />} />
-        <Route path="/Mer&oceans" element={<Category key={5} category={5} />} />
-        <Route path="/Urbain" element={<Category key={6} category={6} />} />
-        <Route path="/Champ" element={<Category key={7} category={7} />} />
+        <Route
+          path="/Montagnes"
+          element={<MainSection key={3} categoryId={3} />}
+        />
+        <Route
+          path="/Forets"
+          element={<MainSection key={4} categoryId={4} />}
+        />
+        <Route
+          path="/Mer&oceans"
+          element={<MainSection key={5} categoryId={5} />}
+        />
+        <Route
+          path="/Urbain"
+          element={<MainSection key={6} categoryId={6} />}
+        />
+        <Route path="/Champ" element={<MainSection key={7} categoryId={7} />} />
 
         {/* LOGGED USER ROUTES */}
 
