@@ -183,6 +183,7 @@
 
 @media screen and (min-width: 756px) {
   .btn {
+    cursor: pointer;
     display: grid;
     width: 100px;
     height: 35px;
@@ -192,5 +193,26 @@
     font-size: 1.2rem;
     color: white;
     border: none;
+  }
+  .cl-btn {
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    transition: all 0.5s ease;
+    color: var(--goldColor);
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    font-size: 16px;
+    background-color: transparent;
+    padding: 7px;
+    outline: none;
+    border-radius: 5px;
+  }
+  .cl-btn:hover {
+    color: var(--darkColor);
+    background-color: white;
   }
 }
