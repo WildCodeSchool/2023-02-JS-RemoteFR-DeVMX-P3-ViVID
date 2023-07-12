@@ -1,15 +1,13 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
 import rightArrow from "../../assets/videos/right-arrow.png";
 import leftArrow from "../../assets/videos/left-arrow.png";
 import "./carousel.scss";
 
-export default function Carousel() {
-  const videoIds = {
-    video: [4, 7, 9, 10, 11, 5, 8, 23, 25, 18],
-  };
+export default function Carousel({ carouselVideoIds }) {
   const [carouselVid, setcarouselVid] = useState([]);
   const [carouselPosition, setCarouselPosition] = useState(0);
 
@@ -29,7 +27,10 @@ export default function Carousel() {
 
   useEffect(() => {
     axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}/videos/loadVideos`, videoIds)
+      .post(
+        `${import.meta.env.VITE_BACKEND_URL}/videos/loadVideos`,
+        carouselVideoIds
+      )
       .then((res) => setcarouselVid(res.data))
       .catch((err) => console.error(err));
   }, []);
@@ -61,3 +62,7 @@ export default function Carousel() {
     </div>
   );
 }
+
+Carousel.propTypes = {
+  carouselVideoIds: PropTypes.arrayOf(PropTypes.number).isRequired,
+};

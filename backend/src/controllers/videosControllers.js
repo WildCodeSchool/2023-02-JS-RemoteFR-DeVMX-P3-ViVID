@@ -42,7 +42,7 @@ const read = (req, res) => {
 
 const getByIds = (req, res) => {
   models.videos
-    .getMultipleVideos(req.body)
+    .getMultipleVideos(req.body.ids)
     .then(([rows]) => {
       if ([rows] === null) {
         res.sendStatus(404);
@@ -74,7 +74,7 @@ const getBySection = (req, res) => {
 
 const getByCategory = (req, res) => {
   models.videos
-    .findbyCategory(req.body.category_id)
+    .findbyCategory(parseInt(req.params.id, 10))
     .then(([rows]) => {
       if ([rows] === null) {
         res.sendStatus(404);

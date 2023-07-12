@@ -14,12 +14,14 @@ const browse = (req, res) => {
 
 const read = (req, res) => {
   models.videosSection
-    .find(req.params.id)
+    .findByCategory(parseInt(req.params.id, 10))
+    // .findByCategory(req.body.category_id)
+
     .then(([rows]) => {
-      if (rows[0] == null) {
+      if (rows == null) {
         res.sendStatus(404);
       } else {
-        res.send(rows[0]);
+        res.send(rows);
       }
     })
     .catch((err) => {

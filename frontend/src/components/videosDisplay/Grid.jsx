@@ -4,16 +4,22 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import PropTypes from "prop-types";
 
-export default function Grid({ category }) {
+export default function Grid({ categoryId }) {
   const [videos, setVideos] = useState([]);
-
   useEffect(() => {
-    axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}/videos/videosByCategory`, {
-        category_id: category,
-      })
-      .then((res) => setVideos(res.data))
-      .catch((err) => console.error(err));
+    if (categoryId === 1) {
+      axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}/videos`)
+        .then((res) => setVideos(res.data))
+        .catch((err) => console.error(err));
+    } else {
+      axios
+        .get(
+          `${import.meta.env.VITE_BACKEND_URL}/videosByCategory/${categoryId}`
+        )
+        .then((res) => setVideos(res.data))
+        .catch((err) => console.error(err));
+    }
   }, []);
 
   return (
@@ -33,5 +39,5 @@ export default function Grid({ category }) {
 }
 
 Grid.propTypes = {
-  category: PropTypes.number.isRequired,
+  categoryId: PropTypes.arrayOf(PropTypes.number).isRequired,
 };

@@ -1,22 +1,19 @@
-import { useState } from "react";
 import "./adminGrid.scss";
 import PropTypes from "prop-types";
 
-export default function AdminGrid({ videos }) {
-  const [checkedVideos, setCheckedVideos] = useState([]);
-
+export default function AdminGrid({ videos, checkedVideos, setCheckedVideos }) {
   const handleCheckedItems = (e) => {
     if (e.target.checked) {
       setCheckedVideos((oldArray) => [
         ...oldArray,
-        videos.filter((video) => video.id === parseInt(e.target.value, 10)),
+        videos.filter((video) => video.id === parseInt(e.target.value, 10))[0],
       ]);
     } else {
-      setCheckedVideos([
-        ...checkedVideos.filter(
+      setCheckedVideos(
+        checkedVideos.filter(
           (video) => video.id !== parseInt(e.target.value, 10)
-        ),
-      ]);
+        )
+      );
     }
   };
 
@@ -46,4 +43,7 @@ export default function AdminGrid({ videos }) {
 
 AdminGrid.propTypes = {
   videos: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
+  checkedVideos: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string))
+    .isRequired,
+  setCheckedVideos: PropTypes.func.isRequired,
 };

@@ -5,10 +5,17 @@ class VideosSectionManager extends AbstractManager {
     super({ table: "video_section" });
   }
 
-  insert(section) {
+  findByCategory(categoryId) {
     return this.database.query(
-      `insert into ${this.table} (section_id, video_id) values (?, ?)`,
-      [section.section_id, section.video_id]
+      `select video_id, section_id from ${this.table} where category_id = ?`,
+      [categoryId]
+    );
+  }
+
+  insert(data) {
+    return this.database.query(
+      `insert into ${this.table} (video_id, section_id, category_id) values (?, ?, ?)`,
+      [data.video_id, data.section_id, data.category_id]
     );
   }
 
