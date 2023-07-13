@@ -18,10 +18,10 @@ export default function BtnDisonnect() {
 
   return (
     <>
-      <button className="btnAdmin" type="button">
+      <button className="btnBackAdmin" type="button">
         <Link to="/admin">
           <img src={back} alt="back" />
-          <i>Back To Admin</i>
+          <i>Gestion Admin</i>
         </Link>
       </button>
       <button
