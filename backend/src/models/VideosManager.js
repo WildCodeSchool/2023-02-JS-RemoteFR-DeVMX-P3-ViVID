@@ -15,15 +15,23 @@ class VideosManager extends AbstractManager {
   }
 
   getMultipleVideos(ids) {
+    // console.log(ids);
+
     let sqlRequest = `select * from ${this.table} where id in (?`;
-    if (ids.length >= 2) {
-      for (let i = 0; i <= ids.length - 2; i += 1) {
-        sqlRequest += `, ?`;
-      }
+    for (let i = 0; i <= ids.length - 2; i += 1) {
+      sqlRequest += `, ?`;
     }
     sqlRequest += ")";
     return this.database.query(sqlRequest, ids);
   }
+
+  // getMultipleVideos(ids) {
+  //   console.log(ids);
+  //   return this.database.query(
+  //     `select * from ${this.table} where id in (?)`,
+  //     ids
+  //   );
+  // }
 
   findbySection(info) {
     return this.database.query(

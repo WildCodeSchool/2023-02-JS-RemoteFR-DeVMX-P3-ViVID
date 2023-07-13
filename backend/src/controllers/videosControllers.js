@@ -31,7 +31,7 @@ const read = (req, res) => {
       if (rows[0] == null) {
         res.sendStatus(404);
       } else {
-        res.send(rows[0]);
+        res.send(rows);
       }
     })
     .catch((err) => {
@@ -41,6 +41,7 @@ const read = (req, res) => {
 };
 
 const getByIds = (req, res) => {
+  // console.log(req.body);
   models.videos
     .getMultipleVideos(req.body.ids)
     .then(([rows]) => {

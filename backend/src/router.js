@@ -28,7 +28,9 @@ router.delete("/users/:id", usersControllers.destroy);
 router.get("/videos", videosControllers.browse);
 router.get("/videos/:id", videosControllers.read);
 router.post("/videos", videosControllers.add);
-router.post("/videos/loadVideos", videosControllers.getByIds);
+router.post("/loadVideos", videosControllers.getByIds);
+// router.get("/loadVideos/:id", videosControllers.getByIds);
+
 router.post("/videos/videosBySection", videosControllers.getBySection);
 router.get("/videosByCategory/:id", videosControllers.getByCategory);
 router.put("/videos/:id", videosControllers.edit);

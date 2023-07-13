@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-
 import rightArrow from "../../assets/videos/right-arrow.png";
 import leftArrow from "../../assets/videos/left-arrow.png";
 import "./carousel.scss";
@@ -10,6 +9,21 @@ import "./carousel.scss";
 export default function Carousel({ carouselVideoIds }) {
   const [carouselVid, setcarouselVid] = useState([]);
   const [carouselPosition, setCarouselPosition] = useState(0);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await axios.post(
+          `${import.meta.env.VITE_BACKEND_URL}/loadVideos`,
+          { ids: carouselVideoIds }
+        );
+        setcarouselVid(response.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    getData();
+  }, []);
 
   const handleLeftButtonClick = () => {
     if (carouselPosition > 0) {
@@ -24,16 +38,6 @@ export default function Carousel({ carouselVideoIds }) {
       setCarouselPosition(carouselPosition + 1);
     }
   };
-
-  useEffect(() => {
-    axios
-      .post(
-        `${import.meta.env.VITE_BACKEND_URL}/videos/loadVideos`,
-        carouselVideoIds
-      )
-      .then((res) => setcarouselVid(res.data))
-      .catch((err) => console.error(err));
-  }, []);
 
   return (
     <div className="wrapper">
