@@ -15,8 +15,6 @@ const browse = (req, res) => {
 const read = (req, res) => {
   models.videosSection
     .findByCategory(parseInt(req.params.id, 10))
-    // .findByCategory(req.body.category_id)
-
     .then(([rows]) => {
       if (rows == null) {
         res.sendStatus(404);

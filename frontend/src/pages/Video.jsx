@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import play from "../assets/play_logo_white.png";
+import "../components/VideoPlayer.scss";
+import VideoPlayer from "../components/VideoPlayer";
 
 export default function Video(videoid) {
   const [video, setVideo] = useState({});
@@ -18,14 +19,7 @@ export default function Video(videoid) {
   return (
     <div className="video">
       <img src={video.thumbnail} alt={video.title} />
-      <div className="buttons">
-        <button type="button">
-          <img src={play} alt="play" />
-        </button>
-        {/* <button type="button">
-          <i>icone</i>
-        </button> */}
-      </div>
+      <VideoPlayer />
     </div>
   );
 }

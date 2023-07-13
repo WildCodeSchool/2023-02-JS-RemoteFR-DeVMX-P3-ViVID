@@ -145,26 +145,24 @@ export default function AddVideosCategories() {
 
   return (
     <div className="wrapper">
-      <div id="addVideo">
-        <form className="form" encType="multipart/form-data">
-          <div id="textVideo">
-            <h2>Ajout de video</h2>
-            <br />
-          </div>
-          <label htmlFor="video">Video</label>
-          <input type="file" id="video" ref={inputVideoRef} required />
-
-          <label htmlFor="thumbnail">Thumbnail</label>
-          <input type="file" id="thumbnail" ref={inputImgRef} required />
+      <div className="addVideo" id="addVideo">
+        <form className="formAddVideo" encType="multipart/form-data">
+          <h2 className="titleAddVideo">Ajouter une video</h2>
 
           <label htmlFor="title">Titre</label>
-          <textarea
+          <input
             type="text"
             id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
           />
+
+          <label htmlFor="video">Video</label>
+          <input type="file" id="video" ref={inputVideoRef} required />
+
+          <label htmlFor="thumbnail">Thumbnail</label>
+          <input type="file" id="thumbnail" ref={inputImgRef} required />
 
           <label htmlFor="duration">Durée</label>
           <input
@@ -194,6 +192,7 @@ export default function AddVideosCategories() {
               </option>
             ))}
           </select>
+
           <div id="is_public_input">
             <label htmlFor="is_public" id="is_public_label">
               vidéo publique
@@ -207,7 +206,23 @@ export default function AddVideosCategories() {
             />
           </div>
 
-          <button type="submit" onClick={(e) => postingVideo(e)}>
+          <button
+            type="submit"
+            onClick={(e) => postingVideo(e)}
+            style={{
+              margin: "10px auto",
+              width: "50%",
+              height: "40px",
+              border: "1px solid gray",
+              borderRadius: "30px",
+              background: "var(--goldColor)",
+              boxShadow:
+                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset",
+              color: "white",
+              fontSize: "1rem",
+              fontWeight: "600",
+            }}
+          >
             Valider
           </button>
         </form>
@@ -219,15 +234,12 @@ export default function AddVideosCategories() {
         </p>
       </div>
 
-      <div id="CategoryManip">
-        <form className="form" encType="multipart/form-data">
-          <div id="textCategory">
-            <h2>Modification de catégories</h2>
-            <br />
-          </div>
-          <ul>
+      <div className="CategoryManip" id="CategoryManip">
+        <form className="formAddCategories" encType="multipart/form-data">
+          <h2 className="titleModifyCategories">Modification de catégories</h2>
+          <ul className="ulAddCategories">
             {categories.slice(1).map((category) => (
-              <li>
+              <li className="liAddCategories">
                 <input
                   type="text"
                   id="category"
@@ -236,6 +248,7 @@ export default function AddVideosCategories() {
                   onChange={(e) => setCategoryName(e.target.value)}
                 />
                 <button
+                  className="btnValidateAndDelete"
                   type="button"
                   value={category.id}
                   onClick={(e) => changeCategoryName(e)}
@@ -243,6 +256,7 @@ export default function AddVideosCategories() {
                   ✓
                 </button>
                 <button
+                  className="btnValidateAndDelete"
                   type="button"
                   value={category.id}
                   onClick={(e) => deleteCategory(e)}
@@ -251,23 +265,30 @@ export default function AddVideosCategories() {
                 </button>
               </li>
             ))}
-            <li>
-              <input
-                type="text"
-                id="newCategory"
-                placeholder="Ajouter une categorie"
-                value={newCategory}
-                onChange={(e) => setNewCategory(e.target.value)}
-              />
-            </li>
           </ul>
-          <button
-            className="add_category"
-            type="submit"
-            onClick={(e) => postingCategory(e)}
-          >
-            Ajouter categorie
-          </button>
+          <div className="addCategoriesContainer">
+            <input
+              type="text"
+              id="newCategory"
+              placeholder="Ajouter une categorie"
+              value={newCategory}
+              onChange={(e) => setNewCategory(e.target.value)}
+              style={{
+                fontSize: "1rem",
+                margin: "40px 10px",
+                padding: "10px 20px",
+                border: "none",
+                borderRadius: "20px",
+              }}
+            />
+            <button
+              className="add_category"
+              type="submit"
+              onClick={(e) => postingCategory(e)}
+            >
+              Ajouter catégorie
+            </button>
+          </div>
         </form>
         <p className={categoryMsg === "done" ? "display" : "hide"}>
           Opération réussie
