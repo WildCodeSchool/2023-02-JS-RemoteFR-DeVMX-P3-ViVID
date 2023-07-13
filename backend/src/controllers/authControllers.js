@@ -7,7 +7,7 @@ const login = (req, res) => {
 
   // vérifier email
 
-  models.users
+  models.auth
     .findOneByEmail(email)
     .then(([[user]]) => {
       // si on a pas de user, on répond dégage

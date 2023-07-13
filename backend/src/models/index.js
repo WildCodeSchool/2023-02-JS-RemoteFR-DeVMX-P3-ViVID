@@ -29,14 +29,14 @@ pool.getConnection().catch(() => {
 
 const models = {};
 
-const UsersManager = require("./usersManager");
+const UsersManager = require("./UsersManager");
+const AuthManager = require("./AuthManager");
+
 const VideosManager = require("./VideosManager");
 const CategoriesManager = require("./categoriesManager");
 const SectionsManager = require("./sectionsManager");
 const VideosSectionManager = require("./videosSectionManager");
 const VideosCategoriesManager = require("./videosCategoriesManager");
-
-const AuthManager = require("./AuthManager");
 
 models.videos = new VideosManager();
 models.videos.setDatabase(pool);
@@ -45,8 +45,10 @@ models.categories = new CategoriesManager();
 models.categories.setDatabase(pool);
 
 models.users = new UsersManager();
-models.users = new AuthManager();
+models.auth = new AuthManager();
+
 models.users.setDatabase(pool);
+models.auth.setDatabase(pool);
 
 models.sections = new SectionsManager();
 models.sections.setDatabase(pool);
