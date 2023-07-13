@@ -44,7 +44,7 @@ export default function HeroSlider({ sliderVideoIds }) {
   useEffect(() => {
     const buttonTimeout = setTimeout(() => {
       setShowButton(true);
-    }, 3000);
+    }, 2000);
 
     return () => {
       clearTimeout(buttonTimeout);
