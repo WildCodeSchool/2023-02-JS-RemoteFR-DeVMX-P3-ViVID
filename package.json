@@ -29,19 +29,5 @@
     "concurrently": "^7.6.0",
     "cross-env": "^7.0.3",
     "husky": "^8.0.3"
-  },
-  "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.14.0",
-    "@mui/material": "^5.14.0",
-    "prismjs": "^1.29.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-player": "^2.12.0",
-    "react-video-js-player": "^1.1.1",
-    "reactstrap": "^9.2.0",
-    "screenfull": "^6.0.2",
-    "video-react": "^0.16.0"
   }
 }
