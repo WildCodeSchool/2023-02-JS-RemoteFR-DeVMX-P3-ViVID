@@ -6,7 +6,7 @@ import UserExport from "../contexts/UserContext";
 
 import "./ModalConnection.scss";
 
-export default function ModalConnection({ isOpen, onCloseModal }) {
+export default function ModalConnection({ isOpen, onOpenModal, onCloseModal }) {
   const { setUsers, setToken } = useContext(UserExport.UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -66,7 +66,11 @@ export default function ModalConnection({ isOpen, onCloseModal }) {
           <div className="signup-section">
             <h3>Pas encore inscrit ?</h3>
             <p>N'attendez plus ! Rejoignez la communauté Vivid !</p>
-            <button type="button" className="create-account">
+            <button
+              type="button"
+              className="create-account"
+              onClick={onOpenModal}
+            >
               Créer un compte
             </button>
           </div>
@@ -115,4 +119,5 @@ export default function ModalConnection({ isOpen, onCloseModal }) {
 ModalConnection.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onCloseModal: PropTypes.func.isRequired,
+  onOpenModal: PropTypes.func.isRequired,
 };
