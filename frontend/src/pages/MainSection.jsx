@@ -1,36 +1,41 @@
-// import axios from "axios";
+import axios from "axios";
 import PropTypes from "prop-types";
-// import { useEffect, useState } from "react";
-// import Carousel from "../components/videosDisplay/Carousel";
+import { useEffect, useState } from "react";
+import Carousel from "../components/videosDisplay/Carousel";
 import Grid from "../components/videosDisplay/Grid";
-// import HeroSlider from "../components/videosDisplay/HeroSlider";
+import HeroSlider from "../components/videosDisplay/HeroSlider";
 import "./mainSection.scss";
 
 export default function MainSection({ categoryId }) {
-  // const [videosSection, setVideosSection] = useState([]);
-  // const [sliderVideoIds, setSliderVideoIds] = useState([]);
-  // const [carouselVideoIds, setCarouselVideoIds] = useState([]);
-  // if (videosSection) {
-  //   videosSection.map((vidSect) => {
-  //     if (vidSect.section_id === 2)
-  //       setSliderVideoIds((oldArray) => [...oldArray, vidSect.video_id]);
-  //     if (vidSect.section_id === 3)
-  //       setCarouselVideoIds((oldArray) => [...oldArray, vidSect.video_id]);
-  //   });
-  // }
+  const [sliderVideoIds, setSliderVideoIds] = useState();
+  const [carouselVideoIds, setCarouselVideoIds] = useState();
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`${import.meta.env.VITE_BACKEND_URL}/videosSections/${categoryId}`)
-  //     .then((res) => setVideosSection(res.data))
-  //     .catch((err) => console.error(err));
-  // }, []);
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const res = await axios.get(
+          `${import.meta.env.VITE_BACKEND_URL}/videosSections/${categoryId}`
+        );
+        const carouselArray = [];
+        const slidertArray = [];
+        for (const i of res.data) {
+          if (i.section_id === 2) slidertArray.push(i.video_id);
+          if (i.section_id === 3) carouselArray.push(i.video_id);
+        }
+        setCarouselVideoIds(carouselArray);
+        setSliderVideoIds(slidertArray);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    getData();
+  }, []);
 
   return (
     <div className="flexContainer">
       <section className="body">
-        {/* {sliderVideoIds && <HeroSlider videoIds={sliderVideoIds} />} */}
-        {/* {carouselVideoIds && <Carousel carouselVideoIds={carouselVideoIds} />} */}
+        {sliderVideoIds && <HeroSlider sliderVideoIds={sliderVideoIds} />}
+        {carouselVideoIds && <Carousel carouselVideoIds={carouselVideoIds} />}
         <Grid categoryId={categoryId} />
       </section>
     </div>

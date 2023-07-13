@@ -161,6 +161,6 @@ CREATE TABLE video_section  (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 INSERT INTO video_section (video_id, section_id, category_id) VALUES 
 (10, 2, 1),(8, 2, 1),(6, 2, 1),(17, 2, 1),
-(10, 3, 1),(8, 3, 1),(6, 3, 1),(17, 3, 1),(20, 3, 1),(22, 3, 1),
 (29, 3, 2),(17, 3, 2),(10, 3, 2),(22, 3, 2),(33, 3, 2),(20, 3, 2),( 4, 3, 2),(19, 3, 2),
+(11, 3, 3),(12, 3, 3),(13, 3, 3),
 (32, 3, 4),(9, 3, 4),(5, 3, 4),(8, 3, 4);
