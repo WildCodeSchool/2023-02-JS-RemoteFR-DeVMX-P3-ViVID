@@ -28,10 +28,22 @@
     height: 40px;
     background: transparent;
     border: none;
+    animation: fadeInTop 0.7s ease-out;
 
     i {
       color: white;
       font-weight: 700;
     }
+  }
+}
+
+@keyframes fadeInTop {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 0.7;
+    transform: translateY(0);
   }
 }
