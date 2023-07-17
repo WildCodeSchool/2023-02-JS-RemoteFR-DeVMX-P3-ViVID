@@ -18,3 +18,8 @@
   --imgWidth: 200px;
   --vid-info-height: 60px;
 }
+
+.appContainer {
+  position: relative;
+  min-height: 100vh;
+}

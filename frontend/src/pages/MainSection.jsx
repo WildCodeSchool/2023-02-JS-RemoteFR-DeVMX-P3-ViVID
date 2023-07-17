@@ -41,6 +41,9 @@ export default function MainSection({ categoryId }) {
           <Carousel carouselVideoIds={carouselVideoIds} />
         )}
 
+        <h2 className="h2MainSection">
+          Selection pour vous dans cette catégorie :{" "}
+        </h2>
         <Grid categoryId={categoryId} />
       </section>
     </div>
