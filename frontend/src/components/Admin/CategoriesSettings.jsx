@@ -7,15 +7,39 @@ import AdminGrid from "./AdminGrid";
 export default function CategoriesSettings({ tab }) {
   const [sections, setSections] = useState([]);
   const [chosenSection, setChosenSection] = useState();
-
   const [videos, setVideos] = useState([]);
+  const [videosBySections, setVideosBySections] = useState([]);
   const [checkedVideos, setCheckedVideos] = useState([]);
+  const [deletedVideos, setDeletedVideos] = useState([]);
   const [msg, setMsg] = useState("");
 
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/sections`)
       .then((result) => setSections(result.data))
+      .catch((err) => console.error(err));
+  }, [tab]);
+
+  useEffect(() => {
+    const data = [];
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/videosSections/${tab}`)
+      .then((result) => {
+        if (result.data.length) {
+          setChosenSection(result.data.section_id);
+          for (const i of result.data) {
+            data.push(i.video_id);
+          }
+          axios
+            .post(`${import.meta.env.VITE_BACKEND_URL}/loadVideos`, {
+              ids: data,
+            })
+            .then((res) => {
+              setVideosBySections(res.data);
+            })
+            .catch((err) => console.error(err));
+        }
+      })
       .catch((err) => console.error(err));
   }, [tab]);
 
@@ -59,7 +83,7 @@ export default function CategoriesSettings({ tab }) {
   return (
     <form onSubmit={(e) => postChoices(e)}>
       <div key={1} className="section1">
-        <label htmlFor="displayTypes">Type d'affichage</label>
+        <label htmlFor="displayTypes">Type d'entête</label>
         <select
           name="displayTypes"
           id="displayTypes"
@@ -75,10 +99,21 @@ export default function CategoriesSettings({ tab }) {
             </option>
           ))}
         </select>
+
+        <div className="actualSection">
+          <AdminGrid
+            videos={videosBySections}
+            checked={deletedVideos}
+            setChecked={setDeletedVideos}
+          />
+          <p className={videosBySections.length ? "" : "hide"}>Pas d'entête</p>
+        </div>
+        <button type="button">Confirmer la suppression</button>
+
         <AdminGrid
           videos={videos}
-          checkedVideos={checkedVideos}
-          setCheckedVideos={setCheckedVideos}
+          checked={checkedVideos}
+          setChecked={setCheckedVideos}
         />
       </div>
       <button type="submit">Valider</button>

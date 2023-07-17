@@ -29,9 +29,7 @@ router.get("/videos", videosControllers.browse);
 router.get("/videos/:id", videosControllers.read);
 router.post("/videos", videosControllers.add);
 router.post("/loadVideos", videosControllers.getByIds);
-// router.get("/loadVideos/:id", videosControllers.getByIds);
 
-router.post("/videos/videosBySection", videosControllers.getBySection);
 router.get("/videosByCategory/:id", videosControllers.getByCategory);
 router.put("/videos/:id", videosControllers.edit);
 router.delete("/videos/:id", videosControllers.destroy);
@@ -53,7 +51,6 @@ router.delete("/categories/:id", categoriesControllers.destroy);
 
 router.get("/sections", sectionsControllers.browse);
 router.get("/sections/:id", sectionsControllers.read); // delete if not used
-router.get("/sectionChoice", sectionsControllers.getByCategoryAndPosition);
 
 router.get("/videosSections/:id", videosSectionControllers.read);
 router.post("/videosSections", videosSectionControllers.add);
