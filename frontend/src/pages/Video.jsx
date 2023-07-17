@@ -5,10 +5,7 @@ import "./Videos.scss";
 
 export default function Video() {
   const { id } = useParams();
-  const [video, setVideo] = useState({
-    title: "toto",
-    video: "tata",
-  });
+  const [video, setVideo] = useState();
 
   useEffect(() => {
     axios
