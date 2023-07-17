@@ -29,7 +29,7 @@
 
     @for $i from 1 through 30 {
       &:nth-child(#{$i}n) {
-          animation-delay: #{$i * 0.1}s;
+        animation-delay: #{$i * 0.1}s;
       }
     }
 
@@ -57,10 +57,10 @@
   }
 }
 
-@keyframes ZoomIn { 
+@keyframes ZoomIn {
   0% {
     opacity: 0;
-    transform: scale(.1);
+    transform: scale(0.1);
   }
 
   85% {
