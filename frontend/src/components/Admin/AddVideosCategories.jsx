@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import "./addVideos.scss";
+import "./addVideosCategories.scss";
 
 export default function AddVideosCategories() {
   const inputVideoRef = useRef();

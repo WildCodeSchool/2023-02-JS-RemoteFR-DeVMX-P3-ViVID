@@ -7,8 +7,8 @@ import HeroSlider from "../components/videosDisplay/HeroSlider";
 import "./mainSection.scss";
 
 export default function MainSection({ categoryId }) {
-  const [sliderVideoIds, setSliderVideoIds] = useState();
-  const [carouselVideoIds, setCarouselVideoIds] = useState();
+  const [sliderVideoIds, setSliderVideoIds] = useState([]);
+  const [carouselVideoIds, setCarouselVideoIds] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
@@ -17,25 +17,30 @@ export default function MainSection({ categoryId }) {
           `${import.meta.env.VITE_BACKEND_URL}/videosSections/${categoryId}`
         );
         const carouselArray = [];
-        const slidertArray = [];
+        const sliderArray = [];
         for (const i of res.data) {
-          if (i.section_id === 2) slidertArray.push(i.video_id);
+          if (i.section_id === 2) sliderArray.push(i.video_id);
           if (i.section_id === 3) carouselArray.push(i.video_id);
         }
         setCarouselVideoIds(carouselArray);
-        setSliderVideoIds(slidertArray);
+        setSliderVideoIds(sliderArray);
       } catch (err) {
         console.error(err);
       }
     };
     getData();
-  }, []);
+  }, [categoryId]);
 
   return (
     <div className="flexContainer">
       <section className="body">
-        {sliderVideoIds && <HeroSlider sliderVideoIds={sliderVideoIds} />}
-        {carouselVideoIds && <Carousel carouselVideoIds={carouselVideoIds} />}
+        {sliderVideoIds.length && (
+          <HeroSlider sliderVideoIds={sliderVideoIds} />
+        )}
+        {carouselVideoIds.length && (
+          <Carousel carouselVideoIds={carouselVideoIds} />
+        )}
+
         <Grid categoryId={categoryId} />
       </section>
     </div>

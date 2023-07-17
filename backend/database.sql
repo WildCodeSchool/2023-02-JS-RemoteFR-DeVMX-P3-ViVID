@@ -142,15 +142,6 @@ CREATE TABLE sections (
 
 INSERT INTO sections (section, is_dynamic) VALUES ('grid', 0), ('slider', 0), ('carousel', 0);
 
--- CREATE TABLE section_category -- START
-
-CREATE TABLE section_category  (
-  id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  section_id int NOT NULL, FOREIGN KEY (section_id) REFERENCES sections(id),
-  category_id int NOT NULL, FOREIGN KEY (category_id) REFERENCES categories(id),
-  position int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 -- CREATE TABLE video_section --
 
 CREATE TABLE video_section  (
@@ -160,7 +151,27 @@ CREATE TABLE video_section  (
   category_id int NOT NULL, FOREIGN KEY (category_id) REFERENCES categories(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 INSERT INTO video_section (video_id, section_id, category_id) VALUES 
-(10, 2, 1),(8, 2, 1),(6, 2, 1),(17, 2, 1),
-(29, 3, 2),(17, 3, 2),(10, 3, 2),(22, 3, 2),(33, 3, 2),(20, 3, 2),( 4, 3, 2),(19, 3, 2),
-(11, 3, 3),(12, 3, 3),(13, 3, 3),
-(32, 3, 4),(9, 3, 4),(5, 3, 4),(8, 3, 4);
+(10, 2, 1),
+( 8, 2, 1),
+( 6, 2, 1),
+(17, 2, 1),
+(29, 3, 2),
+(17, 3, 2),
+(10, 3, 2),
+(22, 3, 2),
+(33, 3, 2),
+(20, 3, 2),
+( 4, 3, 2),
+(19, 3, 2),
+(11, 3, 3),
+(12, 3, 3),
+(13, 3, 3),
+(31, 3, 3),
+(32, 3, 4),
+( 9, 3, 4),
+( 5, 3, 4),
+( 8, 3, 4),
+(17, 2, 5),
+(30, 2, 5),
+(16, 2, 5),
+(15, 2, 5);
