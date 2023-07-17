@@ -1,7 +1,18 @@
+.video {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: auto;
+  padding: 100px;
+  background-color: var(--darkColor);
+}
+
 .video-control{
     display: flex;
     justify-content: center;
     text-align: center;
     margin: auto;
     height: auto;
+    width: 100vh;
+    border-radius: 12px;
   }
