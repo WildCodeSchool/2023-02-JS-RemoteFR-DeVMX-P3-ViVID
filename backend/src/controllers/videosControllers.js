@@ -41,7 +41,6 @@ const read = (req, res) => {
 };
 
 const getByIds = (req, res) => {
-  // console.log(req.body);
   models.videos
     .getMultipleVideos(req.body.ids)
     .then(([rows]) => {

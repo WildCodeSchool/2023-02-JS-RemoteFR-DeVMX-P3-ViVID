@@ -47,7 +47,7 @@ export default function Admin() {
       {tab === categories.length + 1 ? (
         <AddVideosCategories key={tab} categories={categories} />
       ) : (
-        <CategoriesSettings tab={tab} />
+        <CategoriesSettings key={tab} tab={tab} />
       )}
     </div>
   );
