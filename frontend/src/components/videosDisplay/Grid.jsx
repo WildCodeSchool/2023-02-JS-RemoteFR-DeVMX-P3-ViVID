@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import "./grid.scss";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import PropTypes from "prop-types";
+import axios from "axios";
+
+import "./grid.scss";
 
 export default function Grid({ categoryId }) {
   const [videos, setVideos] = useState([]);

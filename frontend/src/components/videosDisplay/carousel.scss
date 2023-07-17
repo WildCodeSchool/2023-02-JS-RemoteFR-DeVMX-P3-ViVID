@@ -2,7 +2,10 @@
   margin: 85px auto 30px;
   position: relative;
   height: fit-content;
-
+  display: flex;
+  align-items: center;
+  animation: fadeInRight 0.5s ease-in-out;
+  
   .left {
     z-index: 10;
     background: transparent;
@@ -14,7 +17,7 @@
       width: 46px;
     }
   }
-
+  
   .right {
     z-index: 10;
     background: transparent;
@@ -30,6 +33,7 @@
   .carousel {
     white-space: nowrap;
     font-size: 0;
+    transition: 0.3s ease-in-out;
 
     .cell {
       cursor: pointer;
@@ -38,8 +42,8 @@
         border: none;
         font-size: 0;
         margin-left: 14px;
-        width: 25%;
-        height: 25vh;
+        width: 150px;
+        min-height: 300px;
         object-fit: cover;
         transition: 0.3s ease-in-out;
 
@@ -54,5 +58,16 @@
     .cell:first-child {
       margin-left: 0;
     }
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 0.7;
+    transform: translateX(0);
   }
 }
