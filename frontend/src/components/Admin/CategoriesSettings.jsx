@@ -71,7 +71,6 @@ export default function CategoriesSettings({ tab }) {
     videos.map(
       (vid) =>
         vid.isChecked &&
-        // delete before post
         axios
           .post(`${import.meta.env.VITE_BACKEND_URL}/videosSections`, {
             video_id: vid.id,
