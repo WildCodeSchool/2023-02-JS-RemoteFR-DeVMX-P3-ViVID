@@ -2,11 +2,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Admin from "./pages/Admin";
 import MainSection from "./pages/MainSection";
-import Video from "./pages/Video";
-import Header from "./components/Header/Header";
 import NotFound from "./pages/NotFound";
-import LeftNavBar from "./components/navBar/LeftNavBar";
+import Video from "./pages/Video";
+
 import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import LeftNavBar from "./components/navBar/LeftNavBar";
 
 import AdminProtectedRoutes from "./layouts/AdminProtectedRoutes";
 
@@ -21,10 +22,9 @@ function App() {
         <Routes>
           {/* PUBLIC ROUTES */}
           <Route path="/" element={<MainSection key={1} categoryId={1} />} />
+
           <Route path="/videos/:id" element={<Video />} />
-          {/* <Route path="/connexion" element={<SignIn />}> */}
-          {/* <Route path="/profile" element={<Profile />}> */}
-          {/* <Route path="/Favorites" element={<Favorites />}> */}
+
           <Route
             path="/Ciel&nuages"
             element={<MainSection key={2} categoryId={2} />}
@@ -64,7 +64,9 @@ function App() {
           <Route>
             <Route path="dashboard" element={<Admin />} />
           </Route>
+
           <Route path="/videos" element={<Video />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

@@ -13,17 +13,17 @@
 
   * {
     scrollbar-width: 0;
-  }
 
-  *::-webkit-scrollbar {
-    background-color: transparent;
-    width: 12px;
-  }
+    &::-webkit-scrollbar {
+      background-color: transparent;
+      width: 12px;
+    }
 
-  *::-webkit-scrollbar-thumb {
-    border-radius: 99px;
-    background-color: #ddd;
-    border: 4px solid #fff;
+    &::-webkit-scrollbar-thumb {
+      border-radius: 99px;
+      background-color: #ddd;
+      border: 4px solid #fff;
+    }
   }
   .submodal-container {
     display: flex;

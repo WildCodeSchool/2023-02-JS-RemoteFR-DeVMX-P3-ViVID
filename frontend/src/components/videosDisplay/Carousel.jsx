@@ -28,17 +28,15 @@ export default function Carousel({ carouselVideoIds }) {
   }, []);
 
   const handleLeftButtonClick = () => {
-    if (carouselPosition > 0) {
-      setCarouselPosition(carouselPosition - 1);
-    }
+    setCarouselPosition((prevPosition) =>
+      prevPosition > 0 ? prevPosition - 1 : prevPosition
+    );
   };
 
   const handleRightButtonClick = () => {
-    if (carouselPosition === carouselVid.length - 1) {
-      setCarouselPosition(0);
-    } else {
-      setCarouselPosition(carouselPosition + 1);
-    }
+    setCarouselPosition((prevPosition) =>
+      prevPosition === carouselVid.length - 1 ? 0 : prevPosition + 1
+    );
   };
 
   return (

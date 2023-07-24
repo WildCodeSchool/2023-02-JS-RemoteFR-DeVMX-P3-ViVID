@@ -5,47 +5,47 @@ import axios from "axios";
 
 import "./grid.scss";
 
+const categoryHeadings = {
+  1: "Selection pour vous",
+  2: "Selection pour vous dans Ciel & Nuages",
+  3: "Selection pour vous dans Montagnes",
+  4: "Selection pour vous dans Forêt",
+  5: "Selection pour vous dans Mer & Océans",
+  6: "Selection pour vous dans Urbain",
+  7: "Selection pour vous dans Champ",
+};
+
 export default function Grid({ categoryId }) {
   const [videos, setVideos] = useState([]);
+
   useEffect(() => {
-    if (categoryId === 1) {
-      axios
-        .get(`${import.meta.env.VITE_BACKEND_URL}/videos`)
-        .then((res) => setVideos(res.data))
-        .catch((err) => console.error(err));
-    } else {
-      axios
-        .get(
-          `${import.meta.env.VITE_BACKEND_URL}/videosByCategory/${categoryId}`
-        )
-        .then((res) => setVideos(res.data))
-        .catch((err) => console.error(err));
-    }
-  }, []);
+    const fetchData = async () => {
+      try {
+        const url =
+          categoryId === 1
+            ? `${import.meta.env.VITE_BACKEND_URL}/videos`
+            : `${
+                import.meta.env.VITE_BACKEND_URL
+              }/videosByCategory/${categoryId}`;
+        const response = await axios.get(url);
+        setVideos(response.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchData();
+  }, [categoryId]);
 
   return (
     <>
-      <h3 className={categoryId === 1 ? "showtext" : "hide"}>
-        Selection pour vous
-      </h3>
-      <h3 className={categoryId === 2 ? "showtext" : "hide"}>
-        Selection pour vous dans Ciel & Nuages
-      </h3>
-      <h3 className={categoryId === 3 ? "showtext" : "hide"}>
-        Selection pour vous dans Montagnes
-      </h3>
-      <h3 className={categoryId === 4 ? "showtext" : "hide"}>
-        Selection pour vous dans Forêt
-      </h3>
-      <h3 className={categoryId === 5 ? "showtext" : "hide"}>
-        Selection pour vous dans Mer & Océans
-      </h3>
-      <h3 className={categoryId === 6 ? "showtext" : "hide"}>
-        Selection pour vous dans Urbain
-      </h3>
-      <h3 className={categoryId === 7 ? "showtext" : "hide"}>
-        Selection pour vous dans Champ
-      </h3>
+      {Object.keys(categoryHeadings).map((key) => (
+        <h3
+          key={key}
+          className={categoryId === parseInt(key, 10) ? "showtext" : "hide"}
+        >
+          {categoryHeadings[key]}
+        </h3>
+      ))}
       <div className="grid">
         {videos &&
           videos.map((vid) => (
@@ -63,5 +63,5 @@ export default function Grid({ categoryId }) {
 }
 
 Grid.propTypes = {
-  categoryId: PropTypes.arrayOf(PropTypes.number).isRequired,
+  categoryId: PropTypes.number.isRequired,
 };

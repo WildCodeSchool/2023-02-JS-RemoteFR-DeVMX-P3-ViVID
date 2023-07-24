@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import UserExport from "../contexts/UserContext";
 
 import AddVideosCategories from "../components/Admin/AddVideosCategories";
 import CategoriesSettings from "../components/Admin/CategoriesSettings";
@@ -9,7 +8,6 @@ import "./Admin.scss";
 export default function Admin() {
   const [categories, setCategories] = useState([]);
   const [tab, setTab] = useState(1);
-  // const { users } = useContext(UserExport.UserContext);
 
   useEffect(() => {
     axios

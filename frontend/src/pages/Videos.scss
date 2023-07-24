@@ -14,7 +14,7 @@
   text-align: center;
   margin: auto;
   height: auto;
-  width: 100vh;
+  width: clamp(300px, 100%, 1024px);
   border-radius: 12px;
 }
 
