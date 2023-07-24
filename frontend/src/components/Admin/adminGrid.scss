@@ -8,7 +8,7 @@
   padding: 40px 0;
   margin: 0 auto;
 
-  .card {
+  .cardForm {
     border: none;
     width: clamp(140px, 20vw, var(--imgWidth));
     height: clamp(
@@ -63,7 +63,7 @@
         padding: 10px;
       }
     }
-    input[type="checkbox"][id^="checkbox"] {
+    input[type="checkbox"] {
       display: none;
 
       &:checked + label {

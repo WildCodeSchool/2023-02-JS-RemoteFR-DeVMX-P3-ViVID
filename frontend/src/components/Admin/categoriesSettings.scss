@@ -1,13 +1,22 @@
 form {
-  .label {
-    color: whitesmoke;
-    display: block;
-  }
-  .actualSection {
-    min-height: 200px;
-  }
-  .hide {
-    display: none;
+  padding: 20px;
+  .section1 {
+    .sectionLabel {
+      color: whitesmoke;
+      margin-right: 20px;
+    }
+    .actualSection {
+      min-height: 200px;
+      .previousSection {
+        color: whitesmoke;
+        font-size: 28px;
+        margin: 0 auto;
+        width: fit-content;
+      }
+    }
+    .hide {
+      display: none;
+    }
   }
 }
 
