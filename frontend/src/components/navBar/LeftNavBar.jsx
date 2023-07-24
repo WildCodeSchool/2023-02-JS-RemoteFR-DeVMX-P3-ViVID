@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
 
-import "./leftNavBar.scss";
-
-import profil from "../../assets/image-profile.jpg";
-import home from "../../assets/navBar/home1.png";
-import fav from "../../assets/navBar/heart1.png";
 import ciel from "../../assets/navBar/cloud.png";
-import mountain from "../../assets/navBar/mountain.png";
+import fav from "../../assets/navBar/heart1.png";
 import forest from "../../assets/navBar/forest.png";
+import field from "../../assets/navBar/fields.png";
+import home from "../../assets/navBar/home1.png";
+import mountain from "../../assets/navBar/mountain.png";
+import profil from "../../assets/image-profile.jpg";
 import sea from "../../assets/navBar/sea.png";
 import urbain from "../../assets/navBar/street.png";
-import field from "../../assets/navBar/fields.png";
+
+import "./leftNavBar.scss";
 
 export default function LeftNavBar() {
   return (

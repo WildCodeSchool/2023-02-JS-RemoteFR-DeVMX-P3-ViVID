@@ -1,9 +1,11 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import rightArrow from "../../assets/videos/right-arrow.png";
-import leftArrow from "../../assets/videos/left-arrow.png";
+
+import rightArrow from "../../assets/right-arrow.png";
+import leftArrow from "../../assets/left-arrow.png";
+
 import "./carousel.scss";
 
 export default function Carousel({ carouselVideoIds }) {

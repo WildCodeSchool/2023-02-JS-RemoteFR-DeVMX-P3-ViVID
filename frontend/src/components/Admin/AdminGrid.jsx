@@ -1,5 +1,6 @@
-import "./adminGrid.scss";
 import PropTypes from "prop-types";
+
+import "./adminGrid.scss";
 
 export default function AdminGrid({ videos, checked, setChecked }) {
   const handleCheckedItems = (e) => {

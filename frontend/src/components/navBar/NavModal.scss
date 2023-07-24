@@ -1,5 +1,4 @@
 .navModal {
-  background: var(--greenColor);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -8,6 +7,7 @@
   position: fixed;
   top: 60px;
   left: -100%;
+  background: var(--greenColor);
   animation: slideIn 0.3s ease-in-out;
 
   .link {
