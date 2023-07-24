@@ -22,6 +22,7 @@ export default function Video() {
   return (
     <div className="video">
       <video
+        autoPlay="true"
         className="video-control"
         controls
         width="600"

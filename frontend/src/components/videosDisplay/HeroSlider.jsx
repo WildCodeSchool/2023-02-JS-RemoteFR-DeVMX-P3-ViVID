@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import playVideo from "../../assets/play_logo_white.png";
 import "./heroslider.scss";
 
@@ -33,7 +34,13 @@ export default function HeroSlider({ sliderVideoIds }) {
   };
 
   const handleButtonClick = () => {
-    window.location.href = "lien_de_la_video";
+    return (
+      <Link to="/videos/2">
+        <button className="video-btn" type="button">
+          <img className="playImgBtn" src={playVideo} alt="play" />
+        </button>
+      </Link>
+    );
   };
 
   const handleThumbnailClick = (index) => {
@@ -69,15 +76,7 @@ export default function HeroSlider({ sliderVideoIds }) {
           }`}
           alt="HeroSlider"
         />
-        {showButton && (
-          <button
-            className="video-btn"
-            onClick={handleButtonClick}
-            type="button"
-          >
-            <img className="playImgBtn" src={playVideo} alt="play" />
-          </button>
-        )}
+        {showButton && handleButtonClick()}
       </div>
 
       <div className="thumbnail-bar">
