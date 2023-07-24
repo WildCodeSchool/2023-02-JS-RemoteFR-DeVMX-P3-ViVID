@@ -36,9 +36,8 @@ select {
   padding: 7px;
   outline: none;
   border-radius: 20px;
- }
-
- .dlt-btn:hover {
+   
+  &:hover {
   color: var(--darkColor);
   background-color: white;
 }
@@ -56,9 +55,8 @@ select {
   padding: 7px;
   outline: none;
   border-radius: 20px;
-}
-
-.valid-btn:hover {
+  
+  &:hover {
   color: var(--darkColor);
   background-color: white;
 }
