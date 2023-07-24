@@ -19,7 +19,7 @@ select {
   outline: none;
 }
 
-.display-types{
+.display-types {
   color: whitesmoke;
   margin: 0 2rem 0 2rem;
 }
@@ -61,4 +61,5 @@ select {
   &:hover {
   color: var(--darkColor);
   background-color: white;
+  }
 }
