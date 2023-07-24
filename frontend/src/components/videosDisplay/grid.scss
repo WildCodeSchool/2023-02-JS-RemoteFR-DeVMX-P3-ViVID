@@ -17,13 +17,13 @@
       calc(10vw + var(--vid-info-height)),
       calc(var(--imgWidth) + var(--vid-info-height))
     );
-    font-size: 0;
-    text-decoration: none;
-    margin: 10px auto 30px auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    background-color: var(--greenColor);
+    background: var(--greenColor);
+    margin: 10px auto 30px auto;
+    text-decoration: none;
+    font-size: 0;
     animation: ZoomIn 0.3s linear;
 
     @for $i from 1 through 30 {
@@ -40,8 +40,8 @@
 
     img {
       width: 100%;
-      object-fit: cover;
       height: clamp(140px, 20vw, var(--imgWidth));
+      object-fit: cover;
     }
 
     h2 {
