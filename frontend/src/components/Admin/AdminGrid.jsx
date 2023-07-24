@@ -1,6 +1,7 @@
 import { useState } from "react";
-import "./adminGrid.scss";
 import PropTypes from "prop-types";
+
+import "./adminGrid.scss";
 
 export default function AdminGrid({ setVideos, videos }) {
   const [updateState, setUpdateState] = useState(false);
