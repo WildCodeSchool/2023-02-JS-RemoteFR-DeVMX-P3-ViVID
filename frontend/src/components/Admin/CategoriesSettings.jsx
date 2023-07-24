@@ -1,8 +1,10 @@
-import PropTypes from "prop-types";
-import "./categoriesSettings.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import PropTypes from "prop-types";
+
 import AdminGrid from "./AdminGrid";
+
+import "./categoriesSettings.scss";
 
 export default function CategoriesSettings({ tab }) {
   const [sections, setSections] = useState([]);
@@ -84,6 +86,7 @@ export default function CategoriesSettings({ tab }) {
     <form onSubmit={(e) => postChoices(e)}>
       <div key={1} className="section1">
         <label htmlFor="displayTypes">Type d'entête</label>
+
         <select
           name="displayTypes"
           id="displayTypes"
@@ -106,8 +109,10 @@ export default function CategoriesSettings({ tab }) {
             checked={deletedVideos}
             setChecked={setDeletedVideos}
           />
+
           <p className={videosBySections.length ? "" : "hide"}>Pas d'entête</p>
         </div>
+
         <button type="button">Confirmer la suppression</button>
 
         <AdminGrid
@@ -116,11 +121,13 @@ export default function CategoriesSettings({ tab }) {
           setChecked={setCheckedVideos}
         />
       </div>
+
       <button type="submit">Valider</button>
 
       <p className={msg === "done" ? "display" : "hide"}>
         Vos modifications sont prises en compte
       </p>
+
       <p className={msg === "error" ? "display" : "hide"}>Error ! Reéssayez </p>
     </form>
   );

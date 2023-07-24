@@ -8,30 +8,32 @@
   background: var(--greenColor);
   position: relative;
   bottom: 0;
-  //   width: calc(100vw - 70px);
-  // margin-left: 20px;
-  // padding-left: 20px;
   padding: 15px;
   height: calc(30vh - 30px);
+
   img {
     width: clamp(65px, 5vw, 120px);
     height: auto;
     margin: 10px;
     margin-left: clamp(15px, 3vw, 30px);
   }
+
   .btnConnection {
     margin-top: 10px;
   }
+
   .cadena img {
     width: 25px;
     height: 25px;
     margin: 10px;
   }
+
   .unstyled {
     list-style: none;
     margin: 0;
     line-height: 1.75rem;
   }
+
   .social-container {
     display: flex;
     padding: auto;
@@ -39,9 +41,11 @@
     justify-content: space-between;
     justify-items: start;
   }
+
   .description {
     display: none;
   }
+
   .col {
     flex-basis: 26%;
   }

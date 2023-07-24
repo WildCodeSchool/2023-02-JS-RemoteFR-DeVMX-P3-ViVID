@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+
 import "./BtnSubscribe.scss";
 
 export default function BtnSubscribe({ onOpenModal }) {
