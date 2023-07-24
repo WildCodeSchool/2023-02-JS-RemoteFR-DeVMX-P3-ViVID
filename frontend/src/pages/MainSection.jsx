@@ -37,6 +37,7 @@ export default function MainSection({ categoryId }) {
         {sliderVideoIds.length && (
           <HeroSlider sliderVideoIds={sliderVideoIds} />
         )}
+
         {carouselVideoIds.length && (
           <Carousel carouselVideoIds={carouselVideoIds} />
         )}

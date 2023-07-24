@@ -1,31 +1,30 @@
+import { useState } from "react";
 import "./adminGrid.scss";
 import PropTypes from "prop-types";
 
-export default function AdminGrid({ videos, checked, setChecked }) {
-  const handleCheckedItems = (e) => {
-    if (e.target.checked) {
-      setChecked((oldArray) => [
-        ...oldArray,
-        videos.filter((video) => video.id === parseInt(e.target.value, 10))[0],
-      ]);
-    } else {
-      setChecked(
-        checked.filter((video) => video.id !== parseInt(e.target.value, 10))
-      );
-    }
+export default function AdminGrid({ setVideos, videos }) {
+  const [updateState, setUpdateState] = useState(false);
+
+  const handleCheckedItems = (id) => {
+    const allVideos = videos;
+    const ind = allVideos.findIndex((x) => x.id === id);
+    allVideos[ind].isChecked = !allVideos[ind].isChecked;
+    setVideos(allVideos);
+    setUpdateState(!updateState);
   };
 
   return (
     <div className="grid">
       {videos &&
         videos.map((vid) => (
-          <div className="card" key={vid.id}>
+          <div className="cardForm" key={vid.id}>
             <input
               type="checkbox"
               id={`checkbox${vid.id}`}
-              value={vid.id}
-              onChange={(e) => handleCheckedItems(e)}
+              checked={vid.isChecked}
+              onChange={() => handleCheckedItems(vid.id)}
             />
+
             <label htmlFor={`checkbox${vid.id}`}>
               <img
                 src={`${import.meta.env.VITE_BACKEND_URL}${vid.thumbnail}`}
@@ -40,7 +39,6 @@ export default function AdminGrid({ videos, checked, setChecked }) {
 }
 
 AdminGrid.propTypes = {
-  videos: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
-  checked: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
-  setChecked: PropTypes.func.isRequired,
+  setVideos: PropTypes.func.isRequired,
+  videos: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)).isRequired,
 };

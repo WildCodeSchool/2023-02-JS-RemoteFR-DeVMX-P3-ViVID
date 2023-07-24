@@ -1,20 +1,20 @@
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
-import "./homeSettings.scss";
+// import "./homeSettings.scss";
 
-export default function HomeSetting({ tab, categories }) {
-  return (
-    <div>
-      {tab}
-      {categories.map((category) => (
-        <p>{category}</p>
-      ))}
-    </div>
-  );
-}
+// export default function HomeSetting({ tab, categories }) {
+//   return (
+//     <div>
+//       {tab}
+//       {categories.map((category) => (
+//         <p>{category}</p>
+//       ))}
+//     </div>
+//   );
+// }
 
-HomeSetting.propTypes = {
-  tab: PropTypes.number.isRequired,
-  categories: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string))
-    .isRequired,
-};
+// HomeSetting.propTypes = {
+//   tab: PropTypes.number.isRequired,
+//   categories: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string))
+//     .isRequired,
+// };

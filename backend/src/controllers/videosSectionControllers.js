@@ -66,9 +66,9 @@ const add = (req, res) => {
     });
 };
 
-const destroy = (req, res) => {
+const destroyBycategory = (req, res) => {
   models.videosSection
-    .delete(req.params.id)
+    .deleteBycategory(req.body)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -87,5 +87,5 @@ module.exports = {
   read,
   edit,
   add,
-  destroy,
+  destroyBycategory,
 };

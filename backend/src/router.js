@@ -54,6 +54,7 @@ router.get("/sections/:id", sectionsControllers.read); // delete if not used
 
 router.get("/videosSections/:id", videosSectionControllers.read);
 router.post("/videosSections", videosSectionControllers.add);
+router.delete("/videosSections", videosSectionControllers.destroyBycategory);
 
 router.get("/videosCategories/:id", videosCategoriesControllers.read);
 router.post("/videosCategories", videosCategoriesControllers.add);
