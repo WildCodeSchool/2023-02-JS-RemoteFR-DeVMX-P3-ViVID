@@ -1,14 +1,15 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import PropTypes from "prop-types";
+
 import playVideo from "../../assets/play_logo_white.png";
+
 import "./heroslider.scss";
 
 export default function HeroSlider({ sliderVideoIds }) {
   const [videos, setVideos] = useState([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
@@ -17,35 +18,28 @@ export default function HeroSlider({ sliderVideoIds }) {
         ids: sliderVideoIds,
       })
       .then((res) => {
-        const images = [];
-        for (const i of res.data) {
-          images.push(i.thumbnail);
-        }
+        const images = res.data.map((item) => item.thumbnail);
         setVideos(images);
       })
       .catch((err) => console.error(err));
-  }, []);
+  }, [sliderVideoIds]);
 
   const goToNextImage = () => {
-    const newIndex =
-      currentImageIndex === videos.length - 1 ? 0 : currentImageIndex + 1;
-    setCurrentImageIndex(newIndex);
-    setSelectedImageIndex(newIndex);
-  };
-
-  const handleButtonClick = () => {
-    return (
-      <Link to="/videos/2">
-        <button className="video-btn" type="button">
-          <img className="playImgBtn" src={playVideo} alt="play" />
-        </button>
-      </Link>
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === videos.length - 1 ? 0 : prevIndex + 1
     );
   };
 
+  const handleButtonClick = () => (
+    <Link to={`/videos/${sliderVideoIds[currentImageIndex]}`}>
+      <button className="video-btn" type="button">
+        <img className="playImgBtn" src={playVideo} alt="play" />
+      </button>
+    </Link>
+  );
+
   const handleThumbnailClick = (index) => {
     setCurrentImageIndex(index);
-    setSelectedImageIndex(index);
   };
 
   useEffect(() => {
@@ -64,7 +58,7 @@ export default function HeroSlider({ sliderVideoIds }) {
     return () => {
       clearInterval(imageInterval);
     };
-  }, []);
+  }, [currentImageIndex]);
 
   return (
     <div className="hero-slider-container">
@@ -85,7 +79,7 @@ export default function HeroSlider({ sliderVideoIds }) {
             key={image}
             type="button"
             className={
-              selectedImageIndex === index ? "thumbnail active" : "thumbnail"
+              currentImageIndex === index ? "thumbnail active" : "thumbnail"
             }
             onClick={() => handleThumbnailClick(index)}
           >

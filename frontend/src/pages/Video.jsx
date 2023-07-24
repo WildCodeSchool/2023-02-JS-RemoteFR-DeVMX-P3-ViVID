@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
+
 import "./Videos.scss";
 
 export default function Video() {
