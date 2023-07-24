@@ -41,7 +41,7 @@ export default function Header() {
   };
 
   const closeNavbar = () => {
-    setIsMenuOpen(false); // Mettre à jour l'état pour fermer la navbar
+    setIsMenuOpen(false);
   };
 
   return (
