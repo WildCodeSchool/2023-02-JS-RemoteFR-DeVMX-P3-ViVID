@@ -4,11 +4,11 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 0 15px;
+  height: 60px;
+  width: 100vw;
   background: var(--greenColor);
   position: fixed;
   z-index: 50;
-  width: 100vw;
-  height: 60px;
 
   .flexContainer {
     display: flex;
@@ -17,16 +17,16 @@ header {
     z-index: 60;
 
     .burgerMenu {
-      width: fit-content;
-      height: 35px;
-      background-color: var(--darkColor);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-around;
+      width: fit-content;
+      height: 35px;
+      background-color: var(--darkColor);
       border: none;
-      padding: 5px 8px;
       border-radius: 5px;
+      padding: 5px 8px;
       cursor: pointer;
 
       .bar {
@@ -44,6 +44,9 @@ header {
       margin-left: clamp(15px, 3vw, 30px);
       animation: fadeInLeft 0.5s ease-in-out;
     }
+  }
+  .btnBackAdmin {
+    margin-right: 1rem;
   }
 }
 

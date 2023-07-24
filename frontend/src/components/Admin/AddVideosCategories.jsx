@@ -1,5 +1,6 @@
-import axios from "axios";
 import { useEffect, useRef, useState } from "react";
+import axios from "axios";
+
 import "./addVideosCategories.scss";
 
 export default function AddVideosCategories() {
@@ -9,10 +10,8 @@ export default function AddVideosCategories() {
   const [time, setTime] = useState("00:00:00");
   const [categoryId, setCategoryId] = useState(0);
   const [isPublic, setIsPublic] = useState(0);
-
   const [categories, setCategories] = useState([]);
   const [msg, setMsg] = useState("");
-
   const [newCategory, setNewCategory] = useState("");
   const [categoryName, setCategoryName] = useState("");
   const [categoryMsg, setCategoryMsg] = useState("");
@@ -195,7 +194,7 @@ export default function AddVideosCategories() {
 
           <div id="is_public_input">
             <label htmlFor="is_public" id="is_public_label">
-              vidéo publique
+              Vidéo Publique
             </label>
             <input
               type="checkbox"
@@ -226,9 +225,11 @@ export default function AddVideosCategories() {
             Valider
           </button>
         </form>
+
         <p className={msg === "done" ? "display" : "hide"}>
           Video ajoutée avec succés
         </p>
+
         <p className={msg === "error" ? "display" : "hide"}>
           Error ! Reéssayez{" "}
         </p>
@@ -237,6 +238,7 @@ export default function AddVideosCategories() {
       <div className="CategoryManip" id="CategoryManip">
         <form className="formAddCategories" encType="multipart/form-data">
           <h2 className="titleModifyCategories">Modification de catégories</h2>
+
           <ul className="ulAddCategories">
             {categories.slice(1).map((category) => (
               <li className="liAddCategories">
@@ -247,6 +249,7 @@ export default function AddVideosCategories() {
                   defaultValue={category.category}
                   onChange={(e) => setCategoryName(e.target.value)}
                 />
+
                 <button
                   className="btnValidateAndDelete"
                   type="button"
@@ -255,6 +258,7 @@ export default function AddVideosCategories() {
                 >
                   ✓
                 </button>
+
                 <button
                   className="btnValidateAndDelete"
                   type="button"
@@ -266,6 +270,7 @@ export default function AddVideosCategories() {
               </li>
             ))}
           </ul>
+
           <div className="addCategoriesContainer">
             <input
               type="text"
@@ -279,8 +284,10 @@ export default function AddVideosCategories() {
                 padding: "10px 20px",
                 border: "none",
                 borderRadius: "20px",
+                outline: "none",
               }}
             />
+
             <button
               className="add_category"
               type="submit"
@@ -290,9 +297,11 @@ export default function AddVideosCategories() {
             </button>
           </div>
         </form>
+
         <p className={categoryMsg === "done" ? "display" : "hide"}>
           Opération réussie
         </p>
+
         <p className={categoryMsg === "error" ? "display" : "hide"}>
           Error ! Reéssayez{" "}
         </p>

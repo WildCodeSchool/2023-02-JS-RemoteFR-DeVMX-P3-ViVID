@@ -5,7 +5,7 @@
   align-items: flex-start;
   width: 90%;
   height: fit-content;
-  padding: 40px 0;
+  padding: 10px 0;
   margin: 0 auto;
 
   .card {
@@ -17,15 +17,14 @@
       calc(10vw + var(--vid-info-height)),
       calc(var(--imgWidth) + var(--vid-info-height))
     );
-    font-size: 0;
-    text-decoration: none;
-    margin: 8px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    background-color: var(--greenColor);
+    background: var(--greenColor);
+    margin: 10px auto 30px auto;
+    text-decoration: none;
+    font-size: 0;
     animation: ZoomIn 0.3s linear;
-    transition: 0.3s ease-in-out;
 
     @for $i from 1 through 30 {
       &:nth-child(#{$i}n) {
@@ -41,8 +40,8 @@
 
     img {
       width: 100%;
-      object-fit: cover;
       height: clamp(140px, 20vw, var(--imgWidth));
+      object-fit: cover;
     }
 
     h2 {
@@ -57,10 +56,20 @@
   }
 }
 
+h3 {
+  margin-left: 50px;
+  color: white;
+  font-size: 1.6rem;
+}
+
+.hide {
+  display: none;
+}
+
 @keyframes ZoomIn {
   0% {
     opacity: 0;
-    transform: scale(0.1);
+    transform: scale(0.5);
   }
 
   85% {

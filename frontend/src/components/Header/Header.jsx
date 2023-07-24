@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 
 import BtnConnection from "./BtnConnection";
 import BtnDisonnect from "./BtnDisconnect";
@@ -40,6 +40,10 @@ export default function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeNavbar = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <header>
       <div className="flexContainer">
@@ -49,7 +53,10 @@ export default function Header() {
           <i className="bar lastBar" />
         </button>
         {isMenuOpen && (
-          <NavModal className={isMenuOpen ? "modal-enter" : "modal-exit"} />
+          <NavModal
+            closeNavbar={closeNavbar}
+            className={isMenuOpen ? "modal-enter" : "modal-exit"}
+          />
         )}
 
         <Link to="/">

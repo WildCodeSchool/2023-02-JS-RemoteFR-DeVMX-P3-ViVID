@@ -116,10 +116,10 @@ export default function CategoriesSettings({ tab }) {
       </p>
       <AdminGrid setVideos={setVideos} videos={videos} />
       <button type="submit">Valider</button>
-
       <p className={msg === "done" ? "display" : "hide"}>
         Vos modifications sont prises en compte
       </p>
+
       <p className={msg === "error" ? "display" : "hide"}>Error ! Reéssayez </p>
     </form>
   );

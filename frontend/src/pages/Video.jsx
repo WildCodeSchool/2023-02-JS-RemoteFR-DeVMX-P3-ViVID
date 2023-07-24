@@ -1,25 +1,38 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
-import "../components/VideoPlayer.scss";
-import VideoPlayer from "../components/VideoPlayer";
 
-export default function Video(videoid) {
-  const [video, setVideo] = useState({});
+import "./Videos.scss";
+
+export default function Video() {
+  const { id } = useParams();
+  const [video, setVideo] = useState({
+    title: {},
+    video: {},
+  });
+
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/videos/${videoid}`)
-      .then(([res]) => {
-        console.warn(res);
-        setVideo(res[0].json());
-        console.warn(res);
+      .get(`${import.meta.env.VITE_BACKEND_URL}/videos/${id}`)
+      .then((res) => {
+        setVideo(res.data[0]);
       })
-      .catch((error) => console.warn(error.response.data));
+      .catch((err) => console.warn(err));
   }, []);
 
   return (
     <div className="video">
-      <img src={video.thumbnail} alt={video.title} />
-      <VideoPlayer />
+      <video
+        autoPlay="true"
+        className="video-control"
+        controls
+        width="600"
+        height="400"
+        src={`${import.meta.env.VITE_BACKEND_URL}/${video.video}`}
+        type="video/mp4"
+      >
+        <track kind="captions" />
+      </video>
     </div>
   );
 }

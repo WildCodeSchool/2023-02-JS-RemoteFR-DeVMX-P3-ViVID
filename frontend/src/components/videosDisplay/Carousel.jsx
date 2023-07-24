@@ -1,9 +1,11 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import rightArrow from "../../assets/videos/right-arrow.png";
-import leftArrow from "../../assets/videos/left-arrow.png";
+
+import rightArrow from "../../assets/right-arrow.png";
+import leftArrow from "../../assets/left-arrow.png";
+
 import "./carousel.scss";
 
 export default function Carousel({ carouselVideoIds }) {
@@ -26,17 +28,15 @@ export default function Carousel({ carouselVideoIds }) {
   }, []);
 
   const handleLeftButtonClick = () => {
-    if (carouselPosition > 0) {
-      setCarouselPosition(carouselPosition - 1);
-    }
+    setCarouselPosition((prevPosition) =>
+      prevPosition > 0 ? prevPosition - 1 : prevPosition
+    );
   };
 
   const handleRightButtonClick = () => {
-    if (carouselPosition === carouselVid.length - 1) {
-      setCarouselPosition(0);
-    } else {
-      setCarouselPosition(carouselPosition + 1);
-    }
+    setCarouselPosition((prevPosition) =>
+      prevPosition === carouselVid.length - 1 ? 0 : prevPosition + 1
+    );
   };
 
   return (
