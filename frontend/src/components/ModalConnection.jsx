@@ -1,7 +1,8 @@
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+
 import UserExport from "../contexts/UserContext";
 
 import "./ModalConnection.scss";
@@ -101,8 +102,6 @@ export default function ModalConnection({ isOpen, onOpenModal, onCloseModal }) {
                   setPassword(input.value);
                 }}
               />
-
-              {/* <a href="#">Mot de passe oublié ?</a> */}
 
               <button type="submit" className="modalBtnConnect">
                 Se connecter

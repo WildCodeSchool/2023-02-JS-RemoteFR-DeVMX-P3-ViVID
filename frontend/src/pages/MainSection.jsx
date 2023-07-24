@@ -1,9 +1,11 @@
+import { useEffect, useState } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
+
 import Carousel from "../components/videosDisplay/Carousel";
 import Grid from "../components/videosDisplay/Grid";
 import HeroSlider from "../components/videosDisplay/HeroSlider";
+
 import "./mainSection.scss";
 
 export default function MainSection({ categoryId }) {
