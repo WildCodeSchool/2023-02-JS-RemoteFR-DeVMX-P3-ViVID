@@ -23,7 +23,8 @@ select {
   color: whitesmoke;
   margin: 0 2rem 0 2rem;
 }
- .dlt-btn {
+
+.dlt-btn {
   cursor: pointer;
   margin-left: 6rem;
   transition: all 0.5s ease;
@@ -40,6 +41,7 @@ select {
   &:hover {
   color: var(--darkColor);
   background-color: white;
+  }
 }
 
 .valid-btn{
