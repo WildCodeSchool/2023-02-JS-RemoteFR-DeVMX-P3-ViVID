@@ -195,7 +195,7 @@ export default function AddVideosCategories() {
 
           <div id="is_public_input">
             <label htmlFor="is_public" id="is_public_label">
-              vidéo publique
+              Vidéo Publique
             </label>
             <input
               type="checkbox"
@@ -279,6 +279,7 @@ export default function AddVideosCategories() {
                 padding: "10px 20px",
                 border: "none",
                 borderRadius: "20px",
+                outline: "none",
               }}
             />
             <button

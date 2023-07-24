@@ -83,7 +83,9 @@ export default function CategoriesSettings({ tab }) {
   return (
     <form onSubmit={(e) => postChoices(e)}>
       <div key={1} className="section1">
-        <label htmlFor="displayTypes">Type d'entête</label>
+        <label htmlFor="displayTypes" className="display-types">
+          Type d'entête
+        </label>
         <select
           name="displayTypes"
           id="displayTypes"
@@ -108,7 +110,9 @@ export default function CategoriesSettings({ tab }) {
           />
           <p className={videosBySections.length ? "" : "hide"}>Pas d'entête</p>
         </div>
-        <button type="button">Confirmer la suppression</button>
+        <button type="button" className="dlt-btn">
+          Confirmer la suppression
+        </button>
 
         <AdminGrid
           videos={videos}
@@ -116,7 +120,9 @@ export default function CategoriesSettings({ tab }) {
           setChecked={setCheckedVideos}
         />
       </div>
-      <button type="submit">Valider</button>
+      <button type="submit" className="valid-btn">
+        Valider
+      </button>
 
       <p className={msg === "done" ? "display" : "hide"}>
         Vos modifications sont prises en compte
