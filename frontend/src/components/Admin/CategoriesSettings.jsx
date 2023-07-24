@@ -1,7 +1,9 @@
+import { useEffect, useState } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
+
 import AdminGrid from "./AdminGrid";
+
 import "./categoriesSettings.scss";
 
 export default function CategoriesSettings({ tab }) {
