@@ -40,6 +40,10 @@ export default function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeNavbar = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <header>
       <div className="flexContainer">
@@ -49,7 +53,10 @@ export default function Header() {
           <i className="bar lastBar" />
         </button>
         {isMenuOpen && (
-          <NavModal className={isMenuOpen ? "modal-enter" : "modal-exit"} />
+          <NavModal
+            closeNavbar={closeNavbar}
+            className={isMenuOpen ? "modal-enter" : "modal-exit"}
+          />
         )}
 
         <Link to="/">
