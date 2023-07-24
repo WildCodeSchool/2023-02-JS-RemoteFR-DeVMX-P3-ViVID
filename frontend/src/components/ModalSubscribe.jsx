@@ -1,6 +1,7 @@
-import PropTypes from "prop-types";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+
 import "./ModalSubscribe.scss";
 
 export default function ModalSubscribe({ isOpen, onCloseModal }) {
@@ -10,6 +11,9 @@ export default function ModalSubscribe({ isOpen, onCloseModal }) {
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
+  const [checkedOne, setCheckedOne] = useState(false);
+  const [checkedTwo, setCheckedTwo] = useState(false);
+  const [checkedThree, setCheckedThree] = useState(false);
 
   const handleFirstname = (e) => {
     setFirstname(e.target.value);
@@ -48,10 +52,6 @@ export default function ModalSubscribe({ isOpen, onCloseModal }) {
     };
   };
 
-  const [checkedOne, setCheckedOne] = React.useState(false);
-  const [checkedTwo, setCheckedTwo] = React.useState(false);
-  const [checkedThree, setCheckedThree] = React.useState(false);
-
   const handleChangeOne = () => {
     setCheckedOne(!checkedOne);
   };
@@ -80,123 +80,123 @@ export default function ModalSubscribe({ isOpen, onCloseModal }) {
               X
             </button>
           </header>
+
           <section className="submodal-container-body">
             <div className="form-body">
-              <div className="firstname">
-                <label className="form_label" htmlFor="firstname">
-                  Prénom :
-                </label>
-                <input
-                  className="form_input"
-                  type="text"
-                  id="firstname"
-                  value={firstname}
-                  onChange={handleFirstname}
-                  placeholder="exemple"
-                />
-              </div>
-              <div className="lastname">
-                <label className="form_label" htmlFor="lastname">
-                  Nom :
-                </label>
-                <input
-                  className="form_input"
-                  type="text"
-                  id="lastname"
-                  value={lastname}
-                  onChange={handleLastname}
-                  placeholder="exemple"
-                />
-              </div>
-              <div className="email">
-                <label className="form_label" htmlFor="email">
-                  Identifiant :
-                </label>
-                <input
-                  className="form_input"
-                  type="email"
-                  id="email"
-                  value={email}
-                  onChange={handleEmail}
-                  placeholder="email@exemple.com"
-                />
-              </div>
-              <div className="username">
-                <label className="form_label" htmlFor="userName">
-                  Pseudonyme :
-                </label>
-                <input
-                  className="form_input"
-                  type="text"
-                  id="username"
-                  value={username}
-                  onChange={handleUsername}
-                  placeholder="exemple"
-                />
-              </div>
-              <div className="password">
-                <label className="form_label" htmlFor="password">
-                  Mot de Passe :
-                </label>
-                <input
-                  className="form_input"
-                  type="password"
-                  id="password"
-                  value={password}
-                  onChange={handlePassword}
-                  placeholder="******"
-                />
-              </div>
-              <div className="verification-password">
-                <label className="form_label" htmlFor="verificationPassword">
-                  Vérification du Mot de Passe :
-                </label>
-                <input
-                  className="form_input"
-                  type="password"
-                  id="confirmPassword"
-                  value={confirmPassword}
-                  onChange={handleConfirmPassword}
-                  placeholder="******"
-                />
-              </div>
-            </div>
-            <div className="signup_checkbox">
-              <label>
-                <input
-                  className="checkbox_input"
-                  type="checkbox"
-                  checked={checkedOne}
-                  onChange={handleChangeOne}
-                />
-                J'accepte de recevoir par e-mail les offres et newsletters
-                d'informations de VIVID
+              <label className="form_label" htmlFor="firstname">
+                Prénom :
               </label>
-            </div>
-            <div className="signup_checkbox">
-              <label>
-                <input
-                  className="checkbox_input"
-                  type="checkbox"
-                  checked={checkedTwo}
-                  onChange={handleChangeTwo}
-                />
-                Je souhaite également recevoir par e-mail les offres et
-                newsletters d'informations des partenaires de VIVID ou des
-                autres sociétés du groupe Origins Digital
+              <input
+                className="form_input"
+                type="text"
+                id="firstname"
+                value={firstname}
+                onChange={handleFirstname}
+                placeholder="Prénom"
+              />
+
+              <label className="form_label" htmlFor="lastname">
+                Nom :
               </label>
-            </div>
-            <div className="signup_checkbox">
-              <label>
-                <input
-                  className="checkbox_input"
-                  type="checkbox"
-                  checked={checkedThree}
-                  onChange={handleChangeThree}
-                />
-                J'accepte les <Link to="/">Conditions d'utilisations</Link>
+              <input
+                className="form_input"
+                type="text"
+                id="lastname"
+                value={lastname}
+                onChange={handleLastname}
+                placeholder="Nom"
+              />
+
+              <label className="form_label" htmlFor="email">
+                Identifiant :
               </label>
+              <input
+                className="form_input"
+                type="email"
+                id="email"
+                value={email}
+                onChange={handleEmail}
+                placeholder="email@exemple.com"
+              />
+
+              <label className="form_label" htmlFor="userName">
+                Pseudonyme :
+              </label>
+              <input
+                className="form_input"
+                type="text"
+                id="username"
+                value={username}
+                onChange={handleUsername}
+                placeholder="Pseudo"
+              />
+
+              <label className="form_label" htmlFor="password">
+                Mot de Passe :
+              </label>
+              <input
+                className="form_input"
+                type="password"
+                id="password"
+                value={password}
+                onChange={handlePassword}
+                placeholder="******"
+              />
+
+              <label className="form_label" htmlFor="verificationPassword">
+                Vérification du Mot de Passe :
+              </label>
+              <input
+                className="form_input"
+                type="password"
+                id="confirmPassword"
+                value={confirmPassword}
+                onChange={handleConfirmPassword}
+                placeholder="******"
+              />
             </div>
+
+            <div className="ckeckboxContainer">
+              <div className="signup_checkbox">
+                <label>
+                  <input
+                    className="checkbox_input"
+                    type="checkbox"
+                    checked={checkedOne}
+                    onChange={handleChangeOne}
+                  />
+                  J'accepte de recevoir par e-mail les offres et newsletters
+                  d'informations de VIVID
+                </label>
+              </div>
+
+              <div className="signup_checkbox">
+                <label>
+                  <input
+                    className="checkbox_input"
+                    type="checkbox"
+                    checked={checkedTwo}
+                    onChange={handleChangeTwo}
+                  />
+                  Je souhaite également recevoir par e-mail les offres et
+                  newsletters d'informations des partenaires de VIVID ou des
+                  autres sociétés du groupe Origins Digital
+                </label>
+              </div>
+
+              <div className="signup_checkbox">
+                <label>
+                  <input
+                    className="checkbox_input"
+                    type="checkbox"
+                    checked={checkedThree}
+                    onChange={handleChangeThree}
+                  />
+                  J'accepte les <Link to="/">Conditions d'utilisations</Link>
+                </label>
+              </div>
+            </div>
+
             <div className="text_subscription">
               <p>
                 VIVI collecte vos pseudonymes, adresses email, mots de passe,
@@ -242,20 +242,20 @@ export default function ModalSubscribe({ isOpen, onCloseModal }) {
               </p>
             </div>
           </section>
-          <section>
-            <footer className="modal-container-footer">
-              <div className="register-button">
-                <button type="submit" className="btn">
-                  S'inscrire
-                </button>
-              </div>
-              <div className="cancel-button">
-                <button onClick={onCloseModal} type="button" className="cl-btn">
-                  Annuler
-                </button>
-              </div>
-            </footer>
-          </section>
+
+          <footer className="modal-container-footer">
+            <div className="register-button">
+              <button type="submit" className="btn">
+                S'inscrire
+              </button>
+            </div>
+
+            <div className="cancel-button">
+              <button onClick={onCloseModal} type="button" className="cl-btn">
+                Annuler
+              </button>
+            </div>
+          </footer>
         </div>
       </div>
     </form>

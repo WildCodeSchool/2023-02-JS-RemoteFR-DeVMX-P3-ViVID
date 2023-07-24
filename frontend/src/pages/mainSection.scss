@@ -2,38 +2,18 @@
   display: flex;
   align-items: flex-start;
   min-height: 75vh;
-}
 
-.body {
-  width: 100vw;
-  min-height: 75vh;
-  background-color: var(--secondDarkColor);
-}
-
-.h1MainSection {
-  position: relative;
-  top: 60px;
-  color: white;
-  text-shadow: 1px 1px 3px #00000080;
-  padding: 0 5%;
-}
-
-.h2MainSection {
-  color: white;
-  padding: 20px 5% 0 5%;
+  .body {
+    width: 100vw;
+    min-height: 75vh;
+    background-color: var(--secondDarkColor);
+  }
 }
 
 @media screen and (min-width: 756px) {
   .flexContainer {
-    display: flex;
-    align-items: flex-start;
-  }
-
-  .body {
-    padding-left: 70px;
-  }
-
-  .h1MainSection {
-    top: 80px;
+    .body {
+      padding-left: 70px;
+    }
   }
 }

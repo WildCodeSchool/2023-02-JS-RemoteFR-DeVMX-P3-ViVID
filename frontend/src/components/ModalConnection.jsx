@@ -1,7 +1,8 @@
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+
 import UserExport from "../contexts/UserContext";
 
 import "./ModalConnection.scss";
@@ -14,15 +15,13 @@ export default function ModalConnection({ isOpen, onOpenModal, onCloseModal }) {
   const [isLoggedIn, setisLoggedIn] = useState(false);
   const navigate = useNavigate();
 
-  if (!isOpen || isLoggedIn) {
-    return null;
-  }
-
-  const getUser = (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
     if (!email || !password) {
       setMsg("Veuillez renseigner vos identifiants");
+      return;
     }
+
     axios
       .post(
         `${import.meta.env.VITE_BACKEND_URL}/login`,
@@ -54,13 +53,16 @@ export default function ModalConnection({ isOpen, onOpenModal, onCloseModal }) {
       .catch((err) => console.error(err));
   };
 
+  if (!isOpen || isLoggedIn) {
+    return null;
+  }
+
   return (
     <div className="modal">
       <div className="modal-content">
         <button type="button" className="close-btn" onClick={onCloseModal}>
           X
         </button>
-
         <h2>Identifiez-vous</h2>
         <div className="formContainer">
           <div className="signup-section">
@@ -74,36 +76,25 @@ export default function ModalConnection({ isOpen, onOpenModal, onCloseModal }) {
               Créer un compte
             </button>
           </div>
-
           <div className="form-section">
-            <h3>Déjà incrit ?</h3>
-            <p>connectez-vous ci-dessous !</p>
-            <form onSubmit={getUser}>
+            <h3>Déjà inscrit ?</h3>
+            <p>Connectez-vous ci-dessous !</p>
+            <form onSubmit={handleFormSubmit}>
               <label htmlFor="email">Identifiant</label>
               <input
                 type="email"
                 id="email"
                 placeholder="email@exemple.com"
-                onChange={(event) => {
-                  const input = event.target;
-                  setEmail(input.value);
-                }}
+                onChange={(event) => setEmail(event.target.value)}
               />
-
               <label htmlFor="password">Mot de passe</label>
               <input
                 type="password"
                 id="password"
                 placeholder="******"
                 className="password"
-                onChange={(event) => {
-                  const input = event.target;
-                  setPassword(input.value);
-                }}
+                onChange={(event) => setPassword(event.target.value)}
               />
-
-              {/* <a href="#">Mot de passe oublié ?</a> */}
-
               <button type="submit" className="modalBtnConnect">
                 Se connecter
               </button>

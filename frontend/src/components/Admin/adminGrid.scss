@@ -8,7 +8,7 @@
   padding: 40px 0;
   margin: 0 auto;
 
-  .card {
+  .cardForm {
     border: none;
     width: clamp(140px, 20vw, var(--imgWidth));
     height: clamp(
@@ -37,7 +37,6 @@
         content: " ";
         display: block;
         border-radius: 50%;
-        // border: 1px solid rgb(180, 180, 180);
         position: absolute;
         top: -5px;
         left: -5px;
@@ -64,7 +63,7 @@
         padding: 10px;
       }
     }
-    input[type="checkbox"][id^="checkbox"] {
+    input[type="checkbox"] {
       display: none;
 
       &:checked + label {

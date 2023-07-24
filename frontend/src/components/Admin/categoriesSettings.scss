@@ -1,12 +1,74 @@
 form {
-  .label {
-    color: whitesmoke;
-    display: block;
+  padding: 20px;
+  .section1 {
+    .sectionLabel {
+      color: whitesmoke;
+      margin-right: 20px;
+    }
+    .actualSection {
+      min-height: 200px;
+      .previousSection {
+        color: whitesmoke;
+        font-size: 28px;
+        margin: 0 auto;
+        width: fit-content;
+      }
+    }
+    .hide {
+      display: none;
+    }
   }
-  .actualSection {
-    min-height: 200px;
+}
+
+select {
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.display-types {
+  color: whitesmoke;
+  margin: 0 2rem 0 2rem;
+}
+
+.dlt-btn {
+  cursor: pointer;
+  margin-left: 6rem;
+  transition: all 0.5s ease;
+  color: whitesmoke;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1;
+  font-size: 1rem;
+  background-color: transparent;
+  padding: 7px;
+  outline: none;
+  border-radius: 20px;
+   
+  &:hover {
+  color: var(--darkColor);
+  background-color: white;
   }
-  .hide {
-    display: none;
+}
+
+.valid-btn{
+  cursor: pointer;
+  margin: 0 0 3rem 6rem;
+  transition: all 0.5s ease;
+  color: whitesmoke;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1;
+  font-size: 1rem;
+  background-color: transparent;
+  padding: 7px;
+  outline: none;
+  border-radius: 20px;
+  
+  &:hover {
+  color: var(--darkColor);
+  background-color: white;
   }
 }

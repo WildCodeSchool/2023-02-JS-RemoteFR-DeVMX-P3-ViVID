@@ -5,40 +5,63 @@ import axios from "axios";
 
 import "./grid.scss";
 
+const categoryHeadings = {
+  1: "Selection pour vous",
+  2: "Selection pour vous dans Ciel & Nuages",
+  3: "Selection pour vous dans Montagnes",
+  4: "Selection pour vous dans Forêt",
+  5: "Selection pour vous dans Mer & Océans",
+  6: "Selection pour vous dans Urbain",
+  7: "Selection pour vous dans Champ",
+};
+
 export default function Grid({ categoryId }) {
   const [videos, setVideos] = useState([]);
+
   useEffect(() => {
-    if (categoryId === 1) {
-      axios
-        .get(`${import.meta.env.VITE_BACKEND_URL}/videos`)
-        .then((res) => setVideos(res.data))
-        .catch((err) => console.error(err));
-    } else {
-      axios
-        .get(
-          `${import.meta.env.VITE_BACKEND_URL}/videosByCategory/${categoryId}`
-        )
-        .then((res) => setVideos(res.data))
-        .catch((err) => console.error(err));
-    }
-  }, []);
+    const fetchData = async () => {
+      try {
+        const url =
+          categoryId === 1
+            ? `${import.meta.env.VITE_BACKEND_URL}/videos`
+            : `${
+                import.meta.env.VITE_BACKEND_URL
+              }/videosByCategory/${categoryId}`;
+        const response = await axios.get(url);
+        setVideos(response.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchData();
+  }, [categoryId]);
 
   return (
-    <div className="grid">
-      {videos &&
-        videos.map((vid) => (
-          <Link className="card" key={vid.id} to={`/videos/${vid.id}`}>
-            <img
-              src={`${import.meta.env.VITE_BACKEND_URL}${vid.thumbnail}`}
-              alt={vid.title}
-            />
-            <h2>{vid.title}</h2>
-          </Link>
-        ))}
-    </div>
+    <>
+      {Object.keys(categoryHeadings).map((key) => (
+        <h3
+          key={key}
+          className={categoryId === parseInt(key, 10) ? "showtext" : "hide"}
+        >
+          {categoryHeadings[key]}
+        </h3>
+      ))}
+      <div className="grid">
+        {videos &&
+          videos.map((vid) => (
+            <Link className="card" key={vid.id} to={`/videos/${vid.id}`}>
+              <img
+                src={`${import.meta.env.VITE_BACKEND_URL}${vid.thumbnail}`}
+                alt={vid.title}
+              />
+              <h2>{vid.title}</h2>
+            </Link>
+          ))}
+      </div>
+    </>
   );
 }
 
 Grid.propTypes = {
-  categoryId: PropTypes.arrayOf(PropTypes.number).isRequired,
+  categoryId: PropTypes.number.isRequired,
 };
