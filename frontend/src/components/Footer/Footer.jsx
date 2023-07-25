@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
@@ -5,12 +6,24 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 
+import ModalConnection from "../ModalConnection";
+
 import logo from "../../assets/vivid_logo.png";
 import cadenas from "../../assets/cadenas_white.png";
 
 import "./footer.scss";
 
 export default function Footer() {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   return (
     <div className="footer">
       <div className="col">
@@ -43,7 +56,7 @@ export default function Footer() {
           <li>Des vidéos exclusives pour vous</li>
 
           <li>
-            <button className="btnConnection" type="button">
+            <button className="btnConnection" type="button" onClick={openModal}>
               <div className="cadena">
                 <img src={cadenas} alt="cadena" />
               </div>
@@ -53,6 +66,10 @@ export default function Footer() {
           </li>
         </ul>
       </div>
+
+      {modalOpen && (
+        <ModalConnection isOpen={modalOpen} onCloseModal={closeModal} />
+      )}
     </div>
   );
 }
