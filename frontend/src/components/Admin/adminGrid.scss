@@ -1,11 +1,10 @@
-.grid {
+.gridAdmin {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
-  width: 90%;
+  width: 100%;
   height: fit-content;
-  padding: 40px 0;
   margin: 0 auto;
 
   .cardForm {
@@ -47,6 +46,7 @@
         transition-duration: 0.4s;
         transform: scale(0);
       }
+      
       img {
         width: 100%;
         object-fit: cover;
@@ -55,19 +55,21 @@
 
       h2 {
         color: whitesmoke;
-        width: 200px;
-        height: 30px;
-        font-size: 1rem;
+        width: 100%;
+        height: fit-content;
+        font-size: clamp(0.8rem, 3vw, 1rem);
         font-weight: 400;
         text-align: left;
         padding: 10px;
       }
     }
+    
     input[type="checkbox"] {
       display: none;
 
       &:checked + label {
         transform: scale(0.9);
+        
         &:before {
           content: "✓";
           background-color: var(--goldColor);
@@ -75,5 +77,11 @@
         }
       }
     }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .grid {
+    width: 90%;
   }
 }

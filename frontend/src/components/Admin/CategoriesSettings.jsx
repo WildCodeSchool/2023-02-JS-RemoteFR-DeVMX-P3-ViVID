@@ -38,7 +38,7 @@ export default function CategoriesSettings({ tab }) {
       axios
         .get(`${import.meta.env.VITE_BACKEND_URL}/videos`)
         .then((result) => {
-          result.data.array.forEach((vid) => {
+          result.data.forEach((vid) => {
             if (data.includes(vid.id)) {
               vid.isChecked = true;
             } else {
@@ -52,7 +52,7 @@ export default function CategoriesSettings({ tab }) {
       axios
         .get(`${import.meta.env.VITE_BACKEND_URL}/videosByCategory/${tab}`)
         .then((res) => {
-          res.data.array.forEach((vid) => {
+          res.data.forEach((vid) => {
             if (data.includes(vid.id)) {
               vid.isChecked = true;
             } else {
@@ -90,7 +90,6 @@ export default function CategoriesSettings({ tab }) {
       setMsg("");
     }, 3000);
   };
-
   return (
     <form className="newSection" onSubmit={(e) => postChoices(e)}>
       <label htmlFor="displayTypes" className="sectionLabel">
@@ -99,12 +98,18 @@ export default function CategoriesSettings({ tab }) {
       <select
         name="displayTypes"
         id="displayTypes"
-        defaultValue="--Select--"
+        defaultValue="-- Select --"
         onChange={(e) => {
           setChosenSection(e.target.value);
         }}
       >
-        <option value="">-- Select --</option>
+        {previousSection ? (
+          <option value={previousSection}>
+            {sections[previousSection - 1].section}
+          </option>
+        ) : (
+          <option value="">-- Select --</option>
+        )}
         {sections.slice(1).map((section) => (
           <option key={section.id} value={section.id}>
             {section.section}
@@ -112,16 +117,18 @@ export default function CategoriesSettings({ tab }) {
         ))}
       </select>
 
-      <p className="help">
-        Choisissez le type de l'entête et ajoutez des videos
-      </p>
+      <p className="help">Cochez les videos à afficher</p>
       <AdminGrid setVideos={setVideos} videos={videos} />
-      <button type="submit">Valider</button>
+      <button type="submit" className="valid-btn">
+        Valider
+      </button>
       <p className={msg === "done" ? "display" : "hide"}>
-        Vos modifications sont prises en compte
+        Vos modifications ont été prises en compte
       </p>
 
-      <p className={msg === "error" ? "display" : "hide"}>Error ! Reéssayez </p>
+      <p className={msg === "error" ? "display" : "hide"}>
+        Erreur ! Reéssayez{" "}
+      </p>
     </form>
   );
 }
