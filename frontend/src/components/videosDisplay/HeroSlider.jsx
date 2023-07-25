@@ -93,7 +93,6 @@ export default function HeroSlider({ sliderVideoIds }) {
     </div>
   );
 }
-
 HeroSlider.propTypes = {
   sliderVideoIds: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
