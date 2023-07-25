@@ -15,7 +15,7 @@ export default function AdminGrid({ setVideos, videos }) {
   };
 
   return (
-    <div className="grid">
+    <div className="gridAdmin">
       {videos &&
         videos.map((vid) => (
           <div className="cardForm" key={vid.id}>
