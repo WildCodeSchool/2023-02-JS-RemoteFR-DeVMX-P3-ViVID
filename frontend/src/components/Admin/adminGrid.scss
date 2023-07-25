@@ -5,7 +5,6 @@
   align-items: flex-start;
   width: 100%;
   height: fit-content;
-  // padding: 40px 0;
   margin: 0 auto;
 
   .cardForm {
@@ -47,6 +46,7 @@
         transition-duration: 0.4s;
         transform: scale(0);
       }
+      
       img {
         width: 100%;
         object-fit: cover;
@@ -63,11 +63,13 @@
         padding: 10px;
       }
     }
+    
     input[type="checkbox"] {
       display: none;
 
       &:checked + label {
         transform: scale(0.9);
+        
         &:before {
           content: "✓";
           background-color: var(--goldColor);
