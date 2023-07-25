@@ -1,10 +1,11 @@
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
   faInstagram,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import { useState } from "react";
+
 import ModalConnection from "../ModalConnection";
 
 import logo from "../../assets/vivid_logo.png";
