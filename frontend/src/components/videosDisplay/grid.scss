@@ -25,6 +25,7 @@
     margin: 10px auto 30px auto;
     text-decoration: none;
     font-size: 0;
+    transition: 0.2s ease;
     animation: ZoomIn 0.3s linear;
 
     @for $i from 1 through 30 {
