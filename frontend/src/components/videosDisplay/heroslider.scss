@@ -28,6 +28,7 @@
   width: 100%;
   bottom: 5%;
   padding: 0 0 10px 0;
+  transition: 0.3s ease;
 
   > button {
     width: 30px;
@@ -36,7 +37,13 @@
     transition: transform 0.3s;
     border: none;
     margin: 3px;
+    transition: 0.3s ease;
     animation: fadeInBottom 0.5s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
 
     > img {
       width: 100%;
