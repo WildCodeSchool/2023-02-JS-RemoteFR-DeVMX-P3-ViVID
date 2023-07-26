@@ -47,8 +47,6 @@ const getByCategoryAndPosition = (req, res) => {
 const add = (req, res) => {
   const video = req.body;
 
-  // TODO validations (length, format...)
-
   models.sections
     .insert(video)
     .then(([result]) => {

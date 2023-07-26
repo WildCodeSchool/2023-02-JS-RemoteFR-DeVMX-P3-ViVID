@@ -91,8 +91,6 @@ const getByCategory = (req, res) => {
 const edit = (req, res) => {
   const video = req.body;
 
-  // TODO validations (length, format...)
-
   video.id = parseInt(req.params.id, 10);
 
   models.videos
@@ -112,7 +110,6 @@ const edit = (req, res) => {
 
 const add = (req, res) => {
   const video = req.body;
-  // TODO validations (length, format...)
   models.videos
     .insert(video)
     .then(([result]) => {
