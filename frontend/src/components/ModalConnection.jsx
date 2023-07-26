@@ -68,7 +68,7 @@ export default function ModalConnection({ isOpen, onOpenModal, onCloseModal }) {
         <h2>Identifiez-vous</h2>
         <div className="formContainer">
           <div className="signup-section">
-            <h3>Pas encore inscrit ?</h3>
+            <h3 className="h3Modal">Pas encore inscrit ?</h3>
             <p>N'attendez plus ! Rejoignez la communauté Vivid !</p>
             <button
               type="button"
@@ -79,7 +79,7 @@ export default function ModalConnection({ isOpen, onOpenModal, onCloseModal }) {
             </button>
           </div>
           <div className="form-section">
-            <h3>Déjà inscrit ?</h3>
+            <h3 className="h3Modal">Déjà inscrit ?</h3>
             <p>Connectez-vous ci-dessous !</p>
             <form onSubmit={handleFormSubmit}>
               <label htmlFor="email">Identifiant</label>
