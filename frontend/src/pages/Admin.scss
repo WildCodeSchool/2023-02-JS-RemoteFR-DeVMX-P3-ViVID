@@ -1,6 +1,7 @@
 .admin {
   padding-top: 60px;
   background: var(--darkColor);
+  min-height: calc(100vh - 270px);
 
   .ulAdmin {
     display: flex;
@@ -47,6 +48,7 @@
 
     .ulAdmin {
       margin-bottom: 20px;
+
       .liAdmin {
         .btnAdmin {
           font-size: 1rem;

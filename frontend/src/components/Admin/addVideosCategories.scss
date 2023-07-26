@@ -1,4 +1,4 @@
-.wrapper {
+.adminWrapper {
   margin: 120px auto 0;
   display: flex;
   justify-content: space-around;
@@ -152,7 +152,7 @@
 }
 
 @media screen and (min-width: 960px) {
-  .wrapper {
+  .adminWrapper {
     margin: 60px auto 0;
     display: flex;
     justify-content: space-between;
@@ -189,6 +189,7 @@
           border: none;
           border-radius: 20px;
           font-size: 1rem;
+          max-width: 500px;
         }
 
         select {
