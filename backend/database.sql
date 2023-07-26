@@ -28,12 +28,12 @@ VALUES
     '2023-06-07'
   ),
   (
-    'John',
-    'Doe',
-    'john.doe@mail.com',
-    'test',
-    1,
-    '2023-06-08'
+  "john",
+  "vi",
+  "john.vi@mail.com",
+  "$argon2id$v=19$m=65536,t=3,p=1$WeVXPq3AaQKeX8ct7hqPeA$IH6zeqLfD3DIX/prHBkqNxUd1o1gZksQjZCiWsT+9g4",
+  1,
+  "2023-06-06"
   ), 
   (
     'Jane',
@@ -61,7 +61,7 @@ INSERT INTO videos (title, duration, views_count, upload_date, thumbnail, video,
 VALUES
 ("Champ 1", "00:00:10", 0, "2023-07-11", "/uploads/images/1ae84d94-e3e0-4a56-a609-9603a9348fb0-Fields_1.png", "/uploads/videos/ddf1ca02-04a3-4143-b036-0a684ec445dc-urbain.mp4", 1),
 ("Champ 2", "00:00:10", 0, "2023-07-11", "/uploads/images/840b82e8-9fca-4458-bcf2-0f71b456f44a-Fields_2.png", "/uploads/videos/ddf1ca02-04a3-4143-b036-0a684ec445dc-urbain.mp4", 0), 
-("Champ 3", "00:00:10", 0, "2023-07-11", "/uploads/images/1b7b340b-900f-4a3d-87d9-cdd0a039d74d-Fields_3.png", "/uploads/videos/ddf1ca02-04a3-4143-b036-0a684ec445dc-urbain.mp4", 1),   
+("Champ 3", "00:00:10", 0, "2023-07-11", "/uploads/images/1b7b340b-900f-4a3d-87d9-cdd0a039d74d-Fields_3.png", "/uploads/videos/ddf1ca02-04a3-4143-b036-0a684ec445dc-urbain.mp4", 0),   
 ("Champ 4", "00:00:10", 0, "2023-07-11", "/uploads/images/65ef6285-716d-41be-b367-c7272670f436-Fields_4.png", "/uploads/videos/ddf1ca02-04a3-4143-b036-0a684ec445dc-urbain.mp4", 1),  
 ("Forêt 1", "00:00:08", 0, "2023-07-11", "/uploads/images/b6012fc2-f7e5-4690-a42f-2a6004b7dcb5-Forest_1.png", "/uploads/videos/ddf1ca02-04a3-4143-b036-0a684ec445dc-urbain.mp4", 1),  
 ("Forêt 2", "00:00:09", 0, "2023-07-11", "/uploads/images/a0976bd8-cab7-4a5d-826d-6e31f84dc19b-Forest_2.png", "/uploads/videos/ddf1ca02-04a3-4143-b036-0a684ec445dc-urbain.mp4", 1),  
@@ -69,7 +69,7 @@ VALUES
 ("Forêt 4", "00:00:10", 0, "2023-07-11", "/uploads/images/ff9c7151-1f13-4319-b246-e5240de9b903-Forest_4.png", "/uploads/videos/ddf1ca02-04a3-4143-b036-0a684ec445dc-urbain.mp4", 1),  
 ("Forêt 5", "00:00:10", 0, "2023-07-11", "/uploads/images/30d75198-7c27-46a2-bd76-671496ede79c-Forest_5.png", "/uploads/videos/ddf1ca02-04a3-4143-b036-0a684ec445dc-urbain.mp4", 1),  
 ("Montagne 1", "00:00:10", 0, "2023-07-11", "/uploads/images/87681119-e590-4b9f-a2a9-9d87b40bc7ad-Mountain_1.png", "/uploads/videos/ddf1ca02-04a3-4143-b036-0a684ec445dc-urbain.mp4", 1),
-("Montagne 2", "00:00:10", 0, "2023-07-11", "/uploads/images/39288559-2462-4834-8b90-c616be3a16e6-Mountain_2.png", "/uploads/videos/ddf1ca02-04a3-4143-b036-0a684ec445dc-urbain.mp4", 1),
+("Montagne 2", "00:00:10", 0, "2023-07-11", "/uploads/images/39288559-2462-4834-8b90-c616be3a16e6-Mountain_2.png", "/uploads/videos/ddf1ca02-04a3-4143-b036-0a684ec445dc-urbain.mp4", 0),
 ("Montagne 3", "00:00:10", 0, "2023-07-11", "/uploads/images/96b774fa-11b2-496f-bf8f-c873cff4dca8-Mountain_3.png", "/uploads/videos/ddf1ca02-04a3-4143-b036-0a684ec445dc-urbain.mp4", 1),
 ("Montagne 4", "00:00:08", 0, "2023-07-11", "/uploads/images/1e69bce0-cb1c-4e49-9818-e51c799274cb-Mountain_4.png", "/uploads/videos/ddf1ca02-04a3-4143-b036-0a684ec445dc-urbain.mp4", 0),
 ("Mer & Océans 1", "00:00:11", 0, "2023-07-11", "/uploads/images/1af4cdcc-7013-4857-ae04-d0e48ea1c4ba-Sea_Oceans_1.png", "/uploads/videos/ddf1ca02-04a3-4143-b036-0a684ec445dc-urbain.mp4", 0),
@@ -147,8 +147,8 @@ INSERT INTO sections (section, is_dynamic) VALUES ('grid', 0), ('slider', 0), ('
 CREATE TABLE video_section  (
   id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   video_id int(11) UNSIGNED NOT NULL, FOREIGN KEY (video_id) REFERENCES videos(id),
-  section_id int NOT NULL, FOREIGN KEY (section_id) REFERENCES sections(id),
-  category_id int NOT NULL, FOREIGN KEY (category_id) REFERENCES categories(id)
+  section_id int NOT NULL, FOREIGN KEY (section_id) REFERENCES sections(id) ON DELETE CASCADE,
+  category_id int NOT NULL, FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 INSERT INTO video_section (video_id, section_id, category_id) VALUES 
 (10, 2, 1),
