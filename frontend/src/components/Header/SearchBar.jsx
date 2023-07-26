@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
+
 import searchImg from "../../assets/navBar/search.png";
+
 import "./SearchBar.scss";
 
 export default function SearchBar() {
@@ -15,7 +17,6 @@ export default function SearchBar() {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/videos?search=${searchQuery}`)
       .then((response) => {
-        // Une fois que la requête est réussie, vous pouvez mettre à jour les résultats de recherche.
         setSearchResults(response.data);
       })
       .catch((error) => {
@@ -39,11 +40,11 @@ export default function SearchBar() {
         onChange={handleInputChange}
         onKeyPress={handleKeyPress}
       />
+
       <button className="searchButton" type="button" onClick={handleSearch}>
         <img src={searchImg} alt="search" />
       </button>
 
-      {/* Ici, vous pouvez afficher les résultats de recherche */}
       <ul>
         {searchResults.map((video) => (
           <li key={video.id}>{video.title}</li>

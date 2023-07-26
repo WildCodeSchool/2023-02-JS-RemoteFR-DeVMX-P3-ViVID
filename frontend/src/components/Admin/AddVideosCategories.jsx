@@ -143,7 +143,7 @@ export default function AddVideosCategories() {
   };
 
   return (
-    <div className="wrapper">
+    <div className="adminWrapper">
       <div className="addVideo" id="addVideo">
         <form className="formAddVideo" encType="multipart/form-data">
           <h2 className="titleAddVideo">Ajouter une video</h2>
