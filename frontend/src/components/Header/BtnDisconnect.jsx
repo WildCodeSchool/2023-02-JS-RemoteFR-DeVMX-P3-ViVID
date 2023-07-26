@@ -8,7 +8,7 @@ import back from "../../assets/back.png";
 import "./btnDisconnect.scss";
 
 export default function BtnDisonnect() {
-  const { setToken, setUsers } = useContext(UserExport.UserContext);
+  const { users, setToken, setUsers } = useContext(UserExport.UserContext);
 
   const handleDisconnect = () => {
     setUsers(null);
@@ -18,12 +18,14 @@ export default function BtnDisonnect() {
 
   return (
     <>
-      <button className="btnBackAdmin" type="button">
-        <Link to="/admin">
-          <img src={back} alt="back" />
-          <i>Gestion Admin</i>
-        </Link>
-      </button>
+      {users.role_id === 2 && (
+        <button className="btnBackAdmin" type="button">
+          <Link to="/admin">
+            <img src={back} alt="back" />
+            <i>Gestion Admin</i>
+          </Link>
+        </button>
+      )}
       <button
         className="btnDisconnect"
         type="button"

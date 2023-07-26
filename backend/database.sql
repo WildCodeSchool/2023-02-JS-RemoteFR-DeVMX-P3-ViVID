@@ -42,6 +42,22 @@ VALUES
     'test',
     1,
     '2023-06-08'
+  ),
+  (
+    'john',
+    'vi',
+    'john.vi@mail.com',
+    '$argon2id$v=19$m=65536,t=3,p=1$WeVXPq3AaQKeX8ct7hqPeA$IH6zeqLfD3DIX/prHBkqNxUd1o1gZksQjZCiWsT+9g4t',
+    1,
+    '2023-06-08'
+  ),
+  (
+   'test',
+   'toto',
+   'test@toto.com',
+   '$argon2id$v=19$m=65536,t=3,p=1$sqwnBVt3ObyTo2WKrZjOag$MXiXgzSjFWlRhUFllIbaPaX9mQPZiEQZT7shNul+bV8',
+   1,
+   '1899-11-29'
   );
 
 -- CREATE TABLE VIDEOS -- START

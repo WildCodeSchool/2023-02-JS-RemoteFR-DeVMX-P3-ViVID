@@ -42,7 +42,9 @@ export default function ModalConnection({ isOpen, onOpenModal, onCloseModal }) {
           setTimeout(() => {
             navigate("/admin");
           }, 500);
-        } else {
+        } else if (res.data.currentuser.role_id === 1) {
+          setUsers(res.data.currentuser);
+          setToken(res.data.token);
           setTimeout(() => {
             navigate("/");
           }, 500);
