@@ -28,22 +28,28 @@
 
   .valid-btn {
     cursor: pointer;
-    margin: 1.5rem 0 3rem;
-    transition: all 0.5s ease;
+    margin: 1.5rem 1rem 3rem;
+    padding: 7px 15px;
+    background-color: var(--goldColor);
+    border-radius: 30px;
+    border: none;
     color: whitesmoke;
     text-transform: uppercase;
     text-align: center;
     line-height: 1;
     font-size: 1rem;
     font-weight: 500;
-    background-color: var(--goldColor);
-    padding: 7px 10px;
     outline: none;
-    border-radius: 30px;
+    transition: all 0.5s ease;
 
     &:hover {
       color: var(--goldColor);
       background-color: whitesmoke;
     }
+  }
+
+  p {
+    color: white;
+    padding: 0 20px;
   }
 }

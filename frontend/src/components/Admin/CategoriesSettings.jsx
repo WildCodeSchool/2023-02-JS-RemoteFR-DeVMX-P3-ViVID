@@ -67,7 +67,7 @@ export default function CategoriesSettings({ tab }) {
 
   const postChoices = (e) => {
     e.preventDefault();
-    console.warn(previousSection); // delete if not used
+    console.warn(previousSection);
     videos.map(
       (vid) =>
         vid.isChecked &&
