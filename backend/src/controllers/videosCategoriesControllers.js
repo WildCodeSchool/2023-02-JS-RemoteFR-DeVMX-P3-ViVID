@@ -19,8 +19,6 @@ const read = (req, res) => {
 const add = (req, res) => {
   const videoCategoryIds = req.body;
 
-  // TODO validations (length, format...)
-
   models.videoCategory
     .insert(videoCategoryIds)
     .then(([result]) => {
