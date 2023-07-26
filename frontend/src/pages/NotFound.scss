@@ -5,7 +5,7 @@
   justify-content: space-evenly;
   align-items: center;
   padding-top: 60px;
-  min-height: calc(100vh - 200px);
+  height: 100vh;
 
   .errorImg {
     width: clamp(300px, 70%, 800px);
