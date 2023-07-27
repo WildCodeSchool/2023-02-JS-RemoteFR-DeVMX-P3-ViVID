@@ -44,14 +44,6 @@ VALUES
     '2023-06-08'
   ),
   (
-    'john',
-    'vi',
-    'john.vi@mail.com',
-    '$argon2id$v=19$m=65536,t=3,p=1$WeVXPq3AaQKeX8ct7hqPeA$IH6zeqLfD3DIX/prHBkqNxUd1o1gZksQjZCiWsT+9g4t',
-    1,
-    '2023-06-08'
-  ),
-  (
    'test',
    'toto',
    'test@toto.com',
@@ -138,8 +130,8 @@ VALUES
 
 CREATE TABLE video_category (
   id int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  video_id int(11) UNSIGNED NOT NULL, FOREIGN KEY (video_id) REFERENCES videos(id),
-  category_id int NOT NULL, FOREIGN KEY (category_id) REFERENCES categories(id)
+  video_id int(11) UNSIGNED NOT NULL, FOREIGN KEY (video_id) REFERENCES videos(id) ON DELETE CASCADE,
+  category_id int NOT NULL, FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 INSERT INTO video_category (video_id, category_id)
 VALUES 
