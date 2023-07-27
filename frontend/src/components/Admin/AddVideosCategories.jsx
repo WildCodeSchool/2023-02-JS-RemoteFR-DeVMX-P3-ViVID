@@ -15,7 +15,6 @@ export default function AddVideosCategories() {
   const [newCategory, setNewCategory] = useState("");
   const [categoryName, setCategoryName] = useState("");
   const [categoryMsg, setCategoryMsg] = useState("");
-  // const [modif, setModif] = useState(false);
 
   useEffect(() => {
     axios
