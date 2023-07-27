@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import axios from "axios";
-
+import cadena from "../../assets/cadenas.png";
 import "./grid.scss";
 
 const categoryHeadings = {
@@ -49,13 +49,21 @@ export default function Grid({ categoryId }) {
       <div className="grid">
         {videos &&
           videos.map((vid) => (
-            <Link className="card" key={vid.id} to={`/videos/${vid.id}`}>
-              <img
-                src={`${import.meta.env.VITE_BACKEND_URL}${vid.thumbnail}`}
-                alt={vid.title}
-              />
-              <h2>{vid.title}</h2>
-            </Link>
+            <div key={vid.id} className="private">
+              <button
+                type="button"
+                className={vid.is_public === 0 ? "showCadenaBtn" : "hide"}
+              >
+                <img src={cadena} alt="cadena" />
+              </button>
+              <Link className="card" to={`/videos/${vid.id}`}>
+                <img
+                  src={`${import.meta.env.VITE_BACKEND_URL}${vid.thumbnail}`}
+                  alt={vid.title}
+                />
+                <h2>{vid.title}</h2>
+              </Link>
+            </div>
           ))}
       </div>
     </>

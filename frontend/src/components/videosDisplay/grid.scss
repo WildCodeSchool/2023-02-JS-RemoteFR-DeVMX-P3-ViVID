@@ -9,51 +9,80 @@
   margin: 0 auto;
   gap: 20px;
 
-  .card {
-    border: none;
-    cursor: pointer;
+  .private {
+    position: relative;
     width: clamp(300px, 20vw, var(--imgWidth));
     height: clamp(
       180px,
       calc(10vw + var(--vid-info-height)),
       calc(var(--imgWidth) + var(--vid-info-height))
     );
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    background: var(--greenColor);
-    margin: 10px auto 30px auto;
-    text-decoration: none;
-    font-size: 0;
-    transition: 0.2s ease;
-    animation: ZoomIn 0.3s linear;
-
-    @for $i from 1 through 30 {
-      &:nth-child(#{$i}n) {
-        animation-delay: #{$i * 0.1}s;
+    .showCadenaBtn {
+      position: absolute;
+      top: 10px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      border: none;
+      background-color: rgba(128, 128, 128, 0.651);
+      img {
+        width: 50px;
+        height: 50px;
       }
     }
-
-    &:hover {
-      transform: scale(1.1);
-      border: 1px solid var(--goldColor);
-      box-shadow: 0 0 20px 0px var(--goldColor);
+    .hide {
+      display: none;
     }
 
-    img {
-      width: 100%;
-      height: clamp(140px, 20vw, var(--imgWidth));
-      object-fit: cover;
-    }
+    .card {
+      border: none;
+      cursor: pointer;
+      width: clamp(300px, 20vw, var(--imgWidth));
+      height: clamp(
+        180px,
+        calc(10vw + var(--vid-info-height)),
+        calc(var(--imgWidth) + var(--vid-info-height))
+      );
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      background: var(--greenColor);
+      margin: 10px auto 30px auto;
+      text-decoration: none;
+      font-size: 0;
+      transition: 0.2s ease;
+      animation: ZoomIn 0.3s linear;
 
-    h2 {
-      color: whitesmoke;
-      width: 200px;
-      height: 30px;
-      font-size: 1rem;
-      font-weight: 400;
-      text-align: left;
-      padding: 10px;
+      @for $i from 1 through 30 {
+        &:nth-child(#{$i}n) {
+          animation-delay: #{$i * 0.1}s;
+        }
+      }
+
+      &:hover {
+        transform: scale(1.1);
+        border: 1px solid var(--goldColor);
+        box-shadow: 0 0 20px 0px var(--goldColor);
+      }
+
+      img {
+        width: 100%;
+        height: clamp(140px, 20vw, var(--imgWidth));
+        object-fit: cover;
+      }
+
+      h2 {
+        color: whitesmoke;
+        width: 200px;
+        height: 30px;
+        font-size: 1rem;
+        font-weight: 400;
+        text-align: left;
+        padding: 10px;
+      }
     }
   }
 }
