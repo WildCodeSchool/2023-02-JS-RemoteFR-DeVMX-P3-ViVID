@@ -21,7 +21,7 @@ export default function AddVideosCategories() {
       .get(`${import.meta.env.VITE_BACKEND_URL}/categories`)
       .then((result) => setCategories(result.data))
       .catch((err) => console.error(err));
-  }, [newCategory]);
+  }, [categoryMsg]);
 
   const postingVideo = (e) => {
     e.preventDefault();
@@ -91,23 +91,34 @@ export default function AddVideosCategories() {
     setCategoryId(0);
     setTimeout(() => {
       setMsg("");
-    }, 3000);
+    }, 2000);
+  };
+
+  const deleteMsg = () => {
+    setTimeout(() => {
+      setCategoryMsg("");
+    }, 1500);
   };
 
   const postingCategory = (e) => {
     e.preventDefault();
+    if (newCategory === "") setCategoryMsg("error");
+    else {
+      axios
+        .post(`${import.meta.env.VITE_BACKEND_URL}/categories`, {
+          category: newCategory,
+        })
+        .then((res) => {
+          if (res.status === 201) setCategoryMsg("done");
+        })
+        .catch((err) => {
+          console.error(err);
+          setCategoryMsg("error");
+        });
+    }
 
-    axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}/categories`, {
-        category: newCategory,
-      })
-      .then((res) => {
-        if (res.status === 201) setCategoryMsg("done");
-      })
-      .catch((err) => {
-        console.error(err);
-        setCategoryMsg("error");
-      });
+    setNewCategory("");
+    deleteMsg();
   };
 
   const changeCategoryName = (e) => {
@@ -124,6 +135,8 @@ export default function AddVideosCategories() {
         console.error(err);
         setCategoryMsg("error");
       });
+
+    deleteMsg();
   };
 
   const deleteCategory = (e) => {
@@ -140,6 +153,8 @@ export default function AddVideosCategories() {
         console.error(err);
         setCategoryMsg("error");
       });
+
+    deleteMsg();
   };
 
   return (
@@ -231,7 +246,7 @@ export default function AddVideosCategories() {
         </p>
 
         <p className={msg === "error" ? "display" : "hide"}>
-          Error ! Reéssayez{" "}
+          Erreur ! Reéssayez{" "}
         </p>
       </div>
 
@@ -303,7 +318,7 @@ export default function AddVideosCategories() {
         </p>
 
         <p className={categoryMsg === "error" ? "display" : "hide"}>
-          Error ! Reéssayez{" "}
+          Erreur ! Reéssayez{" "}
         </p>
       </div>
     </div>
